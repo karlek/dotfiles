@@ -156,6 +156,8 @@ alias ping='grc ping'
 
 alias good_to_know='pacman -Qdttq'
 
+alias list_explicit='pacman -Qet'
+
 # Pong
 alias pong='ping 8.8.8.8'
 alias rdns='dig +short -x'
