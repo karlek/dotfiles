@@ -1,0 +1,24 @@
+import Data.List
+import Data.Char
+import Numeric
+import Data.Function
+import Text.Printf
+import Data.Maybe
+import IPPrint.Colored
+import IPPrint
+import System.Random
+
+-- Such lambda.
+:set prompt "λ "
+
+-- Color printing!
+:set -interactive-print=IPPrint.Colored.cpprint
+:def cp (\_ -> return ":set -interactive-print=IPPrint.Colored.cpprint")
+:def ncp (\_ -> return ":set -interactive-print=print")
+
+-- Hoogle!
+:def hlint const . return $ ":! hlint \"src\""
+:def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
+
+-- Pointfree!
+:def pf \str -> return $ ":! pointfree " ++ str
