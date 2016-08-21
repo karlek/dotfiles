@@ -1,0 +1,17 @@
+ao=pulse,alsa
+vo=opengl-hq
+slang=eng,en,English
+alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
+#vf=vapoursynth=/home/_/.mpv/f3kdb.vpy
+vd-lavc-threads=8
+framedrop=no
+screenshot-format=png
+demuxer-mkv-subtitle-preroll
+msg-color=yes
+# vo=opengl:scale=spline36:cscale=spline36:dscale=mitchell:dither-depth=auto:fancy-downscaling:sigmoid-upscaling:interpolation:tscale=oversample
+fullscreen=yes
+
+# Test
+osc=no
+osd-bar-align-y=0.7
+ass-hinting=light
