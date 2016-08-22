@@ -8,7 +8,7 @@ library: ~/.config/beets/library.db
 pluginpath: ~/.config/beets/plugins
 
 # Bultin plugins.
-plugins: discogs embedart badfiles fuzzy fetchart lyrics lastgenre fromfilename cmus spotify zero inline
+plugins: discogs embedart badfiles fuzzy fetchart lyrics lastgenre fromfilename cmus spotify zero inline replaygain chroma duplicates
 
 item_fields:
   filename: |
@@ -26,6 +26,15 @@ paths:
   # Soundtracks.
   albumtype:soundtrack: Soundtracks/$album/$track $title
 
+chroma:
+  auto: yes
+
+replaygain:
+  backend: gstreamer
+  auto: yes 
+
+fetchart:
+  auto: yes
 
 # Acoustid token for submitting fingerprints.
 acoustid:
