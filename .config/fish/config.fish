@@ -104,7 +104,7 @@ alias ccat 'pygmentize -g'
 
 # Sort packages by size
 alias pacbig="expac -H M '%m\t%n' | sort -h"
-alias pacexp='pacman -Qet'
+alias pacexp='pacman -Qqet'
 
 # Trash-put to ~/.local/share/Trash/files.
 alias rm="trash-put -- "
