@@ -121,8 +121,6 @@ alias time='time -p'
 
 # Shortcuts for acpi, date, etc.
 alias yt='youtube-dl'
-alias a='acpi'
-alias d='date'
 alias m='mount /mnt'
 alias subl='subl3'
 
