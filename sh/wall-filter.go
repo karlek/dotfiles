@@ -51,5 +51,5 @@ func isLarge(c *image.Config) bool {
 	return c.Width >= 2560
 }
 func is169(c *image.Config) bool {
-	return (math.Abs(float64(c.Width)/float64(c.Height)) - 1.778) <= 0.1
+	return (math.Abs(float64(c.Width)/float64(c.Height) - 1.778)) <= 0.1
 }
