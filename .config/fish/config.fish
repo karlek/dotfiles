@@ -54,6 +54,9 @@ alias git='hub'
 # Serve folder on port 8000.
 alias serve='/bin/sh -c "(cd $argv[1] && python -m http.server)"'
 
+# Update Xresources.
+alias xup="xrdb ~/.Xresources"
+
 # Folder aliases.
 alias -='cd -'
 alias ...='cd ../..'
