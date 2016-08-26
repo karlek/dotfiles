@@ -20,4 +20,8 @@ setxkbmap -option caps:none &
 xmodmap -e "keycode 118=" &
 xmodmap -e "keycode  107 = Menu NoSymbol Menu" &
 
+xrdb ~/.Xresources
+
+urxvtd -q -f -o
+
 exec openbox-session
