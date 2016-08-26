@@ -171,7 +171,7 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>sakura -x fish</command>
+        <command>urxvtc</command>
       </action>
     </keybind>
     <keybind key="W-w">
@@ -211,22 +211,17 @@
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>sh -c 'pamixer --sink "alsa_output.pci-0000_00_1b.0.analog-stereo" -t; pamixer --sink "bluez_sink.6C_5A_B5_B3_5B_A7" -t'</command>
-        <!-- <command>amixer set Master toggle</command> -->
+        <command>sh -c 'ponymix -d 1 toggle; ponymix -d 2 toggle'</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>sh -c 'pamixer --sink "alsa_output.pci-0000_00_1b.0.analog-stereo" -d 2; pamixer --sink "bluez_sink.6C_5A_B5_B3_5B_A7" -d 2; pamixer --sink "alsa_output.pci-0000_00_03.0.hdmi-stereo-extra1" -d 2'</command>
-        <!-- <command>amixer -D pulse sset Master 2%-</command> -->
-        <!-- <command>pulseaudio-ctl down</command> -->
+        <command>sh -c 'ponymix -d 1 decrease 3; ponymix -d 2 decrease 3'</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>sh -c 'pamixer --sink "alsa_output.pci-0000_00_1b.0.analog-stereo" -i 2; pamixer --sink "bluez_sink.6C_5A_B5_B3_5B_A7" -i 2; pamixer --sink "alsa_output.pci-0000_00_03.0.hdmi-stereo-extra1" -i 2'</command>
-        <!-- <command>amixer -D pulse sset Master 2%+</command> -->
-        <!-- <command>pulseaudio-ctl up</command> -->
+        <command>sh -c 'ponymix -d 1 increase 3; ponymix -d 2 increase 3'</command>
       </action>
     </keybind>
     <keybind key="XF86Tools">
