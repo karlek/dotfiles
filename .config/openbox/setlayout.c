@@ -1,4 +1,7 @@
-/* To compile this program, run
+/* 
+ * Credits to openbox team.
+ *
+ * To compile this program, run
  * gcc -o setlayout setlayout.c -lX11
  */
 #include <stdio.h>
