@@ -206,7 +206,7 @@
     </keybind>
     <keybind key="W-l">
       <action name="Execute">
-        <command>slock</command>
+        <command>sflock -xshift 5000</command>
       </action>
     </keybind>
     <keybind key="W-x">
