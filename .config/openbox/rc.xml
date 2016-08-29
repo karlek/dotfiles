@@ -50,8 +50,18 @@
     </font>
   </theme>
   <desktops>
-    <number>4</number>
-    <names/>
+    <number>8</number>
+    <popupTime>300</popupTime>
+    <names>
+      <name>blundar</name>
+      <name>tills</name>
+      <name>jag</name>
+      <name>skymtar</name>
+      <name>lyckan</name>
+      <name>och</name>
+      <name>jag</name>
+      <name>vet</name>
+    </names>
     <popupTime>875</popupTime>
   </desktops>
   <resize>
@@ -65,6 +75,16 @@
   </resize>
   <keyboard>
     <!-- Keybindings for desktop switching -->
+    <keybind key="C-A-Down">
+      <action name="DesktopDown">
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-Up">
+      <action name="DesktopUp">
+        <wrap>no</wrap>
+      </action>
+    </keybind>
     <keybind key="C-A-Left">
       <action name="DesktopLeft">
         <wrap>no</wrap>
