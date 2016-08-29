@@ -1,4 +1,5 @@
 import Data.List
+import Data.List.Split
 import Data.Char
 import Numeric
 import Data.Function
@@ -10,11 +11,6 @@ import System.Random
 
 -- Such lambda.
 :set prompt "λ "
-
--- Color printing!
-:set -interactive-print=IPPrint.Colored.cpprint
-:def cp (\_ -> return ":set -interactive-print=IPPrint.Colored.cpprint")
-:def ncp (\_ -> return ":set -interactive-print=print")
 
 -- Hoogle!
 :def hlint const . return $ ":! hlint \"src\""
