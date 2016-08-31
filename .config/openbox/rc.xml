@@ -105,6 +105,16 @@
         <wrap>no</wrap>
       </action>
     </keybind>
+    <keybind key="S-A-Up">
+      <action name="SendToDesktopUp">
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-Down">
+      <action name="SendToDesktopDown">
+        <wrap>no</wrap>
+      </action>
+    </keybind>
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
@@ -306,12 +316,6 @@
       </mousebind>
       <mousebind button="A-Down" action="Click">
         <action name="DesktopNext"/>
-      </mousebind>
-      <mousebind button="A-S-Up" action="Click">
-        <action name="SendToDesktopPrevious"/>
-      </mousebind>
-      <mousebind button="A-S-Down" action="Click">
-        <action name="SendToDesktopNext"/>
       </mousebind>
     </context>
     <context name="Titlebar">
