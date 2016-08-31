@@ -2,6 +2,7 @@
 set -x GOPATH "$HOME/Desktop/privgo"
 set -x GOROOT "$HOME/go"
 set PATH $GOROOT/bin $GOPATH/bin $PATH
+set PATH ~/.cabal/bin $PATH
 
 # Add decimals to math.
 set -x BC_ENV_ARGS ~/.bc.cfg
