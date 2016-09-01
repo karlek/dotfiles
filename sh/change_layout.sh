@@ -8,3 +8,5 @@ case $current in
 		setxkbmap us
 		;;
 esac
+xmodmap ~/.Xmodmap
+

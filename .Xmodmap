@@ -1,5 +1,5 @@
 ! Remove caps lock and insert
 keycode 66= 
 keycode 118= 
-keycode 107= Menu NoSymbol Menu
+keycode 107= Pointer_Button3
 

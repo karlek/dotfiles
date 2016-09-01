@@ -15,6 +15,9 @@ xrdb ~/.Xresources
 # Urxvt daemon.
 urxvtd -q -f -o
 
+# Add support for keyboard mouse clicks.
+xkbset m
+
 # Load keyboard changes from .Xmodmap.
 xmodmap ~/.Xmodmap
 
