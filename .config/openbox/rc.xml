@@ -241,17 +241,17 @@
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>sh -c 'ponymix -d 1 toggle; ponymix -d 2 toggle'</command>
+        <command>sh -c 'ponymix -d analog toggle; ponymix -d bluez toggle;'</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>sh -c 'ponymix -d 1 decrease 3; ponymix -d 2 decrease 3'</command>
+        <command>sh -c 'ponymix -d analog decrease 3; ponymix -d bluez decrease 3;'</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>sh -c 'ponymix -d 1 increase 3; ponymix -d 2 increase 3'</command>
+        <command>sh -c 'ponymix -d analog increase 3; ponymix -d bluez increase 3;'</command>
       </action>
     </keybind>
     <keybind key="XF86Tools">
