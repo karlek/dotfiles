@@ -21,5 +21,6 @@ xkbset m
 # Load keyboard changes from .Xmodmap.
 xmodmap ~/.Xmodmap
 
-# Start openbox.
-exec openbox-session
+# Start i3.
+exec i3 --shmlog-size=26214400 -V >> ~/.config/i3/i3log-$(date +'%F-%k-%M-%S').log 2>&1
+
