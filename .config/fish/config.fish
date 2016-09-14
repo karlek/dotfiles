@@ -130,6 +130,9 @@ alias time='time -p'
 alias yt='youtube-dl'
 alias m='mount /mnt'
 alias subl='subl3'
+function z
+  zathura $argv &; exit
+end
 
 # View images in current directory.
 function v
