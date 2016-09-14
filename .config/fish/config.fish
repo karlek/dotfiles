@@ -75,9 +75,6 @@ alias cal="cal -m"
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Colorized and human timestamps for dmesg.
-alias dmesg='dmesg -HL'
-
 # Colorized and better syntax for diff.
 alias diff='colordiff -u'
 
