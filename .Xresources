@@ -23,7 +23,7 @@ URxvt.geometry:             	80x20
 ! Transparent to background.
 URxvt.transparent:          	false
 ! Fade text when focus to the window is lost.
-URxvt.fading:               	30
+! URxvt.fading:               	30
 URxvt.loginShell:           	false
 ! Save number lines in the scrollback buffer.
 URxvt.saveLines:            	1000
