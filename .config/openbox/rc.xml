@@ -221,7 +221,7 @@
     </keybind>
     <keybind key="W-x">
       <action name="Execute">
-        <command>sh /home/_/sh/change_layout.sh</command>
+        <command>sh /home/_/sh/change-layout.sh</command>
       </action>
     </keybind>
     <keybind key="A-S-Delete">
