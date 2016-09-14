@@ -27,8 +27,8 @@ set -x LESS_TERMCAP_us (printf "\e[01;32m")      # begin underline
 
 # Keybindings in fish.
 function fish_user_key_bindings
-    # Alt+l : print the file contents of the current folder.
-    bind \el 'echo; and ls; and commandline -f repaint'
+    # Alt+n : print the file contents of the current folder.
+    bind \en 'echo; and ls; and commandline -f repaint'
 
     # Alt+a : print the file (hidden included) contents of the current folder.
     bind \ea 'echo; and ls -a; and commandline -f repaint'
@@ -36,11 +36,14 @@ function fish_user_key_bindings
     # Alt+. : insert last argument from the last command.
     bind \e. 'history-token-search-backward'
 
-    # Alt+o : pipe to xin
-    bind \eo 'commandline -a "| xin"'
+    # Alt+1 : pipe to xin
+    bind \e1 'commandline -i "| xin"'
 
-    # Alt+p : pipe to /dev/null
-    bind \ep 'commandline -a "2> /dev/null"'
+    # Alt+2 : pipe stderr to stdout
+    bind \e2 'commandline -i "2>&1"'
+
+   # Alt+3 : pipe to /dev/null
+    bind \e3 'commandline -i "2> /dev/null"'
 end
 
 # Remove greeting.
