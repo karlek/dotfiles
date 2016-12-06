@@ -168,6 +168,9 @@ end
 # Screen cast.
 alias cast='ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
 
+function c
+	gcalcli --monday --military --nodetail_all -w (echo "$COLUMNS 23" | awk '{print int(($1/$2) * 3)}') calw
+end
 # Good to know.
 ### Record macro & play macro.
 # xmacrorec2 > testing.macro
