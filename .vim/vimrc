@@ -1,0 +1,161 @@
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+"
+" Put your non-Plugin stuff after this line
+" Fix for PluginInstall
+" https://github.com/VundleVim/Vundle.vim/issues/690
+set shell=/bin/bash
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Semantic highlighting
+Plugin 'jaxbot/semantic-highlight.vim'
+
+" Dim inactive pane/window
+Plugin 'blueyed/vim-diminactive'
+
+" Colorscheme badwolf
+Plugin 'sjl/badwolf'
+
+" Change surrounding characters
+Plugin 'tpope/vim-surround'
+
+" Commenter
+Plugin 'scrooloose/nerdcommenter'
+
+" Golang support
+Plugin 'fatih/vim-go'
+
+" Golang support
+Plugin 'sheerun/vim-polyglot'
+
+" Fish support
+Plugin 'dag/vim-fish'
+
+" LaTeX handling.
+Plugin 'lervag/vimtex'
+
+" Multiple cursors (C-n)
+Plugin 'terryma/vim-multiple-cursors'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+"
+""" Normal config
+"
+
+" Filetype based syntax highlighting
+filetype plugin indent on    
+syntax on
+
+colorscheme badwolf
+
+set termencoding=utf-8 encoding=utf-8 fileformat=unix
+
+" Hides buffers instead of forcing them to close.
+set hidden
+
+" Language settings
+let $LANG='en'
+set langmenu=en helplang=en
+
+" Line numbering
+set number
+
+" Move swap files to a collected directory
+set directory=/home/_/.vim/swap
+set backupdir=/home/_/.vim/swap
+set undodir=/home/_/.vim/swap
+
+let mapleader=" "
+let maplocalleader="\\"
+
+" Fast sourcing
+map <leader>s :source ~/.vimrc<CR>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Show matching paranthesis.
+set showmatch
+
+" Change between two open files quickly
+nnoremap <leader><leader> :e#<CR>
+
+" Change between two open files quickly
+nnoremap <leader>q :wq!<CR>
+
+" Recognize .md filenames as markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" Explicitly state encoding and file-endings.
+set encoding=utf8
+set ffs=unix,dos,mac
+
+" Enables mouse scrolling 
+set mouse=a
+
+" Visual autocomplete for command menu
+set wildmenu 
+
+" Add a bit extra margin to the left
+set foldcolumn=1
+
+" Start searching automatically when typing
+set incsearch 
+
+" Ignore case when searching
+set ignorecase
+
+" Allow switching of buffers without saving them first
+set hidden 
+
+" Highlight line but not column
+set cursorline nocursorcolumn 
+
+" Word wrap
+set wrap linebreak 
+
+" Show as much as possible of the last line
+set display=lastline 
+
+" Minimum number of lines surrounding cursor
+set scrolloff=3 
+
+nmap <F1> :echo<CR>
+
+" Indention is 4 spaces
+set shiftwidth=4
+set smartindent
+set cindent
+set tabstop=4
+set softtabstop=4
+
+" Keep more info in memory, commands etc. 
+set history=500
+
+" Python specific 
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+
+au BufRead,BufNewFile *.cabal set ft=haskell
+
+let g:go_fmt_command = "goimports"
+	
+nmap <leader>o O<Esc>
+
