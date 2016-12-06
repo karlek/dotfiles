@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+export battery=$(acpi | cut -c 12-)
+export time=$(date '+%a %b %d %T %Y')
+echo $battery
+printf "%40s\n" "$time"
