@@ -52,9 +52,6 @@ end
 # Remove greeting.
 set fish_greeting ""
 
-# Battery and time check.
-alias a='acpi; date'
-
 # Cleaner git.
 alias git='hub'
 
@@ -118,6 +115,7 @@ alias rm="trash-put -- "
 
 # stdin to clipboard.
 alias xin='xclip -in -selection clip'
+alias xout='xclip -out'
 
 # Pong and reverse dns: `rdns <ip>`.
 alias pong='ping 8.8.8.8'
