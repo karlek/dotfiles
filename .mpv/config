@@ -1,17 +1,51 @@
+# Audio
 ao=pulse,alsa
-vo=opengl-hq
-slang=eng,en,English
-alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
-#vf=vapoursynth=/home/_/.mpv/f3kdb.vpy
-vd-lavc-threads=8
-framedrop=no
-screenshot-format=png
-demuxer-mkv-subtitle-preroll
-msg-color=yes
-# vo=opengl:scale=spline36:cscale=spline36:dscale=mitchell:dither-depth=auto:fancy-downscaling:sigmoid-upscaling:interpolation:tscale=oversample
-fullscreen=yes
+#af-defaults=volume=replaygain-track:replaygain-clip=yes:detach  # Pitch correction, prevent audio clipping of pitch correction
+#af-add=rubberband,volume # Add audio filters. Adjust volume to the media files stored gain.
+#softvol=yes
+#softvol-max=600
+af=drc
 
-# Test
-osc=no
-osd-bar-align-y=0.7
-ass-hinting=light
+# Video
+#vo=opengl-hq,opengl,vaapi,vdpau,xv,
+#hwdec=vaapi
+hwdec=vaapi
+vo=opengl:backend=drm-egl:dither-depth=auto:pbo:fbo-format=rgba16
+vo=opengl:scale=ewa_lanczossharp:sigmoid-upscaling:cscale=ewa_lanczossharp:dscale=mitchell:correct-downscaling:scaler-resizes-only
+vo=opengl:interpolation:tscale=oversample:temporal-dither:blend-subtitles=yes
+vo=opengl:gamma=0.9:icc-profile-auto
+vo=opengl:deband
+stop-screensaver=yes 
+ytdl-format=bestvideo+bestaudio 
+vd-lavc-threads=8       # Number of threads used for decoding
+sws-scaler=gauss        # Software scaler 
+framedrop=no            
+demuxer-mkv-subtitle-preroll=yes # Try to show subtitles when searching to the middle of a dialogue.
+audio-display=no        # Remove music cover art.
+#vf=vapoursynth=/home/_/.mpv/f3kdb.vpy
+
+# OSD & UI
+osc=no                  # On screen controller
+osd-bar-align-y=0.7     # Move time bar
+fullscreen=yes     
+msg-color=yes           # Color output in terminal
+slang=eng,en,English    
+alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
+
+# Subtitles
+sub-ass-hinting=light       # Font hinting for ass subs.
+sub-gauss=.75           # Blur ugly pixelated subs.
+sub-gray=yes            # Makes yellow Vobsubs yellow <3
+sub-auto=fuzzy          # Load subtitles automatically, fuzzy matching the media name.
+
+# Music
+[extension.flac]
+term-osd-bar=yes        # Show time bar for music.
+[extension.mp3]
+term-osd-bar=yes        # Show time bar for music.
+
+# On a better system :dream:
+#[vo.opengl-hq]
+#vo=opengl-hq:scale=ewa_lanczossharp:cscale=ewa_lanczossharp:interpolation:temporal-dither:gamma=0.9:blend-subtitles=yes:target-prim=bt.709:target-trc=srgb
+#video-sync=display-resample
+#vo=opengl:scale=spline36:cscale=spline36:dscale=mitchell:dither-depth=auto:correct-downscaling:sigmoid-upscaling:interpolation:tscale=oversample
