@@ -117,9 +117,22 @@ alias rm="trash-put -- "
 alias xin='xclip -in -selection clip'
 alias xout='xclip -out'
 
-# Pong and reverse dns: `rdns <ip>`.
+# Pong, reverse dns: `rdns <ip>` and my local ip.
 alias pong='ping 8.8.8.8'
 alias rdns='dig +short -x'
+alias myip='ip route list | grep -o -P "src\s([0-9]{1,3}.){3}[0-9]{1,3}" | head -n1 | cut -c 5-'
+
+# Search for packages
+alias pss='pacaur -Ss'
+
+# No screen-saver
+alias no-ss='xset -dpms s off'
+
+# Date and battery
+alias a='grc a'
+
+alias xidel='xidel --color=always'
+alias suspend='systemctl suspend'
 
 # Cleaner output.
 alias time='time -p'
@@ -181,3 +194,9 @@ if status --is-login
     # Start internet on login.
     sudo /home/_/Desktop/sh/internet.sh > /dev/null &
 end
+
+# File type completions 
+complete -x -c z -d 'PDF' -a '(__fish_complete_suffix .pdf)'
+complete -x -c zathura -d 'PDF' -a '(__fish_complete_suffix .pdf)'
+complete -x -c evince -d 'PDF' -a '(__fish_complete_suffix .pdf)'
+
