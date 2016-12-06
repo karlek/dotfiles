@@ -3,8 +3,8 @@
 !-------------------------------------------------------------------------------
 
 ! Fonts
-URxvt.font:     				xft:DejaVuSansMono:size=8:antialias=true
-URxvt.boldFont: 				xft:DejaVuSansMono:bold:size=8:antialias=true
+URxvt.font:     				xft:DejaVuSansMono:size=12:antialias=true
+URxvt.boldFont: 				xft:DejaVuSansMono:bold:size=12:antialias=true
 
 Xft.antialias: 					true
 Xft.rgba:      					rgb
@@ -80,7 +80,7 @@ URxvt.fadeColor:				#000000
 
 ! Black
 URxvt.color0:					#141413
-URxvt.color8:					#000000
+URxvt.color8:					#646463
 ! Red
 URxvt.color1:					#ff2c4b
 URxvt.color9:					#ff2c4b
