@@ -200,3 +200,5 @@ complete -x -c z -d 'PDF' -a '(__fish_complete_suffix .pdf)'
 complete -x -c zathura -d 'PDF' -a '(__fish_complete_suffix .pdf)'
 complete -x -c evince -d 'PDF' -a '(__fish_complete_suffix .pdf)'
 
+fish_default_key_bindings
+fish_user_key_bindings
