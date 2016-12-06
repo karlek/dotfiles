@@ -14,7 +14,7 @@ set -x BC_ENV_ARGS ~/.bc.cfg
 set -x LC_ALL "en_US.UTF-8"
 
 # Needed to activate autojump.
-set fish_plugins autojump
+source /usr/share/fish/completions/autojump.fish
 
 # Theme (which is actually klubbi).
 set fish_theme toaster
