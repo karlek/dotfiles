@@ -179,5 +179,5 @@ end
 # Login shell.
 if status --is-login
     # Start internet on login.
-    sudo /home/_/sh/internet.sh > /dev/null &
+    sudo /home/_/Desktop/sh/internet.sh > /dev/null &
 end
