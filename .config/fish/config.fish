@@ -126,7 +126,17 @@ alias time='time -p'
 
 # Shortcuts for acpi, date, etc.
 alias yt='youtube-dl'
-alias m='mount /mnt'
+alias musb='mount /mnt'
+# alias m='mpv --script=~/.mpv/skipchapters.lua .'
+
+function m
+    if count $argv > /dev/null
+    	mpv --script=~/.mpv/skipchapters.lua $argv
+    else
+    	mpv --script=~/.mpv/skipchapters.lua .
+    end
+end
+
 alias subl='subl3'
 function z
   zathura $argv &; exit
