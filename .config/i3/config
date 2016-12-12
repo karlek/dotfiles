@@ -39,7 +39,7 @@ bindsym $mod+r exec --no-startup-id "rofi -threads 0 -combi-modi window,drun,ssh
 bindsym XF86AudioLowerVolume exec --no-startup-id "ponymix -d analog decrease 3; ponymix -d bluez decrease 3; ponymix -d hdmi decrease 3"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "ponymix -d analog increase 3; ponymix -d bluez increase 3; ponymix -d hdmi increase 3"
 bindsym XF86AudioMute exec --no-startup-id "ponymix -d analog toggle; ponymix -d bluez toggle; ponymix -d hdmi toggle"
-bindsym $mod+x exec --no-startup-id "/home/_/Desktop/sh/change-layout.sh"
+bindsym $mod+x exec --no-startup-id "/home/_/sh/change-layout.sh"
 bindsym XF86Tools exec --no-startup-id "cmus-remote -r"
 bindsym XF86Search exec --no-startup-id "cmus-remote -u"
 bindsym XF86LaunchA exec --no-startup-id "cmus-remote -n"
@@ -47,10 +47,10 @@ bindsym XF86Explorer exec --no-startup-id "amixer set Speaker toggle"
 bindsym Control+Mod1+l exec --no-startup-id "sflock -xshift 5000"
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 15"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 15"
-bindsym $mod+w exec --no-startup-id "sh /home/_/Desktop/sh/random.sh"
+bindsym $mod+w exec --no-startup-id "sh /home/_/sh/random.sh"
 bindsym $mod+Control+Delete exec --no-startup-id "xrandr --auto"
 bindsym $mod+g exec --no-startup-id "subl3"
-bindsym $mod+Shift+Delete exec --no-startup-id "xrandr --output eDP1 --mode 1920x1080 --output HDMI2 --mode 1920x1080; sh /home/_/Desktop/sh/random.sh"
+bindsym $mod+Shift+Delete exec --no-startup-id "xrandr --output eDP1 --mode 1920x1080 --output HDMI2 --mode 1920x1080; sh /home/_/sh/random.sh"
 
 hide_edge_borders both
 new_window normal 0  
@@ -167,7 +167,7 @@ mode "resize" {
 #}
 #
 
-exec --no-startup-id "sh /home/_/Desktop/sh/random.sh"
+exec --no-startup-id "sh /home/_/sh/random.sh"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
 exec_always --no-startup-id /usr/bin/compton --config /home/_/.config/compton.conf
 

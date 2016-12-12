@@ -5,7 +5,7 @@ set -x EDITOR vim
 set -x BROWSER firefox
 set PATH $GOROOT/bin $GOPATH/bin $PATH
 set PATH ~/.cabal/bin $PATH
-set PATH ~/Desktop/sh $PATH
+set PATH ~/sh $PATH
 
 # Add decimals to math.
 set -x BC_ENV_ARGS ~/.bc.cfg
@@ -15,6 +15,9 @@ set -x LC_ALL "en_US.UTF-8"
 
 # Needed to activate autojump.
 source /usr/share/fish/completions/autojump.fish
+
+# Fish-ssh-agent
+source ~/.config/fish/functions/init.fish
 
 # Theme (which is actually klubbi).
 set fish_theme toaster
@@ -192,7 +195,7 @@ end
 # Login shell.
 if status --is-login
     # Start internet on login.
-    sudo /home/_/Desktop/sh/internet.sh > /dev/null &
+    sudo /home/_/sh/internet.sh > /dev/null &
 end
 
 # File type completions 
