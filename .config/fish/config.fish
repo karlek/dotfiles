@@ -199,3 +199,7 @@ complete -x -c evince -d 'PDF' -a '(__fish_complete_suffix .pdf)'
 
 fish_default_key_bindings
 fish_user_key_bindings
+
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit --gpg-sign --message'
