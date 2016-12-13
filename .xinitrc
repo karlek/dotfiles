@@ -26,5 +26,4 @@ xset -b
 
 # Start i3.
 exec i3 --shmlog-size=26214400 -V >> ~/.config/i3/i3log-$(date +'%F-%k-%M-%S').log 2>&1
-# exec openbox-session
 
