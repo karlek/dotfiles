@@ -32,6 +32,12 @@ rofi.separator-style:                solid
 ! URxvt settings
 !-------------------------------------------------------------------------------
 
+! Do not scroll back on new output.
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+! Scroll to end on keypress.
+URxvt*scrollTtyKeypress:    true
+
 ! Enables alpha channel.
 URxvt.depth:                	32
 ! Size of window.
@@ -42,7 +48,7 @@ URxvt.transparent:          	false
 ! URxvt.fading:               	30
 URxvt.loginShell:           	false
 ! Save number lines in the scrollback buffer.
-URxvt.saveLines:            	1000
+URxvt.saveLines:            	10000
 ! Internal border of number pixels.
 URxvt.internalBorder:       	2
 ! External border of number pixels.
