@@ -1,2 +1,6 @@
 .Xauthority
+.vim/viminf*
+.vim/undo
+.vim/swap
+*.pdf
 
