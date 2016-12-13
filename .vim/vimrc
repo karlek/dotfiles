@@ -173,3 +173,5 @@ if has('persistent_undo')
     set undofile
 endif
 
+" Move viminfo to .vim
+set viminfo+=n~/.vim/viminfo
