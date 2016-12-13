@@ -192,12 +192,6 @@ end
 # xmacrorec2 > testing.macro
 # cat testing.macro | xmacroplay ":0.0"
 
-# Login shell.
-if status --is-login
-    # Start internet on login.
-    sudo /home/_/sh/internet.sh > /dev/null &
-end
-
 # File type completions 
 complete -x -c z -d 'PDF' -a '(__fish_complete_suffix .pdf)'
 complete -x -c zathura -d 'PDF' -a '(__fish_complete_suffix .pdf)'
