@@ -203,3 +203,4 @@ fish_user_key_bindings
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit --gpg-sign --message'
+alias gap='git add -p'
