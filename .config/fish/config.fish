@@ -3,8 +3,12 @@ set -x GOPATH "$HOME/Desktop/privgo"
 set -x GOROOT "$HOME/Desktop/go"
 set -x EDITOR vim
 set -x BROWSER firefox
-set PATH $GOROOT/bin $GOPATH/bin $PATH
-set PATH ~/.cabal/bin $PATH
+if test -d "$GOPATH/bin"
+	set PATH $GOROOT/bin $GOPATH/bin $PATH
+end
+if test -d "~/.cabal/bin"
+	set PATH ~/.cabal/bin $PATH
+end
 set PATH ~/sh $PATH
 
 # Add decimals to math.
