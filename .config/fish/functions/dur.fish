@@ -12,8 +12,12 @@ function dur_backend
             continue
         end
 
-        set -x duration (ffprobe $f 2>&1 | grep Duration | cut -c 13- | cut -c -11)
-        printf "%s\t%s\n" (basename $f) $duration; 
+        set -x duration (ffprobe $f 2>&1 | grep Duration | cut -c 13- | cut -c -11 | rev | cut -c 4- | rev)
+		set -l filename (basename $f | string sub --length 64)
+		if test (string length $filename) -gt 60
+			set filename "$filename..."
+		end
+        printf "%s\t%s\n" $filename $duration; 
     end
 end
 
