@@ -1,0 +1,67 @@
+### If it contains Signs & Songs use secondary for that one and primary as sid=2
+
+# OSD & UI 
+no-osc                  # On screen controller
+osd-bar-align-y=0.7     # Move time bar
+fullscreen=yes     
+msg-color=yes           # Color output in terminal
+slang=eng,en,English    
+alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
+## For signs and songs
+#secondary-sid=2
+
+# On a better system :dream:
+[vo.opengl-hq]
+video-sync=display-resample
+
+# Audio
+ao=pulse,alsa
+af=drc
+af-defaults=volume=replaygain-track:replaygain-clip=yes:detach	# Pitch correction, prevent audio clipping of pitch correction
+af-add=rubberband,volume # Add audio filters. Adjust volume to the media files stored gain.
+volume-max=200
+
+# Video
+vo=opengl,opengl-hq,vaapi,vdpau,xv,
+hwdec=vaapi
+stop-screensaver=yes 
+ytdl-format=bestvideo+bestaudio 
+vd-lavc-threads=8       # Number of threads used for decoding
+sws-scaler=gauss        # Software scaler 
+framedrop=no            
+demuxer-mkv-subtitle-preroll=yes # Try to show subtitles when searching to the middle of a dialogue.
+audio-display=no        # Remove music cover art.
+
+[vo.opengl]
+opengl-backend=drm
+dither-depth=auto
+opengl-pbo=yes # Make some drivers faster, especially huge videos. May cause latency issues or make it slower.
+opengl-fbo-format=rgba16
+scale=ewa_lanczossharp
+sigmoid-upscaling=yes
+cscale=ewa_lanczossharp
+dscale=mitchell
+correct-downscaling=yes
+scaler-resizes-only=yes
+interpolation=yes
+tscale=oversample
+temporal-dither=yes
+blend-subtitles=yes
+opengl-gamma=0.9
+icc-profile-auto=yes
+deband=yes
+
+# Subtitles
+sub-ass-hinting=light       # Font hinting for ass subs.
+sub-gauss=.75           # Blur ugly pixelated subs.
+sub-gray=yes            # Makes yellow Vobsubs yellow <3
+sub-auto=fuzzy          # Load subtitles automatically, fuzzy matching the media name.
+
+# Music
+[extension.flac]
+term-osd-bar=yes        # Show time bar for music.
+audio-display=no        # Remove music cover art.
+[extension.mp3]
+term-osd-bar=yes        # Show time bar for music.
+audio-display=no        # Remove music cover art.
+
