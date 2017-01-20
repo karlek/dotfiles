@@ -9,7 +9,8 @@
 set color_win_fg=247
 
 # Overall background color
-# set color_win_bg=234   # why u no set?  xterm -bg "#1c1c1c" instead
+# why u no set?  xterm -bg "#1c1c1c" instead
+set color_win_bg=234
 
 # Command-line colors
 set color_cmdline_bg=default
@@ -54,6 +55,4 @@ set color_win_inactive_sel_fg=253
 ##### File Browser View Colors ###############################
 # Directory listing color
 set color_win_dir=254
-
-
 
