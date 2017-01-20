@@ -1,7 +1,0 @@
-.Xauthority
-.vim/viminf*
-.vim/undo
-.vim/swap
-.gmrun_history
-*.pdf
-
