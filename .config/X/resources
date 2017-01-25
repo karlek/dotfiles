@@ -55,8 +55,6 @@ URxvt.internalBorder:       	2
 URxvt.externalBorder:       	10
 ! Specifies number of lines (pixel height) to insert between each row of the display.
 URxvt.lineSpace:            	3
-! Turn off cursor blinking.
-URxvt.cursorBlink:				false
 
 ! Fix font space
 URxvt*letterSpace: 				-1
@@ -83,9 +81,11 @@ URxvt.url-launcher:          	firefox
 
 ! Cursor
 URxvt.cursorUnderline:      	true
-
+! Turn off cursor blinking.
+URxvt.cursorBlink:				false
 ! Pointer
 URxvt.pointerBlank:         	true
+! URxvt*cursor:					i-beam
 
 !-------------------------------------------------------------------------------
 ! Color scheme
