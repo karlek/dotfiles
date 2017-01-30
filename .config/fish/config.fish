@@ -79,8 +79,8 @@ set -x LESS_TERMCAP_us (printf "\e[01;32m")      # begin underline
 
 # Keybindings in fish.
 function fish_user_key_bindings
-    # Alt+n : print the file contents of the current folder.
-    bind \en 'echo; and ls; and commandline -f repaint'
+    # Alt+l : print the file contents of the current folder.
+    bind \el 'echo; and ls; and commandline -f repaint'
 
     # Alt+a : print the file (hidden included) contents of the current folder.
     bind \ea 'echo; and ls -a; and commandline -f repaint'
