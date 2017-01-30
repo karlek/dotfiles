@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/bash
 export USER_NAME=_
 export USER_ID=$(id -u $USER_NAME)
 
-export XAUTHORITY=/home/_/.Xauthority
+export XAUTHORITY=/run/user/$USER_ID/X/authority
 export DISPLAY=:0.0
 
 export HDMI_STATUS=$(</sys/class/drm/card0/card0-HDMI-A-2/status)
