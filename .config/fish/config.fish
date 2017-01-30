@@ -49,16 +49,21 @@ set -x GOROOT "$HOME/go/go"
 set -x GOROOT_BOOTSTRAP "$HOME/go/go1.4"
 set -x EDITOR nvim
 set -x BROWSER firefox
-if test -d "$GOPATH/bin"
-	set PATH $GOROOT/bin $GOPATH/bin $PATH
-end
-if test -d "~/.cabal/bin"
-	set PATH ~/.cabal/bin $PATH
-end
-set PATH ~/sh $PATH
+set -x STEAM_RUNTIME 1
 
-# Add decimals to math.
-set -x BC_ENV_ARGS ~/.bc.cfg
+function prepend_to_path -d "Prepend the given dir to PATH if it exists and is not already in it"
+    if test -d $argv[1]
+        if not contains $argv[1] $PATH
+            set -gx PATH "$argv[1]" $PATH
+        end
+    end
+end
+
+prepend_to_path $GOROOT/bin
+prepend_to_path $GOPATH/bin
+prepend_to_path ~/.local/bin
+prepend_to_path /usr/bin/core_perl
+prepend_to_path ~/sh
 
 # Set locale.
 set -x LC_ALL "en_US.UTF-8"
