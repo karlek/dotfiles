@@ -3,8 +3,8 @@
 !-------------------------------------------------------------------------------
 
 ! Fonts
-URxvt.font:     				xft:DejaVuSansMono:size=12:antialias=true
-URxvt.boldFont: 				xft:DejaVuSansMono:bold:size=12:antialias=true
+URxvt.font:     				xft:DejaVu Sans Mono:size=12:antialias=true
+URxvt.boldFont: 				xft:DejaVu Sans Mono:bold:size=12:antialias=true
 
 Xft.antialias: 					true
 Xft.rgba:      					rgb
@@ -74,6 +74,10 @@ URxvt.keysym.C-s: 				perl:keyboard-select:search
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
 URxvt.iso14755: 				False
+
+! Vim related
+URxvt.keysym.C-Page_Up        : \033[5;5~
+URxvt.keysym.C-Page_Down      : \033[6;5~
 
 ! Clickable URLs
 URxvt.matcher.button:       	1
