@@ -183,6 +183,11 @@ alias no-ss='xset -dpms s off'
 
 # Date and battery
 alias a='grc a'
+alias c='cat'
+alias l='ls'
+alias r='rm'
+alias pa='pacaur'
+alias par='pacaur -Rns'
 
 alias xidel='xidel --color=always'
 alias suspend='systemctl suspend'
@@ -193,13 +198,12 @@ alias time='time -p'
 # Shortcuts for acpi, date, etc.
 alias yt='youtube-dl'
 alias musb='mount /mnt'
-# alias m='mpv --script=~/.mpv/skipchapters.lua .'
 
 function m
     if count $argv > /dev/null
-    	mpv --script=~/.mpv/skipchapters.lua $argv
+        mpv --script=$XDG_CONFIG_HOME/mpv/skipchapters.lua $argv
     else
-    	mpv --script=~/.mpv/skipchapters.lua .
+        mpv --script=$XDG_CONFIG_HOME/mpv/skipchapters.lua .
     end
 end
 
@@ -211,9 +215,9 @@ end
 # View images in current directory.
 function v
     if count $argv > /dev/null
-    	viewnior --fullscreen $argv
+        viewnior --fullscreen $argv
     else
-	   viewnior --fullscreen .
+	viewnior --fullscreen .
     end
 end
 
