@@ -119,6 +119,7 @@ alias ...... 'cd ../../../../..'
 
 # Calendar start on monday.
 alias cal="cal -m"
+alias vi='vim'
 
 # Interactive copy and move (ask before overwritting files).
 alias cp='cp -i'
