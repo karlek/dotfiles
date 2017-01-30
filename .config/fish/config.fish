@@ -108,7 +108,7 @@ alias git='hub'
 alias serve='/bin/sh -c "(cd $argv[1] && python -m http.server)"'
 
 # Update Xresources.
-alias xup="xrdb ~/.Xresources"
+alias xup="xrdb ~/.config/X/resources"
 
 # Folder aliases.
 alias -='cd -'
