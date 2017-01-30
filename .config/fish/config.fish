@@ -190,8 +190,16 @@ alias r='rm'
 alias pa='pacaur'
 alias par='pacaur -Rns'
 
+# Git shortcuts
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit --gpg-sign --message'
+alias gap='git add -p'
+alias gp='git push'
+
 alias xidel='xidel --color=always'
 alias suspend='systemctl suspend'
+alias subl='subl3'
 
 # Cleaner output.
 alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
@@ -208,7 +216,6 @@ function m
     end
 end
 
-alias subl='subl3'
 function z
   zathura $argv &; exit
 end
@@ -255,8 +262,11 @@ complete -x -c evince -d 'PDF' -a '(__fish_complete_suffix .pdf)'
 fish_default_key_bindings
 fish_user_key_bindings
 
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit --gpg-sign --message'
-alias gap='git add -p'
-alias gp='git push'
+if status --is-login
+	nyfikend -v > /tmp/nyfiken 2> /tmp/nyfiken-error &
+	if not tmux has-session -t cmus 2> /dev/null
+		tmux new-session -s cmus -d -n cmus -d "/usr/bin/cmus" &
+		tmux set-option status off &
+	end
+end
+
