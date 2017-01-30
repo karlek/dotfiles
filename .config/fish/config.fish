@@ -126,7 +126,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Colorized and better syntax for diff.
-alias diff='colordiff -u'
+alias diff='diff --color=auto -u'
+
+# Blue grep highlight.
+set -x GREP_COLOR "1;34"
 
 # Colorized df.
 alias df='grc df'
