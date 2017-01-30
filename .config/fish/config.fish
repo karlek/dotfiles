@@ -208,6 +208,15 @@ alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 alias yt='youtube-dl'
 alias musb='mount /mnt'
 
+# Shortcut for ssh
+alias laputa='mosh laputa -- fish -c "tmux attach -d -t clean; or tmux"'
+
+# Volume
+alias vol='printf "%d%% and %s" (pamixer --get-volume) (pamixer --get-mute)'
+
+# Screen cast.
+alias cast='ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
+
 function m
     if count $argv > /dev/null
         mpv --script=$XDG_CONFIG_HOME/mpv/skipchapters.lua $argv
