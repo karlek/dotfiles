@@ -44,9 +44,10 @@ alias gdb='gdb -nh -x $XDG_CONFIG_HOME/gdb/init'
 source /usr/share/fish/completions/autojump.fish
 
 # Set environment variables.
-set -x GOPATH "$HOME/Desktop/privgo"
-set -x GOROOT "$HOME/Desktop/go"
-set -x EDITOR vim
+set -x GOPATH "$HOME/go/privgo"
+set -x GOROOT "$HOME/go/go"
+set -x GOROOT_BOOTSTRAP "$HOME/go/go1.4"
+set -x EDITOR nvim
 set -x BROWSER firefox
 if test -d "$GOPATH/bin"
 	set PATH $GOROOT/bin $GOPATH/bin $PATH
