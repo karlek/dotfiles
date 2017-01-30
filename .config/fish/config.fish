@@ -68,15 +68,6 @@ prepend_to_path ~/sh
 # Set locale.
 set -x LC_ALL "en_US.UTF-8"
 
-# Needed to activate autojump.
-source /usr/share/fish/completions/autojump.fish
-
-# Fish-ssh-agent
-source ~/.config/fish/functions/init.fish
-
-# Theme (which is actually klubbi).
-set fish_theme toaster
-
 # Pretty man pages <3
 set -x LESS_TERMCAP_mb (printf "\e[01;31m")      # begin blinking
 set -x LESS_TERMCAP_md (printf "\e[01;31m")      # begin bold
