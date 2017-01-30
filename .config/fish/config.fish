@@ -2,7 +2,7 @@
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_CACHE_HOME "$HOME/.cache"
 set -x XDG_DATA_HOME "$HOME/.local/share"
-set -x XDG_RUNETIME_DIR "/run/user/"(id -u _)
+set -x XDG_RUNETIME_DIR "/run/user/"(id -u (whoami))
 
 set -x LESSHISTFILE "$XDG_DATA_HOME/less/history"
 set -x LESSKEY "$XDG_CONFIG_HOME/less/keys"
@@ -41,7 +41,10 @@ set -x GDBHISTFILE $XDG_DATA_HOME/gdb/history
 alias gdb='gdb -nh -x $XDG_CONFIG_HOME/gdb/init'
 
 # Needed to activate autojump.
-source /usr/share/fish/completions/autojump.fish
+set -l autojump "/usr/share/fish/completions/autojump.fish"
+if test -d $autojump
+	source /usr/share/fish/completions/autojump.fish
+end
 
 # Set environment variables.
 set -x GOPATH "$HOME/go/privgo"
@@ -150,9 +153,14 @@ alias grep='grep --color=auto'
 # Fix coloring for less.
 alias less='less -R'
 
-# Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
 # (-v) natural sort of numbers.
-alias ls='ls --color=auto --classify -X -v'
+if test (uname) = Darwin
+	# -G colorized
+	alias ls='ls -G'
+else
+	# Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
+	alias ls='ls --color=auto --classify -X -v'
+end
 
 # Colored `go test`.
 alias gotest='go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/'''
@@ -165,7 +173,10 @@ alias pacbig="expac -H M '%m\t%n' | sort -h"
 alias pacexp='pacman -Qqe'
 
 # Trash-put to ~/.local/share/Trash/files.
-alias rm="trash-put -- "
+which "trash-put" 2> /dev/null
+if test $status -eq 0
+	alias rm="trash-put -- "
+end
 
 # stdin to clipboard.
 alias xin='xclip -in -selection clip'
