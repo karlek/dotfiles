@@ -55,10 +55,9 @@ bindsym XF86Explorer exec --no-startup-id "amixer set Speaker toggle"
 bindsym Control+Mod1+l exec --no-startup-id "sflock -xshift 5000"
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 15"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 15"
-bindsym $mod+w exec --no-startup-id "sh /home/_/sh/random.sh"
+bindsym $mod+w exec --no-startup-id "fish /home/_/sh/random.sh"
 bindsym $mod+Control+Delete exec --no-startup-id "xrandr --auto"
 bindsym $mod+g exec --no-startup-id "subl3"
-bindsym $mod+Shift+Delete exec --no-startup-id "xrandr --output eDP1 --mode 1920x1080 --output HDMI2 --mode 1920x1080; sh /home/_/sh/random.sh"
 
 hide_edge_borders both
 new_window normal 0  
@@ -92,7 +91,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
