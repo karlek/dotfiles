@@ -193,7 +193,7 @@ alias xidel='xidel --color=always'
 alias suspend='systemctl suspend'
 
 # Cleaner output.
-alias time='time -p'
+alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 
 # Shortcuts for acpi, date, etc.
 alias yt='youtube-dl'
