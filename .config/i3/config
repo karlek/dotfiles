@@ -192,6 +192,7 @@ bindsym $mod+t [instance="terminal"] scratchpad show
 
 assign [class="^Firefox$"]			→ 1
 assign [class="^Deluge$"]	     	→ 8
+assign [instance="mutt"]			→ 9
 assign [class="^[Ss]cud[cC]loud$"]	→ 10
 assign [title="Messenger"]			→ 10
 
