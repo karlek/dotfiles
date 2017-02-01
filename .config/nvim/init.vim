@@ -89,6 +89,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Bufferline
+Plug 'bling/vim-bufferline'
+
 " LaTeX handling.
 Plug 'lervag/vimtex'
 
@@ -318,15 +321,8 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 " Remove history search.
 map q: <Nop>
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-" Show buffer number.
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:diminactive_use_syntax = 1
+let g:bufferline_echo = 0
 
 " Return to last edit position when opening files.
 autocmd BufReadPost *
@@ -354,6 +350,4 @@ fun! s:SelectColorS()
   nmap <buffer>  q     :exec 'DimInactiveOn' <bar> quit<CR>   
 endf
 com! SelectColorS :cal s:SelectColorS()
-
-let g:diminactive_use_syntax = 1
 
