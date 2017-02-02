@@ -317,19 +317,3 @@ fun! s:SelectColorS()
 endf
 com! SelectColorS :cal s:SelectColorS()
 
-" I want to use my tab more smarter. If we are inside a completion menu jump
-" to the next item. Otherwise check if there is any snippet to expand, if yes
-" expand it. Also if inside a snippet and we need to jump tab jumps. If none
-" of the above matches we just call our usual 'tab'.
-function! s:neosnippet_complete()
-	if pumvisible()
-		return "\<c-n>"
-	else
-		if neosnippet#expandable_or_jumpable()
-			return "\<Plug>(neosnippet_expand_or_jump)"
-		endif
-		return "\<tab>"
-	endif
-endfunction
-
-imap <expr><TAB> <SID>neosnippet_complete()
