@@ -9,11 +9,12 @@ Plug 'ferranpm/vim-colorcode'
 " Ctrl-p
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Completion for go
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neopairs.vim'
+" Completion for python
 Plug 'zchee/deoplete-jedi'
+" Completion for go
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Snippets!
@@ -144,6 +145,9 @@ let &directory=swapDir
 let &backupdir=swapDir
 let &undodir=swapDir
 set undofile
+" More XDG.
+set viminfo+=n$XDG_CACHE_HOME/nvim/viminfo
+let g:netrw_home=$XDG_CACHE_HOME.'/nvim'
 
 " Enables mouse scrolling
 set mouse=a
