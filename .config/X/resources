@@ -52,7 +52,7 @@ URxvt.saveLines:            	10000
 ! Internal border of number pixels.
 URxvt.internalBorder:       	2
 ! External border of number pixels.
-URxvt.externalBorder:       	10
+URxvt.externalBorder:       	5
 ! Specifies number of lines (pixel height) to insert between each row of the display.
 URxvt.lineSpace:            	3
 
