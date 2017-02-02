@@ -15,14 +15,9 @@ alias cal="cal -m"
 alias vi='vim'
 alias vim='nvim'
 
+# Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
 # (-v) natural sort of numbers.
-if test (uname) = Darwin
-	# -G colorized
-	alias ls='ls -G'
-else
-	# Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
-	alias ls='ls --color=auto --classify -X -v'
-end
+alias ls='ls --color=auto --classify -X -v'
 
 # Trash-put to ~/.local/share/Trash/files.
 which "trash-put" > /dev/null
