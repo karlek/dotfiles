@@ -9,3 +9,5 @@ alias ls='ls -G'
 
 # Cleaner output.
 alias time='time'
+
+set -x GOROOT /usr/local/opt/go/libexec
