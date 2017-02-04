@@ -58,7 +58,9 @@ alias subl='subl3'
 # Cleaner output.
 alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 
-alias mutt='urxvtc -name mutt -e mutt'
+alias mutt='urxvtc -name mutt -e mutt; exit'
+
+alias irc='mosh laputa -- fish -c "tmux attach -d -t weechat; or tmux"'
 
 function unstaged
 	begin; 
