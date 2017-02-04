@@ -2,7 +2,6 @@
 alias git='hub'
 
 # Folder aliases.
-alias -='cd -'
 alias ...='cd ../..'
 alias .... 'cd ../../..'
 alias ..... 'cd ../../../..'
