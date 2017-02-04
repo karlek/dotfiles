@@ -28,16 +28,16 @@ set -x BC_ENV_ARGS $XDG_CONFIG_HOME/bc/config
 mkdir "$XDG_RUNETIME_DIR/X" 2> /dev/null
 touch "$XDG_RUNETIME_DIR/X/authority" 2> /dev/null
 set -x XAUTHORITY "$XDG_RUNTIME_DIR/X/authority"
-alias tmux='tmux -2 -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias startx="startx $XDG_CONFIG_HOME/X/initrc 2> $XDG_DATA_HOME/X/startx.log"
-alias mutt='mutt -F $XDG_CONFIG_HOME/mutt/muttrc'
-alias sqlite3='sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqlite.rc'
-alias s3cmd='s3cmd --config=$XDG_CONFIG_HOME/s3/config'
-alias irssi='irssi --home=$XDG_CONFIG_HOME/irssi'
-alias weechat='weechat -d $XDG_CONFIG_HOME/weechat'
-alias irc='mosh laputa -- fish -c "tmux attach -d -t weechat; or tmux"'
+alias tmux="tmux -2 -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
+alias sqlite3="sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqlite.rc"
+alias s3cmd="s3cmd --config=$XDG_CONFIG_HOME/s3/config"
+alias irssi="irssi --home=$XDG_CONFIG_HOME/irssi"
+alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
 set -x GDBHISTFILE $XDG_DATA_HOME/gdb/history
-alias gdb='gdb -nh -x $XDG_CONFIG_HOME/gdb/init'
+alias gdb="gdb -nh -x $XDG_CONFIG_HOME/gdb/init"
+alias anki="anki -b $XDG_DATA_HOME/Anki"
 
 # Update Xresources.
 alias xup="xrdb ~/.config/X/resources"
