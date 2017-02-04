@@ -19,4 +19,5 @@ function fish_user_key_bindings
     bind \e3 'commandline -i "2> /dev/null"'
 end
 
-
+fish_hybrid_key_bindings
+fish_user_key_bindings
