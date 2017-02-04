@@ -196,11 +196,6 @@ assign [instance="mutt"]			→ 9
 assign [class="^[Ss]cud[cC]loud$"]	→ 10
 assign [title="Messenger"]			→ 10
 
-#exec --no-startup-id i3-msg 'exec firefox;'
-#exec --no-startup-id i3-msg 'exec deluge;'
-#exec --no-startup-id i3-msg 'exec scudcloud;'
-#exec --no-startup-id i3-msg 'exec messengerfordesktop;'
-
 exec --no-startup-id "/home/_/sh/random.fish"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
 exec --no-startup-id "caffeine"
