@@ -1,67 +1,152 @@
 ### If it contains Signs & Songs use secondary for that one and primary as sid=2
 
-# OSD & UI 
-no-osc                  # On screen controller
-osd-bar-align-y=0.7     # Move time bar
+###########
+# General #
+###########
+
+use-filedir-conf                        # look for additional config files in the directory of the opened file
+keep-open                               # keep the player open when a file's end is reached
+deinterlace=auto                        # 'auto' does not imply interlacing-detection
 fullscreen=yes     
-msg-color=yes           # Color output in terminal
-slang=eng,en,English    
-alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
-## For signs and songs
-#secondary-sid=2
+term-osd-bar                            # Display a progress bar on the terminal
+msg-color=yes							# Color output in terminal
+msg-module                              # prepend module name to log messages
+cursor-autohide-fs-only                 # don't autohide the cursor in window mode, only fullscreen
+cursor-autohide=1000                    # autohide the curser after 1s
+stop-screensaver 
+ytdl-format=bestvideo+bestaudio 
+watch-later-directory="~/.cache/mpv/watch_later"
+
+save-position-on-quit
+
+#########
+# Cache #
+#########
+
+cache=yes
+cache-default=2000000                   # size in KB
+cache-backbuffer=25000                  # size in KB
+cache-initial=0                         # start playback when your cache is filled up with x kB
+cache-secs=10                           # how many seconds of audio/video to prefetch if the cache is active
+
+#############
+# OSD / OSC #
+#############
+
+no-osc									# On screen controller
+osd-level=1                             # enable osd and display --osd-status-msg on interaction
+osd-status-msg='${time-pos} / ${duration}${?percent-pos:　(${percent-pos}%)}\n${?chapter:Chapter: ${chapter}}'
+osd-font='Source Sans Pro'
+osd-font-size=32
+osd-color='#CCFFFFFF'                   # ARGB format
+osd-border-color='#DD322640'            # ARGB format
+osd-bar-align-y=0                       # Progress bar y alignment (-1 top, 0 centered, 1 bottom)
+osd-border-size=2                       # Size for osd text and progress bar.
+
+#############
+# Subtitles #
+#############
+
+sub-ass-force-margins
+sub-ass-force-style=Kerning=yes         # allows you to override style parameters of ASS scripts
+sub-auto=fuzzy                          # external subs don't have to match the file name exactly to autoload
+sub-paths=ass:srt:sub:subs:subtitles    # search for external subs in the listed subdirectories
+embeddedfonts=yes                       # use embedded fonts for SSA/ASS subs
+sub-fix-timing=no                       # do not try to fix gaps (which might make it worse in some cases)
+demuxer-mkv-subtitle-preroll			# Try to show subtitles when searching to the middle of a dialogue.
+sub-ass-hinting=light					# Font hinting for ass subs.
+sub-gauss=.75							# Blur ugly pixelated subs.
+sub-gray								# Makes yellow Vobsubs yellow <3
+sub-auto=fuzzy							# Load subtitles automatically, fuzzy matching the media name.
+
+# The following options only apply to subtitles without own styling (i.e. not ASS but e.g. SRT)
+sub-font="Source Sans Pro Semibold"
+sub-font-size=36
+sub-color="#FFFFFFFF"
+sub-border-color="#FF262626"
+sub-border-size=3.2
+sub-shadow-offset=1
+sub-shadow-color="#33000000"
+sub-spacing=0.5
+
+#############
+# Languages #
+#############
+
+slang=Full English,eng,en,English									 # automatically select these subtitles (decreasing priority)
+alang=jp,jpn,Japanese,en,eng,English,fr,fre,french       # automatically select these audio tracks (decreasing priority)
 
 # On a better system :dream:
 [vo.opengl-hq]
 video-sync=display-resample
 
-# Audio
-ao=pulse,alsa
-af=drc
-af-defaults=volume=replaygain-track:replaygain-clip=yes:detach	# Pitch correction, prevent audio clipping of pitch correction
-af-add=rubberband,volume # Add audio filters. Adjust volume to the media files stored gain.
-volume-max=200
+#########
+# Audio #
+#########
 
-# Video
+ao=pulse,alsa
+audio-pitch-correction	                # automatically insert scaletempo when playing with higher speed
+volume-max=200                          # maximum volume in %, everything above 100 results in amplification
+volume=100                              # default volume, 100 = unchanged
+
+
+################
+# Video Output #
+################
+
+profile=opengl-hq
+
+# Defaults for all profiles
 vo=opengl,opengl-hq,vaapi,vdpau,xv,
+tscale=catmull_rom                      # sharp: oversample <-> linear (triangle) <-> catmull_rom <-> mitchell <-> gaussian <-> bicubic : smooth
+opengl-early-flush=no
+opengl-pbo=yes
+
 hwdec=vaapi
-stop-screensaver=yes 
-ytdl-format=bestvideo+bestaudio 
-vd-lavc-threads=8       # Number of threads used for decoding
+vd-lavc-threads=32       # Number of threads used for decoding
 sws-scaler=gauss        # Software scaler 
 framedrop=no            
-demuxer-mkv-subtitle-preroll=yes # Try to show subtitles when searching to the middle of a dialogue.
 audio-display=no        # Remove music cover art.
 
 [vo.opengl]
 opengl-backend=drm
-dither-depth=auto
-opengl-pbo=yes # Make some drivers faster, especially huge videos. May cause latency issues or make it slower.
+opengl-pbo				# Make some drivers faster, especially huge videos. May cause latency issues or make it slower.
 opengl-fbo-format=rgba16
+opengl-gamma=0.9
+dither-depth=auto
+scaler-resizes-only
 scale=ewa_lanczossharp
-sigmoid-upscaling=yes
 cscale=ewa_lanczossharp
 dscale=mitchell
-correct-downscaling=yes
-scaler-resizes-only=yes
-interpolation=yes
 tscale=oversample
-temporal-dither=yes
-blend-subtitles=yes
-opengl-gamma=0.9
-icc-profile-auto=yes
-deband=yes
+scale-antiring=0.7
+cscale-antiring=0.7
+sigmoid-upscaling
+correct-downscaling
+interpolation
+temporal-dither
+dither-depth=auto
+blend-subtitles
+icc-profile-auto
+deband
 
-# Subtitles
-sub-ass-hinting=light       # Font hinting for ass subs.
-sub-gauss=.75           # Blur ugly pixelated subs.
-sub-gray=yes            # Makes yellow Vobsubs yellow <3
-sub-auto=fuzzy          # Load subtitles automatically, fuzzy matching the media name.
+###################################
+# Protocol Specific Configuration #
+###################################
+
+[protocol.https]
+cache-secs=100                          # how many seconds of audio/video to prefetch
+
+[protocol.http]
+cache-secs=100                          # how many seconds of audio/video to prefetch
 
 # Music
 [extension.flac]
-term-osd-bar=yes        # Show time bar for music.
 audio-display=no        # Remove music cover art.
 [extension.mp3]
-term-osd-bar=yes        # Show time bar for music.
 audio-display=no        # Remove music cover art.
 
+[extension.gif]
+cache=no
+no-pause
+loop-file=yes
