@@ -60,4 +60,8 @@ alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 
 alias mutt='urxvtc -name mutt -e mutt'
 
-alias unstaged='begin; find . -type f | cut -c 3-; git ls-files; end | sort | uniq -u'
+function unstaged
+	begin; 
+		find . -type f | cut -c 3-; git ls-files;
+	end | sort | uniq -u
+end
