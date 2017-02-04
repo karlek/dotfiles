@@ -14,6 +14,9 @@ alias cal="cal -m"
 alias vi='vim'
 alias vim='nvim'
 
+# Stack ghci
+alias ghci='stack ghci'
+
 # Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
 # (-v) natural sort of numbers.
 alias ls='ls --color=auto --classify -X -v'

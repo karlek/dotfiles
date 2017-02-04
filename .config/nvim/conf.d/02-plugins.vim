@@ -6,9 +6,11 @@ Plug 'ferranpm/vim-colorcode'
 " Ctrl-p
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Completion engine.
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neopairs.vim'
+
 " Completion for python
 Plug 'zchee/deoplete-jedi'
 " Completion for go
@@ -76,8 +78,15 @@ Plug 'tpope/vim-commentary'
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
+" Haskell support.
+Plug 'eagletmt/neco-ghc'
+Plug 'eagletmt/ghcmod-vim'
+
 " Language support
 Plug 'sheerun/vim-polyglot'
+
+" Dependency.
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " Airline
 Plug 'vim-airline/vim-airline'
