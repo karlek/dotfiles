@@ -39,6 +39,9 @@ Plug 'mbbill/undotree'
 " Autodetect Indentation
 Plug 'tpope/vim-sleuth'
 
+" Syntax checker.
+Plug 'neomake/neomake'
+
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
