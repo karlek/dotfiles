@@ -104,5 +104,8 @@ Plug 'lervag/vimtex'
 " Multiple cursors (C-n)
 Plug 'terryma/vim-multiple-cursors'
 
+" Function argument handling
+Plug 'b4winckler/vim-angry'
+
 call plug#end()            " required
 
