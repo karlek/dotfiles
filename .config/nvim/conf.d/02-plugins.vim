@@ -45,8 +45,8 @@ Plug 'neomake/neomake'
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
-" Automatically insert closing delimeter.
-Plug 'Townk/vim-autoclose'
+" Auto pairing
+Plug 'jiangmiao/auto-pairs'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
