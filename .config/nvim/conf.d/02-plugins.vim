@@ -9,9 +9,9 @@ Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neopairs.vim'
 
 " Completion for python
-Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 " Completion for go
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make'}
 
 " Snippets!
 Plug 'Shougo/neosnippet'
@@ -31,7 +31,7 @@ Plug 'vim-scripts/headers.vim'
 Plug 'flazz/vim-colorschemes'
 
 " Css colors
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color', { 'for': 'css' }
 
 " Undo tree
 Plug 'mbbill/undotree'
@@ -52,7 +52,7 @@ Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 
 " zen-mode
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Live reload.
 Plug 'jaxbot/browserlink.vim'
@@ -72,12 +72,15 @@ Plug 'tpope/vim-surround'
 " Commenter
 Plug 'tpope/vim-commentary'
 
+" Extended repeat
+Plug 'tpope/vim-repeat'
+
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Haskell support.
-Plug 'eagletmt/neco-ghc'
-Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 
 " Language support
 Plug 'sheerun/vim-polyglot'
