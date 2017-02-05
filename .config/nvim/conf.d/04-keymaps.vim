@@ -46,8 +46,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 vnoremap <leader>y  "+y
 nnoremap <leader>p "+p
 
-nmap <Leader>c :Commentary<cr>
-vmap <Leader>c :Commentary<cr>
+nmap <Leader>/ :Commentary<cr>
+vmap <Leader>/ :Commentary<cr>
 
 " Clear search highlighting.
 nnoremap <silent> <leader>l :nohl<CR><C-l>
