@@ -1,8 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Colocoding
-Plug 'ferranpm/vim-colorcode'
-
 " Ctrl-p
 Plug 'ctrlpvim/ctrlp.vim'
 
