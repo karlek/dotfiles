@@ -17,8 +17,6 @@ stop-screensaver
 ytdl-format=bestvideo+bestaudio 
 watch-later-directory="~/.cache/mpv/watch_later"
 
-save-position-on-quit
-
 #########
 # Cache #
 #########
