@@ -34,11 +34,11 @@ alias par='pacaur -Rns'
 alias pss='pacaur -Ss'
 
 # Git shortcuts
-alias gs='git status'
-alias ga='git add'
-alias gap='git add -p'
-alias gc='git commit --gpg-sign --message'
-alias gp='git push'
+abbr gs='git status'
+abbr ga='git add'
+abbr gap='git add -p'
+abbr gc='git commit --gpg-sign --message'
+abbr gp='git push'
 
 alias suspend='systemctl suspend'
 
