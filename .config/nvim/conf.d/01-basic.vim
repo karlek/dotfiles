@@ -40,7 +40,9 @@ set belloff=all
 
 " Keep undo history across sessions by storing it in a file
 let swapDir = $XDG_CACHE_HOME.'/nvim/swap'
-call system('mkdir ' . swapDir)
+if !isdirectory(swapDir)
+    call mkdir(swapDir)
+endif
 let &directory=swapDir
 let &backupdir=swapDir
 let &undodir=swapDir
