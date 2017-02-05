@@ -4,4 +4,4 @@ fun! s:Bright()
       colorscheme PaperColor
       AirlineTheme silver
 endf
-com Bright :call s:Bright()
+command! Bright :call s:Bright()
