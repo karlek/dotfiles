@@ -103,10 +103,19 @@ let maplocalleader="\\"
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 
 " Return to last edit position when opening files.
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
+autocmd BufReadPost * call LastPosition()
+
+fun! LastPosition()
+    " Ignore git commit messages.
+    let name = fnamemodify( expand('%'), ':t:r' )
+    if name =~ 'COMMIT_EDITMSG'
+        startinsert
+        return
+    endif
+    if line("'\"") > 0 && line("'\"") <= line("$") |
+        execute "normal! g`\"" |
+    endif
+endfun
 
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
