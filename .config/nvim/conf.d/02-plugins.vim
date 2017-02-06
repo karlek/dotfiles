@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Ctrl-p
-Plug 'ctrlpvim/ctrlp.vim'
+" Unite.vim
+Plug 'Shougo/denite.nvim'
 
 " Completion engine.
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
