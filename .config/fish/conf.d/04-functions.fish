@@ -37,7 +37,7 @@ alias pss='pacaur -Ss'
 abbr gs='git status'
 abbr ga='git add'
 abbr gap='git add -p'
-abbr gc='git commit --gpg-sign --message'
+abbr gc='git commit --gpg-sign'
 abbr gp='git push'
 
 alias suspend='systemctl suspend'
