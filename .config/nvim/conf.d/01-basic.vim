@@ -14,6 +14,8 @@ syntax on
 set autoread
 " Automatically write when making.
 set autoread
+" Auto change directory to current files.
+set autochdir
 
 " utf-8 is the best <3
 set termencoding=utf-8 encoding=utf-8 fileformat=unix
@@ -108,4 +110,3 @@ autocmd BufReadPost *
 
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
-
