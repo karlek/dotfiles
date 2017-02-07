@@ -109,7 +109,6 @@ fun! LastPosition()
     " Ignore git commit messages.
     let name = fnamemodify( expand('%'), ':t:r' )
     if name =~ 'COMMIT_EDITMSG'
-        startinsert
         return
     endif
     if line("'\"") > 0 && line("'\"") <= line("$") |
