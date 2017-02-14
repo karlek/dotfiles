@@ -30,6 +30,7 @@ alias c='cat'
 alias l='ls'
 alias r='rm'
 alias pa='pacaur'
+alias pas='pacaur -Suy'
 alias par='pacaur -Rns'
 alias pss='pacaur -Ss'
 
@@ -39,6 +40,7 @@ abbr ga='git add'
 abbr gap='git add -p'
 abbr gc='git commit --gpg-sign'
 abbr gp='git push'
+abbr gdc='git diff --cached'
 
 alias suspend='systemctl suspend'
 
