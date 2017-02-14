@@ -106,3 +106,6 @@ function json
     end
 end
 
+function urldecode
+    php -r "echo urldecode('$argv');"
+end
