@@ -21,6 +21,9 @@ Plug 'honza/vim-snippets'
 " Better swap-handling
 Plug 'gioele/vim-autoswap'
 
+" Start screen vim
+Plug 'mhinz/vim-startify'
+
 " Rename files.
 Plug 'danro/rename.vim'
 
