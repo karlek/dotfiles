@@ -29,10 +29,12 @@ alias a='grc a'
 alias c='cat'
 alias l='ls'
 alias r='rm'
-alias pa='pacaur'
-alias pas='pacaur -Suy'
-alias par='pacaur -Rns'
-alias pss='pacaur -Ss'
+
+# Pacaur shortcuts
+abbr pa='pacaur'
+abbr pas='pacaur -Suy'
+abbr par='pacaur -Rns'
+abbr pss='pacaur -Ss'
 
 # Git shortcuts
 abbr gs='git status'
