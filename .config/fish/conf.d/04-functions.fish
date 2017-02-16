@@ -43,6 +43,8 @@ abbr gap='git add -p'
 abbr gc='git commit --gpg-sign --verbose'
 abbr gp='git push'
 abbr gd='git diff'
+abbr gl='git lg'
+abbr glp='git lg -p'
 abbr gdc='git diff --cached'
 
 alias suspend='systemctl suspend'
