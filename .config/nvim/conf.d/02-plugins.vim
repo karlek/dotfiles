@@ -1,6 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Unite.vim
+" Denite.vim
 Plug 'Shougo/denite.nvim'
 
 " Completion engine.
@@ -32,15 +32,14 @@ Plug 'vim-scripts/headers.vim'
 
 " Colorscheme pack
 Plug 'flazz/vim-colorschemes'
+" Colorscheme badwolf
+Plug 'sjl/badwolf'
 
 " Css colors
 Plug 'ap/vim-css-color', { 'for': 'css' }
 
 " Undo tree
 Plug 'mbbill/undotree'
-
-" Autodetect Indentation
-Plug 'tpope/vim-sleuth'
 
 " Syntax checker.
 Plug 'neomake/neomake'
@@ -69,17 +68,20 @@ Plug 'mattn/emmet-vim'
 " Dim inactive pane/window
 Plug 'blueyed/vim-diminactive'
 
-" Colorscheme badwolf
-Plug 'sjl/badwolf'
+" Autodetect Indentation
+Plug 'tpope/vim-sleuth'
 
-" Change surrounding characters
+" Change surrounding characters.
 Plug 'tpope/vim-surround'
 
-" Commenter
+" Toggle comments plugin.
 Plug 'tpope/vim-commentary'
 
-" Extended repeat
+" Extended repeat for some plugins.
 Plug 'tpope/vim-repeat'
+
+" Language support for multiple languages.
+Plug 'sheerun/vim-polyglot'
 
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -88,13 +90,10 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 
-" Language support
-Plug 'sheerun/vim-polyglot'
-
-" Dependency.
+" Dependency. Asynch engine for old plugins.
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-" Airline
+" Airline status line.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -104,11 +103,11 @@ Plug 'bling/vim-bufferline'
 " LaTeX handling.
 Plug 'lervag/vimtex'
 
-" Multiple cursors (C-n)
+" Multiple cursors. C-n, C-x
 Plug 'terryma/vim-multiple-cursors'
 
-" Function argument handling
+" Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'b4winckler/vim-angry'
 
-call plug#end()            " required
 
+call plug#end()            " required
