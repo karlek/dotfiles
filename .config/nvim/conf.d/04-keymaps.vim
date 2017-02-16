@@ -79,3 +79,7 @@ nnoremap N Nzzzv
 
 " Make Y behave consistently with other capitals
 map Y y$
+
+" Little emacs never killed nobody.
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
