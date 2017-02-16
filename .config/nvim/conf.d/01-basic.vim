@@ -57,7 +57,7 @@ let g:netrw_home=$XDG_CACHE_HOME.'/nvim'
 set mouse=a
 
 " Make updates happen faster (swap stuff).
-set updatetime=750
+set updatetime=250
 
 " Visual autocomplete for command menu
 set wildmenu
