@@ -104,5 +104,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'b4winckler/vim-angry'
 
+" Grep handler for vim.
+Plug 'mhinz/vim-grepper'
 
 call plug#end()            " required
