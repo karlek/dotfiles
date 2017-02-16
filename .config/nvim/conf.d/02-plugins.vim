@@ -47,8 +47,6 @@ Plug 'neomake/neomake'
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
-" Auto pairing
-Plug 'jiangmiao/auto-pairs'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
@@ -96,9 +94,6 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Airline status line.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" Bufferline
-Plug 'bling/vim-bufferline'
 
 " LaTeX handling.
 Plug 'lervag/vimtex'
