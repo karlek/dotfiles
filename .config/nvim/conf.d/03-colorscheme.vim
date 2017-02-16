@@ -1,4 +1,5 @@
-colorscheme pride " pride badwolf PaperColor
+colorscheme evening " evening pride badwolf PaperColor
+let g:airline_theme='badwolf'
 
 fun! s:Bright()
       colorscheme PaperColor
