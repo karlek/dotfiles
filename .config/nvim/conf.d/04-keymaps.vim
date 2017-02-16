@@ -65,6 +65,7 @@ nmap <F1> :echo<CR>
 
 " Remove trailing spaces.
 nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+map <F3> :setlocal spell! spelllang=en_us<CR>
 nnoremap <F5> :UndotreeToggle<cr>
 nmap <F8> :TagbarToggle<CR>
 
