@@ -40,7 +40,7 @@ abbr pss='pacaur -Ss'
 abbr gs='git status'
 abbr ga='git add'
 abbr gap='git add -p'
-abbr gc='git commit --gpg-sign'
+abbr gc='git commit --gpg-sign --verbose'
 abbr gp='git push'
 abbr gdc='git diff --cached'
 
