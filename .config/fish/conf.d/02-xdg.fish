@@ -18,9 +18,7 @@ set -x RXVT_SOCKET "$XDG_RUNTIME_DIR/urxvt/urxvt-"(hostname)
 set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 set -x GIMP2_DIRECTORY "$XDG_CONFIG_HOME/gimp"
-set -x CRAWL_RC "$XDG_CONFIG_HOME/crawl/crawlrc"
 set -x WINEPREFIX "$XDG_DATA_HOME/wine"
-set -x CRAWL_DIR "$XDG_DATA_HOME/crawl/"
 set -x RANDFILE "$XDG_DATA_HOME/openssl/rnd"
 # Add decimals to math.
 set -x BC_ENV_ARGS $XDG_CONFIG_HOME/bc/config
@@ -38,6 +36,7 @@ alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
 set -x GDBHISTFILE $XDG_DATA_HOME/gdb/history
 alias gdb="gdb -nh -x $XDG_CONFIG_HOME/gdb/init"
 alias anki="anki -b $XDG_DATA_HOME/Anki"
+alias crawl="crawl -rcdir $XDG_CONFIG_HOME/crawl -macro $XDG_CONFIG_HOME/crawl/macro -morgue $XDG_DATA_HOME/crawl/morgue -dir $XDG_CONFIG_HOME/crawl"
 
 # Update Xresources.
 alias xup="xrdb ~/.config/X/resources"
