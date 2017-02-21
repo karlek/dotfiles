@@ -115,6 +115,10 @@ function json
     end
 end
 
+function oflen
+	grep "^.\{$argv\}\$"
+end
+
 function urldecode
     php -r "echo urldecode('$argv');"
 end
