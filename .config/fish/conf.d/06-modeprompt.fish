@@ -20,4 +20,3 @@ function fish_mode_prompt --description "Display the user mode for the prompt"
         echo -n ' '
     end
 end
-
