@@ -116,9 +116,6 @@ fun! LastPosition()
     endif
 endfun
 
-let g:python_host_prog = "/usr/bin/python2"
-let g:python3_host_prog = "/usr/bin/python3"
-
 " Remove the splash message.
 set shortmess=I
 
