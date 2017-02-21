@@ -47,6 +47,8 @@ abbr gl='git lg'
 abbr glp='git lg -p'
 abbr gdc='git diff --cached'
 
+alias tolower="tr '[:upper:]' '[:lower:]'"
+alias toupper="tr '[:lower:]' '[:upper:]'"
 alias suspend='systemctl suspend'
 
 # Shortcuts for acpi, date, etc.
