@@ -88,5 +88,5 @@ nnoremap <silent> <C-g> :Grepper<cr>
 
 " Map q and escape to close quickfix window (grep-window).
 autocmd BufReadPost quickfix setlocal timeoutlen=0
-    \ | map <silent> <esc> :cclose<cr> :setlocal timeoutlen=1000 <cr>
-    \ | map <silent> q :cclose<CR> :setlocal timeoutlen=1000 <cr>
+    \| map <buffer><esc> :cclose <bar> setlocal timeoutlen=1000<cr>
+    \| map <buffer>q :cclose <bar> setlocal timeoutlen=1000<cr>
