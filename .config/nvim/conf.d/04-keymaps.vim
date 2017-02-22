@@ -80,3 +80,13 @@ map Y y$
 " Little emacs never killed nobody.
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+
+" Buffer, file and line searching.
+nnoremap <silent> <C-b> :DeniteProjectDir buffer<cr>
+nnoremap <silent> <C-p> :DeniteProjectDir file_rec<cr>
+nnoremap <silent> <C-g> :Grepper<cr>
+
+" Map q and escape to close quickfix window (grep-window).
+autocmd BufReadPost quickfix setlocal timeoutlen=0
+    \ | map <silent> <esc> :cclose<cr> :setlocal timeoutlen=1000 <cr>
+    \ | map <silent> q :cclose<CR> :setlocal timeoutlen=1000 <cr>

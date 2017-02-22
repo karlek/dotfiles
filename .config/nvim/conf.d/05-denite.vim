@@ -2,8 +2,6 @@
 call denite#custom#var('file_rec', 'command',
             \ ['git', 'ls-files'])
 
-nnoremap <silent> <C-p> :DeniteProjectDir buffer file_rec line<cr>
-
 " Change default prompt
 call denite#custom#option('default', 'prompt', '>')
 
