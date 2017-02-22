@@ -55,9 +55,6 @@ nnoremap <silent> <leader>l :nohl<CR><C-l>
 nnoremap j gj
 nnoremap k gk
 
-" Exit insertion mode
-inoremap jk <ESC>
-
 " Disable command history search.
 map q: <Nop>
 " Disable help key.
