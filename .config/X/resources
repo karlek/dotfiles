@@ -3,8 +3,8 @@
 !-------------------------------------------------------------------------------
 
 ! Fonts
-URxvt.font:     				xft:DejaVu Sans Mono:size=12:antialias=true
-URxvt.boldFont: 				xft:DejaVu Sans Mono:bold:size=12:antialias=true
+URxvt.font:     				xft:Fira Mono:size=12:antialias=true
+URxvt.boldFont: 				xft:Fira Mono:bold:size=12:antialias=true
 
 Xft.antialias: 					true
 Xft.rgba:      					rgb
