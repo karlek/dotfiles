@@ -1,5 +1,7 @@
 # Keybindings in fish.
 function fish_user_key_bindings
+    fish_hybrid_key_bindings
+
     # Alt+l : print the file contents of the current folder.
     bind \el 'echo; and ls; and commandline -f repaint'
 
@@ -15,9 +17,6 @@ function fish_user_key_bindings
     # Alt+2 : pipe stderr to stdout
     bind \e2 'commandline -i "2>&1"'
 
-   # Alt+3 : pipe to /dev/null
+    # Alt+3 : pipe to /dev/null
     bind \e3 'commandline -i "2> /dev/null"'
 end
-
-fish_hybrid_key_bindings
-fish_user_key_bindings
