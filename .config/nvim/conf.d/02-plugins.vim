@@ -47,6 +47,8 @@ Plug 'neomake/neomake'
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
+" Clang highlighting for c-family.
+Plug 'arakashic/chromatica.nvim'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
