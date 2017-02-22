@@ -48,7 +48,7 @@ Plug 'neomake/neomake'
 Plug 'airblade/vim-gitgutter'
 
 " Clang highlighting for c-family.
-Plug 'arakashic/chromatica.nvim'
+Plug 'arakashic/chromatica.nvim', { 'for': 'c' }
 
 " Tagbar
 Plug 'majutsushi/tagbar'
@@ -60,10 +60,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Live reload.
-Plug 'jaxbot/browserlink.vim'
+Plug 'jaxbot/browserlink.vim', { 'for': 'html' }
 
 " Emmet
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 " Dim inactive pane/window
 Plug 'blueyed/vim-diminactive'
@@ -84,7 +84,7 @@ Plug 'tpope/vim-repeat'
 Plug 'sheerun/vim-polyglot'
 
 " Golang support
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
 " Haskell support.
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
@@ -98,7 +98,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " LaTeX handling.
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " Multiple cursors. C-n, C-x
 Plug 'terryma/vim-multiple-cursors'
