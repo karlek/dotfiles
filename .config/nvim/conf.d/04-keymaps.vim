@@ -40,8 +40,7 @@ map <Leader>k <Plug>(easymotion-k)
 " `s{char}{label}`
 nmap <Leader>s <Plug>(easymotion-overwin-f)
 
-" Recognize .md filenames as markdown
-au BufRead,BufNewFile *.md set filetype=markdown
+" Yank and paste to system clipboard.
 vnoremap <leader>y  "+y
 nnoremap <leader>p "+p
 
