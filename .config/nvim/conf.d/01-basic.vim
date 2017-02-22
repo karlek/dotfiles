@@ -121,3 +121,5 @@ set shortmess=I
 
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
+
+let g:polyglot_disabled = ['md', 'markdown']
