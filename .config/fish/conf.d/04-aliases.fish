@@ -38,7 +38,7 @@ alias diff='diff --color=auto -u'
 set -x GREP_COLOR "1;34"
 
 # Colorized df.
-alias df='grc df'
+alias df='grc df -h'
 
 # Colorized nmap.
 alias nmap='grc nmap'
