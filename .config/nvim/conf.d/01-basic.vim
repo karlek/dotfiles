@@ -12,8 +12,6 @@ syntax on
 
 " Automatically reload file if changed by envrionment.
 set autoread
-" Automatically write when making.
-set autoread
 " Auto change directory to current files.
 set autochdir
 
