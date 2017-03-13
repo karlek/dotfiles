@@ -85,7 +85,3 @@ nnoremap <silent> <C-b> :DeniteProjectDir buffer<cr>
 nnoremap <silent> <C-p> :DeniteProjectDir file_rec<cr>
 nnoremap <silent> <C-g> :Grepper<cr>
 
-" Map q and escape to close quickfix window (grep-window).
-autocmd BufReadPost quickfix setlocal timeoutlen=0
-    \| map <buffer><esc> :cclose <bar> setlocal timeoutlen=1000<cr>
-    \| map <buffer>q :cclose <bar> setlocal timeoutlen=1000<cr>
