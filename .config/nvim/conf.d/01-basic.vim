@@ -10,6 +10,9 @@ syntax on
 " Syntax highlighting is slow with long lines.
 "set synmaxcol=200
 
+" Show command and selected characters in status line.
+set showcmd
+
 " Automatically reload file if changed by envrionment.
 set autoread
 " Auto change directory to current files.
