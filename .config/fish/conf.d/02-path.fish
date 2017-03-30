@@ -8,3 +8,4 @@ add_to_path $GOPATH/bin
 add_to_path ~/.local/bin
 add_to_path /usr/bin/core_perl
 add_to_path ~/sh
+add_to_path /home/_/nummen/matlab/bin
