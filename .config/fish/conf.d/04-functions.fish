@@ -65,11 +65,11 @@ alias vol='printf "%d%% and %s" (pamixer --get-volume) (pamixer --get-mute)'
 alias cast='ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
 
 function m
-    if count $argv > /dev/null
-        mpv --script=$XDG_CONFIG_HOME/mpv/skipchapters.lua $argv
-    else
-        mpv --script=$XDG_CONFIG_HOME/mpv/skipchapters.lua .
-    end
+  if count $argv > /dev/null
+    mpv --script=$XDG_CONFIG_HOME/mpv/skipchapters.lua $argv
+  else
+    mpv --script=$XDG_CONFIG_HOME/mpv/skipchapters.lua .
+  end
 end
 
 function z
@@ -78,47 +78,47 @@ end
 
 # View images in current directory.
 function v
-    if count $argv > /dev/null
-        viewnior --fullscreen $argv
-    else
-	viewnior --fullscreen .
-    end
+  if count $argv > /dev/null
+    viewnior --fullscreen $argv
+  else
+    viewnior --fullscreen .
+  end
 end
 
 # File sizes in current directory.
 function duf
-    if count $argv > /dev/null
-        du -h --max-depth=1 $argv | sort -h
-    else
-        du -h --max-depth=1 . | sort -h
-    end
+  if count $argv > /dev/null
+    du -h --max-depth=1 $argv | sort -h
+  else
+    du -h --max-depth=1 . | sort -h
+  end
 end
 
 # Sort by occurrences, use: `command | nums`
 function nums
-    awk '{!seen[$0]++};END{for(i in seen) print seen[i] " " i}' | sort -nr
+  awk '{!seen[$0]++};END{for(i in seen) print seen[i] " " i}' | sort -nr
 end
 
 function gcal
-	gcalcli --configFolder=$XDG_CONFIG_HOME/gcalcli --monday --military --nodetail_all -w (echo "$COLUMNS 23" | awk '{print int(($1/$2) * 3)}') calw
+  gcalcli --configFolder=$XDG_CONFIG_HOME/gcalcli --monday --military --nodetail_all -w (echo "$COLUMNS 23" | awk '{print int(($1/$2) * 3)}') calw
 end
 
 function nfiles
-	find . -maxdepth 1 -print0 | xargs -0 -I '{}' sh -c "printf \"%d {}\n\" \$(find '{}' -type f | wc -l)" | sort -n
+  find . -maxdepth 1 -print0 | xargs -0 -I '{}' sh -c "printf \"%d {}\n\" \$(find '{}' -type f | wc -l)" | sort -n
 end
 
 function json
-    if count $argv > /dev/null
-		aeson-pretty 
-    else
-		aeson-pretty | pygmentize -l json -f terminal256
-    end
+  if count $argv > /dev/null
+    aeson-pretty 
+  else
+    aeson-pretty | pygmentize -l json -f terminal256
+  end
 end
 
 function oflen
-	grep "^.\{$argv\}\$"
+  grep "^.\{$argv\}\$"
 end
 
 function urldecode
-    php -r "echo urldecode('$argv');"
+  php -r "echo urldecode('$argv');"
 end
