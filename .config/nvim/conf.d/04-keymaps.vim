@@ -38,7 +38,7 @@ map <Leader>k <Plug>(easymotion-k)
 " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
 " `s{char}{label}`
-nmap <Leader>s <Plug>(easymotion-overwin-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " Yank and paste to system clipboard.
 vnoremap <leader>y  "+y
