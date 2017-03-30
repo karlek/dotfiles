@@ -124,4 +124,6 @@ set shortmess=I
 cabbr <expr> %% expand('%:p:h')
 
 let g:polyglot_disabled = ['md', 'markdown']
+
+autocmd BufRead *.mips set ft=mips
 autocmd BufRead *.m set ft=matlab
