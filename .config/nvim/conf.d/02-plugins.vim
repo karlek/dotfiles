@@ -50,6 +50,9 @@ Plug 'airblade/vim-gitgutter'
 " Clang highlighting for c-family.
 Plug 'arakashic/chromatica.nvim', { 'for': 'c' }
 
+" Matlab syntax
+Plug 'vim-scripts/matlab.vim', { 'for': 'matlab' }
+
 " Tagbar
 Plug 'majutsushi/tagbar'
 
