@@ -115,4 +115,7 @@ Plug 'b4winckler/vim-angry'
 " Grep handler for vim.
 Plug 'mhinz/vim-grepper'
 
+" Highlight f and F targets.
+Plug 'unblevable/quick-scope'
+
 call plug#end()            " required
