@@ -85,3 +85,5 @@ nnoremap <silent> <C-b> :DeniteProjectDir buffer<cr>
 nnoremap <silent> <C-p> :DeniteProjectDir file_rec<cr>
 nnoremap <silent> <C-g> :Grepper<cr>
 
+" Add forward-delete in insert mode.
+inoremap <C-d> <C-o>de
