@@ -7,6 +7,14 @@ let g:deoplete#auto_complete_delay = 350
 let g:deoplete#tag#cache_limit_size = 5000000
 
 call deoplete#custom#set('go', 'rank', 1000)
+
+function g:Multiple_cursors_before()
+  let g:deoplete#disable_auto_complete = 1
+endfunction
+function g:Multiple_cursors_after()
+  let g:deoplete#disable_auto_complete = 0
+endfunction
+
 " deoplete.nvim recommend
 set completeopt+=noselect
 
