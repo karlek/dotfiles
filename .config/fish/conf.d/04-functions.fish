@@ -122,3 +122,7 @@ end
 function urldecode
   php -r "echo urldecode('$argv');"
 end
+
+function imgcmp
+  compare -metric RMSE $argv[1] $argv[2] NULL:
+end
