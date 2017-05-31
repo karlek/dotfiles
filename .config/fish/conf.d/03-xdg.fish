@@ -37,6 +37,7 @@ set -x GDBHISTFILE $XDG_DATA_HOME/gdb/history
 alias gdb="gdb -nh -x $XDG_CONFIG_HOME/gdb/init"
 alias anki="anki -b $XDG_DATA_HOME/Anki"
 alias crawl="crawl -rcdir $XDG_CONFIG_HOME/crawl -rc $XDG_CONFIG_HOME/crawl/crawlrc -macro $XDG_CONFIG_HOME/crawl/macro -morgue $XDG_DATA_HOME/crawl/morgue -dir $XDG_DATA_HOME/crawl"
+set -x PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
 
 # Update Xresources.
 alias xup="xrdb ~/.config/X/resources"
