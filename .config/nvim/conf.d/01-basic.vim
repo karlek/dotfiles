@@ -121,7 +121,13 @@ endfun
 set shortmess=I
 
 " Expand %% to current files working directory.
+cabbr <expr> @@ "$XDG_CONFIG_HOME/nvim/conf.d"
+cabbr <expr> $$ ChompedSystem("git rev-parse --show-toplevel")
 cabbr <expr> %% expand('%:p:h')
+
+function! ChompedSystem( ... )
+    return substitute(call('system', a:000), '\n\+$', '', '')
+endfunction
 
 let g:polyglot_disabled = ['md', 'markdown']
 
