@@ -23,9 +23,6 @@ nmap <leader>w :w!<cr>
 " Change between two open files quickly
 nnoremap <leader><leader> :e#<CR>
 
-" Change between two open files quickly
-nnoremap <leader>q :wq!<CR>
-
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
