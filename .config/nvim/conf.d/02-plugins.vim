@@ -118,6 +118,12 @@ Plug 'mhinz/vim-grepper'
 " Highlight f and F targets.
 Plug 'unblevable/quick-scope'
 
+" Vim marker sidebar.
+Plug 'kshenoy/vim-signature'
+
+" Sum visual selection
+Plug 'vim-scripts/visSum.vim'
+
 " Easy alignment.
 Plug 'junegunn/vim-easy-align'
 
