@@ -14,6 +14,9 @@ alias cal="cal -m"
 alias vi='vim'
 alias vim='nvim'
 
+# Colored pup
+alias pup='pup --color'
+
 # Stack ghci
 alias ghci='stack ghci'
 
