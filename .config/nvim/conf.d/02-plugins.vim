@@ -118,4 +118,7 @@ Plug 'mhinz/vim-grepper'
 " Highlight f and F targets.
 Plug 'unblevable/quick-scope'
 
+" Easy alignment.
+Plug 'junegunn/vim-easy-align'
+
 call plug#end()            " required
