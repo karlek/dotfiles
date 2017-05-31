@@ -2,7 +2,7 @@
 call denite#custom#var('file_rec', 'command',
             \ ['git', 'ls-files'])
 
-" Change default prompt
+" Change default prompt.
 call denite#custom#option('default', 'prompt', '>')
 
 " Change mappings.

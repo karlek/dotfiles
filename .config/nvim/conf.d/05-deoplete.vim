@@ -6,6 +6,7 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_delay = 350
 let g:deoplete#tag#cache_limit_size = 5000000
 
+call deoplete#custom#set('go', 'rank', 1000)
 " deoplete.nvim recommend
 set completeopt+=noselect
 
