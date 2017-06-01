@@ -73,6 +73,9 @@ nnoremap N Nzzzv
 " Make Y behave consistently with other capitals
 map Y y$
 
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
 " Little emacs never killed nobody.
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
