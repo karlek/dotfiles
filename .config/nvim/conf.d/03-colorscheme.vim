@@ -1,8 +1,29 @@
-colorscheme evening " evening pride badwolf PaperColor
-let g:airline_theme='badwolf'
+set background=dark
+colorscheme PaperColor " evening pride badwolf PaperColor
+let g:lightline = { 'colorscheme': 'seoul256' }
 
+let s:switch = 1
 fun! s:Bright()
-      colorscheme PaperColor
-      AirlineTheme silver
+      if s:switch
+            set background=light
+            " colorscheme PaperColor
+            let g:lightline.colorscheme = 'PaperColor'
+
+            let s:switch = 0
+      else
+            set background=dark
+            " colorscheme PaperColor
+            let g:lightline.colorscheme = 'seoul256'
+
+            let s:switch = 1
+      end
+      " Secondly tell the lightline to load the settings of g:lightline
+      call lightline#init()
+
+      " Thirdly generate the colors based on the value of g:lightline.colorscheme
+      call lightline#colorscheme()
+
+      " Lastly update all the statusline of the windows
+      call lightline#update()
 endf
 command! Bright :call s:Bright()
