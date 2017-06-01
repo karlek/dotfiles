@@ -32,6 +32,9 @@ Plug 'vim-scripts/headers.vim'
 " Colorscheme pack.
 Plug 'karlek/vim-colorschemes'
 
+" Yankstack
+Plug 'maxbrunsfeld/vim-yankstack'
+
 " Css colors
 Plug 'ap/vim-css-color', { 'for': 'css' }
 
