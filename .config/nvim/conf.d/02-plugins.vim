@@ -51,7 +51,7 @@ Plug 'vim-scripts/matlab.vim', { 'for': 'matlab' }
 Plug 'majutsushi/tagbar'
 
 " Easy motion (vimfx)
-Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }
 
 " zen-mode
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
