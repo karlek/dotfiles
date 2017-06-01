@@ -38,12 +38,6 @@ Plug 'ap/vim-css-color', { 'for': 'css' }
 " Undo tree
 Plug 'mbbill/undotree'
 
-" Syntax checker.
-Plug 'neomake/neomake'
-
-" Git gutter
-Plug 'airblade/vim-gitgutter'
-
 " Clang highlighting for c-family.
 Plug 'arakashic/chromatica.nvim', { 'for': 'c' }
 
@@ -108,12 +102,6 @@ Plug 'terryma/vim-multiple-cursors'
 
 " Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'b4winckler/vim-angry'
-
-" Grep handler for vim.
-Plug 'mhinz/vim-grepper'
-
-" Highlight f and F targets.
-Plug 'unblevable/quick-scope'
 
 " Vim marker sidebar.
 Plug 'kshenoy/vim-signature'
