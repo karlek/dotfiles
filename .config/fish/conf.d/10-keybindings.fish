@@ -19,5 +19,9 @@ function fish_user_key_bindings
 
     # Alt+3 : pipe to /dev/null
     bind \e3 'commandline -i "2> /dev/null"'
+
+    # Ctrl+delete: remove next word
+    bind \e\[3^ 'commandline -f kill-bigword; and commandline -f delete-char'
+    bind \ed 'commandline -f kill-bigword; and commandline -f delete-char'
 end
 fish_user_key_bindings

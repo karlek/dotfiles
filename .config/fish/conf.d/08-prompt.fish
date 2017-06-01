@@ -10,7 +10,6 @@ function __toaster_color_echo
 end
 
 function __toaster_current_folder
-	# echo -n $PWD | sed "s/^$home_escaped/~/" | sed 's/ /%20/g'
 	echo -n $PWD
 end
 

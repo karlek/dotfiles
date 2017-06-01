@@ -1,3 +1,4 @@
+# Vim mode prompt.
 function fish_mode_prompt --description "Display the user mode for the prompt"
     # Do nothing if not in vi mode
     if test "$fish_key_bindings" = "fish_vi_key_bindings"
