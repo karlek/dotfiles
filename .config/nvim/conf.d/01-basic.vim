@@ -20,6 +20,9 @@ set autochdir
 
 " utf-8 is the best <3
 set termencoding=utf-8 encoding=utf-8 fileformat=unix
+" Detect the encoding of every file you read (in order to determine the value
+" of fileencoding)
+set fileencodings=ucs-bom,utf8,prc
 
 " Explicitly file-endings.
 set ffs=unix,dos,mac
