@@ -24,6 +24,9 @@ set termencoding=utf-8 encoding=utf-8 fileformat=unix
 " of fileencoding)
 set fileencodings=ucs-bom,utf8,prc
 
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
 " Explicitly file-endings.
 set ffs=unix,dos,mac
 
