@@ -90,9 +90,8 @@ Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 " Dependency. Asynch engine for old plugins.
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-" Airline status line.
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Lightline status line.
+Plug 'itchyny/lightline.vim'
 
 " LaTeX handling.
 Plug 'lervag/vimtex', { 'for': 'latex' }
