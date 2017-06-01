@@ -29,10 +29,8 @@ Plug 'danro/rename.vim'
 " Header highlighting.
 Plug 'vim-scripts/headers.vim'
 
-" Colorscheme pack
-Plug 'flazz/vim-colorschemes'
-" Colorscheme badwolf
-Plug 'sjl/badwolf'
+" Colorscheme pack.
+Plug 'karlek/vim-colorschemes'
 
 " Css colors
 Plug 'ap/vim-css-color', { 'for': 'css' }
