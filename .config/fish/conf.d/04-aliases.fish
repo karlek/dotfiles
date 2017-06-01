@@ -1,56 +1,42 @@
-# Cleaner git.
-alias git='hub'
+function add_alias $argv
+	set -l alias ""
+	set -l command ""
+	set -l binary ""
+	if test (count $argv) = 2
+		set binary $argv[1]
+		set alias $argv[1]
+		set command $argv[2]
+	else if test (count $argv) = 3
+		set binary $argv[1]
+		set alias $argv[2]
+		set command $argv[3]
+	else
+		echo "Bad call to add_alias: [ $argv ]" 1>&2
+		return
+	end
+
+	which $binary > /dev/null 2> /dev/null
+	if test $status -eq 0
+		alias $alias=$command
+	end
+end
 
 # Folder aliases.
-alias ...='cd ../..'
-alias .... 'cd ../../..'
-alias ..... 'cd ../../../..'
+alias ...    'cd ../..'
+alias ....   'cd ../../..'
+alias .....  'cd ../../../..'
 alias ...... 'cd ../../../../..'
-
-# Calendar start on monday.
-alias cal="cal -m"
-
-# Neovim support
-alias vi='vim'
-alias vim='nvim'
-
-# Colored pup
-alias pup='pup --color'
-
-# Stack ghci
-alias ghci='stack ghci'
-
-# Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
-# (-v) natural sort of numbers.
-alias ls='ls --color=auto --classify -X -v'
-
-# Trash-put to ~/.local/share/Trash/files.
-which "trash-put" > /dev/null
-if test $status -eq 0
-	alias rm="trash-put -- "
-end
 
 # Interactive copy and move (ask before overwritting files).
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Colorized and better syntax for diff.
-alias diff='diff --color=auto -u'
+# Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
+# (-v) natural sort of numbers.
+alias ls='ls --color=auto --classify -X -v'
 
-# Blue grep highlight.
-set -x GREP_COLOR "1;34"
-
-# Colorized df.
-alias df='grc df -h'
-
-# Colorized nmap.
-alias nmap='grc nmap'
-
-# Colored go output.
-alias go='colorgo'
-
-# Colored ping
-alias ping='grc ping'
+# Calendar start on monday.
+alias cal="cal -m"
 
 # Colored grep.
 alias grep='grep --color=auto'
@@ -58,18 +44,38 @@ alias grep='grep --color=auto'
 # Fix coloring for less.
 alias less='less -R'
 
-alias xidel='xidel --color=always'
-alias subl='subl3'
+# Colorized and better syntax for diff.
+alias diff='diff --color=auto -u'
 
 # Cleaner output.
 alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 
-alias mutt='urxvtc -name mutt -e mutt; exit'
+# Neovim support.
+add_alias vim nvim
 
-alias irc='mosh laputa -- fish -c "tmux attach -d -t weechat; or tmux"'
+# Colored pup
+add_alias pup 'pup --color'
 
-function unstaged
-	begin; 
-		find . -type f | cut -c 3-; git ls-files;
-	end | sort | uniq -u
-end
+# Stack ghci
+add_alias ghci 'stack ghci'
+
+# Cleaner git.
+add_alias hub git hub
+
+# Trash-put to ~/.local/share/Trash/files.
+add_alias trash-put rm "trash-put -- "
+
+# Colorized df.
+add_alias grc df 'grc df -h'
+
+# Colorized nmap.
+add_alias grc nmap 'grc nmap'
+
+# Colored ping
+add_alias grc ping 'grc ping'
+
+# Colored go output.
+add_alias colorgo go colorgo
+
+# XQuery selector.
+add_alias xidel 'xidel --color=always'
