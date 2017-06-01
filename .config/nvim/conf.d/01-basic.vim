@@ -106,9 +106,6 @@ set history=1000
 let mapleader=" "
 let maplocalleader="\\"
 
-" More intuitive cursor graphic.
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-
 " Return to last edit position when opening files.
 autocmd BufReadPost * call LastPosition()
 
