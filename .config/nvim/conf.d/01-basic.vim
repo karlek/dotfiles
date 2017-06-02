@@ -132,7 +132,5 @@ function! ChompedSystem( ... )
     return substitute(call('system', a:000), '\n\+$', '', '')
 endfunction
 
-let g:polyglot_disabled = ['md', 'markdown']
-
 autocmd BufRead *.mips set ft=mips
 autocmd BufRead *.m set ft=matlab
