@@ -124,8 +124,8 @@ endfun
 set shortmess=I
 
 " Expand %% to current files working directory.
-cabbr <expr> @@ "$XDG_CONFIG_HOME/nvim/conf.d"
-cabbr <expr> $$ ChompedSystem("git rev-parse --show-toplevel")
+cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
+cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 cabbr <expr> %% expand('%:p:h')
 
 function! ChompedSystem( ... )
