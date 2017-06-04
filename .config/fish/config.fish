@@ -10,9 +10,11 @@ if status --is-login
 	mkdir "$XDG_RUNETIME_DIR/urxvt" 2> /dev/null
 	touch "$XDG_RUNETIME_DIR/X/authority" 2> /dev/null
 
-	nyfikend -v > /tmp/nyfiken 2> /tmp/nyfiken-error &
+	if not tmux has-session -t nyfiken 2> /dev/null
+		tmux new-session -d -s nyfiken -n nyfiken "nyfikend -v" &
+	end
 	if not tmux has-session -t cmus 2> /dev/null
-		tmux new-session -s cmus -d -n cmus -d "/usr/bin/cmus" &
+		tmux new-session -d -s cmus -n cmus "cmus" &
 		tmux set-option -t cmus status off &
 	end
 end
