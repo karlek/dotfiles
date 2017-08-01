@@ -1,4 +1,4 @@
-if contains fish_user_paths (set --names)
+if contains fish_user_paths_mac (set --names)
 	exit
 end
 
@@ -10,6 +10,7 @@ end
 
 add_to_path $GOROOT/bin
 add_to_path $GOPATH/bin
-add_to_path ~/.local/bin
-add_to_path ~/sh
-add_to_path /usr/bin/core_perl
+add_to_path /usr/local/opt/gettext/bin
+add_to_path /usr/local/bin
+
+set -gx fish_user_paths_mac true
