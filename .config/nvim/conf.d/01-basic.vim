@@ -133,3 +133,5 @@ endfunction
 
 autocmd BufRead *.mips set ft=mips
 autocmd BufRead *.m set ft=matlab
+
+autocmd! BufWritePost * Neomake
