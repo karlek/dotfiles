@@ -39,7 +39,6 @@ set langmenu=en helplang=en
 
 " Line numbering
 set number
-set relativenumber
 
 " Show matching paranthesis.
 set showmatch
