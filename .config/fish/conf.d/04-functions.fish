@@ -30,7 +30,7 @@ add_alias grc a 'grc a'
 # Sort packages by size
 alias pacbig="expac -H M '%m\t%n' | sort -h"
 # Export installed packages.
-alias pacexp='pacman -Qqe'
+alias pacexp='pacman -Qqett'
 alias pacclean="sudo pacman -Rs (pacman -Qqtd)"
 
 # Pacaur shortcuts
