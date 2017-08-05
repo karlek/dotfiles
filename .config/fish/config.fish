@@ -18,4 +18,3 @@ if status --is-login
 		tmux set-option -t cmus status off &
 	end
 end
-
