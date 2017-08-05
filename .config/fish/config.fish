@@ -6,9 +6,9 @@ end
 
 if status --is-login
 	# Initialize runtime files.
-	mkdir "$XDG_RUNETIME_DIR/X" 2> /dev/null
-	mkdir "$XDG_RUNETIME_DIR/urxvt" 2> /dev/null
-	touch "$XDG_RUNETIME_DIR/X/authority" 2> /dev/null
+	mkdir "$XDG_RUNTIME_DIR/X" 2> /dev/null
+	mkdir "$XDG_RUNTIME_DIR/urxvt" 2> /dev/null
+	touch "$XDG_RUNTIME_DIR/X/authority" 2> /dev/null
 
 	if not tmux has-session -t nyfiken 2> /dev/null
 		tmux new-session -d -s nyfiken -n nyfiken "nyfikend -v" &
