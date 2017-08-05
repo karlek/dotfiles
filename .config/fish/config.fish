@@ -10,6 +10,9 @@ if status --is-login
 	mkdir "$XDG_RUNTIME_DIR/urxvt" 2> /dev/null
 	touch "$XDG_RUNTIME_DIR/X/authority" 2> /dev/null
 
+	if not test (uname -n) = "elysium"
+		exit
+	end
 	if not tmux has-session -t nyfiken 2> /dev/null
 		tmux new-session -d -s nyfiken -n nyfiken "nyfikend -v" &
 	end
