@@ -1,39 +1,45 @@
-"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_complete_delay = 350
-let g:deoplete#tag#cache_limit_size = 5000000
+let g:deoplete#auto_complete_start_length = 1
 
-call deoplete#custom#set('go', 'rank', 1000)
+" Keep pum open for function signatures while in insert mode.
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
 
-function g:Multiple_cursors_before()
-  let g:deoplete#disable_auto_complete = 1
-endfunction
-function g:Multiple_cursors_after()
-  let g:deoplete#disable_auto_complete = 0
-endfunction
+" Rust settings
+let g:deoplete#sources#rust = 'vim-racer'
+let g:deoplete#sources#rust#racer_binary = $XDG_DATA_HOME.'/cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/usr/lib/rustlib/src'
+let g:deoplete#sources#rust#json_directory = $XDG_CACHE_HOME.'/nvim/deoplete/rust/cache.json'
+let g:deoplete#sources#rust#use_cache = 1
 
-" deoplete.nvim recommend
-set completeopt+=noselect
-
+" Go settings
 let g:deoplete#sources#go = 'vim-go'
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#use_cache = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#json_directory = $XDG_CACHE_HOME.'/nvim/deoplete/go/cache.json'
 
-function! s:tab_complete()
-  " is completion menu open? cycle to next item
-  if pumvisible()
-    return "\<c-n>"
-  endif
+" Prioritize language recommendations before buffers.
+call deoplete#custom#set('go', 'rank', 1000)
+call deoplete#custom#set('racer', 'rank', 1000)
+call deoplete#custom#set('ns', 'rank', 1000)
 
+" deoplete.nvim recommend, fixes deoplete lol. 
+set completeopt+=noselect
+
+function! s:tab_complete()
   " is there a snippet that can be expanded?
   " is there a placholder inside the snippet that can be jumped to?
   if neosnippet#expandable_or_jumpable()
     return "\<Plug>(neosnippet_expand_or_jump)"
+  endif
+
+  " is completion menu open? cycle to next item
+  if pumvisible()
+    return "\<c-n>"
   endif
 
   " if none of these match just use regular tab

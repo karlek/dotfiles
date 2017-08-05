@@ -1,7 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'
-
 " Completion engine.
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/context_filetype.vim'
@@ -17,29 +15,15 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 
-" Better swap-handling
-Plug 'gioele/vim-autoswap'
+" Language support for multiple languages.
+Plug 'sheerun/vim-polyglot'
 
-" Start screen vim
-Plug 'mhinz/vim-startify'
+" Golang support
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
-" Rename files.
-Plug 'danro/rename.vim'
-
-" Header highlighting.
-Plug 'vim-scripts/headers.vim'
-
-" Colorscheme pack.
-Plug 'karlek/vim-colorschemes'
-
-" Yankstack
-Plug 'maxbrunsfeld/vim-yankstack'
-
-" Css colors
-Plug 'ap/vim-css-color', { 'for': 'css' }
-
-" Undo tree
-Plug 'mbbill/undotree'
+" Haskell support.
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 
 " Clang highlighting for c-family.
 Plug 'arakashic/chromatica.nvim', { 'for': 'c' }
@@ -49,6 +33,27 @@ Plug 'Harenome/vim-mipssyntax', { 'for': 'mips' }
 
 " Matlab syntax
 Plug 'vim-scripts/matlab.vim', { 'for': 'matlab' }
+
+" LaTeX handling.
+Plug 'lervag/vimtex', { 'for': 'latex' }
+
+" Rust racer.
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+
+" Switch buffer plugin.
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Start screen vim
+Plug 'mhinz/vim-startify'
+
+" Rename files.
+Plug 'danro/rename.vim'
+
+" Yankstack
+Plug 'maxbrunsfeld/vim-yankstack'
+
+" Undo tree
+Plug 'mbbill/undotree'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
@@ -65,11 +70,8 @@ Plug 'jaxbot/browserlink.vim', { 'for': 'html' }
 " Emmet
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 
-" Dim inactive pane/window
-Plug 'blueyed/vim-diminactive'
-
-" Autodetect Indentation
-Plug 'tpope/vim-sleuth'
+" " Autodetect Indentation
+" Plug 'tpope/vim-sleuth'
 
 " Change surrounding characters.
 Plug 'tpope/vim-surround'
@@ -80,27 +82,23 @@ Plug 'tpope/vim-commentary'
 " Extended repeat for some plugins.
 Plug 'tpope/vim-repeat'
 
-" Language support for multiple languages.
-Plug 'sheerun/vim-polyglot'
+" Header highlighting.
+Plug 'vim-scripts/headers.vim'
 
-" Golang support
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+" " Colorscheme pack.
+Plug 'karlek/vim-colorschemes'
 
-" Haskell support.
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+" Css colors
+Plug 'ap/vim-css-color', { 'for': 'css' }
+
+" Dim inactive pane/window
+Plug 'blueyed/vim-diminactive'
 
 " Dependency. Asynch engine for old plugins.
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " Lightline status line.
 Plug 'itchyny/lightline.vim'
-
-" LaTeX handling.
-Plug 'lervag/vimtex', { 'for': 'latex' }
-
-" Multiple cursors. C-n, C-x
-Plug 'terryma/vim-multiple-cursors'
 
 " Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'b4winckler/vim-angry'
@@ -113,5 +111,11 @@ Plug 'vim-scripts/visSum.vim'
 
 " Easy alignment.
 Plug 'junegunn/vim-easy-align'
+
+" Better swap-handling
+" Plug 'gioele/vim-autoswap'
+
+" Make and lint system.
+Plug 'neomake/neomake'
 
 call plug#end()            " required
