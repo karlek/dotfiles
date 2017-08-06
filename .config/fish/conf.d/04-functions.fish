@@ -54,7 +54,7 @@ alias yt='youtube-dl'
 
 # Shortcut for ssh.
 alias laputa='mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
-alias weechat='mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
+alias irc='mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
 
 # Volume.
 alias vol='printf "%d%% and %s\n" (pamixer 0 --get-volume) (pamixer --get-mute | sed "s/true/mute/" | sed "s/false/voluble/")'
