@@ -31,6 +31,9 @@ alias ...... 'cd ../../../../..'
 alias cp='cp -i'
 alias mv='mv -i'
 
+# Instant reset.
+alias reset='tput reset'
+
 # Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
 # (-v) natural sort of numbers.
 alias ls='ls --color=auto --classify -X -v'
