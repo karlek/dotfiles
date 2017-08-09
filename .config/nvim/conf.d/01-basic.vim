@@ -1,6 +1,3 @@
-" be iMproved, required
-set nocompatible
-
 " Filetype based syntax highlighting.
 filetype plugin indent on
 
