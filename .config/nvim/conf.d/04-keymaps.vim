@@ -61,8 +61,8 @@ map q: <Nop>
 nmap <F1> :echo<CR>
 
 " Remove trailing spaces.
-nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 map <F3> :setlocal spell! spelllang=en_us<CR>
+nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 nnoremap <F5> :UndotreeToggle<cr>
 nmap <F8> :TagbarToggle<CR>
 
@@ -83,11 +83,6 @@ map 0 ^
 " Little emacs never killed nobody.
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-
-" Buffer, file and line searching.
-nnoremap <silent> <C-b> :DeniteProjectDir buffer<cr>
-nnoremap <silent> <C-p> :DeniteProjectDir file_rec<cr>
-nnoremap <silent> <C-g> :Grepper<cr>
 
 " Add forward-delete in insert mode.
 inoremap <C-d> <C-o>de
