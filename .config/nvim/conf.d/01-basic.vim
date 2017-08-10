@@ -5,7 +5,8 @@ filetype plugin indent on
 syntax on
 
 " Syntax highlighting is slow with long lines.
-"set synmaxcol=200
+" Sets a maximum length for highlighting lines.
+set synmaxcol=500
 
 " Show command and selected characters in status line.
 set showcmd
@@ -52,6 +53,7 @@ let &directory=swapDir
 let &backupdir=swapDir
 let &undodir=swapDir
 set undofile
+
 " More XDG.
 set viminfo+=n$XDG_CACHE_HOME/nvim/viminfo
 let g:netrw_home=$XDG_CACHE_HOME.'/nvim'
@@ -101,6 +103,20 @@ set history=1000
 
 let mapleader=" "
 let maplocalleader="\\"
+" Remove the splash message.
+set shortmess=I
+
+" Expand %% to current files working directory.
+cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
+cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
+cabbr <expr> %% expand('%:p:h')
+
+function! ChompedSystem( ... )
+    return substitute(call('system', a:000), '\n\+$', '', '')
+endfunction
+
+" Run Neomake on save.
+autocmd! BufWritePost * Neomake
 
 " Return to last edit position when opening files.
 autocmd BufReadPost * call LastPosition()
@@ -116,19 +132,6 @@ fun! LastPosition()
     endif
 endfun
 
-" Remove the splash message.
-set shortmess=I
-
-" Expand %% to current files working directory.
-cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
-cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
-cabbr <expr> %% expand('%:p:h')
-
-function! ChompedSystem( ... )
-    return substitute(call('system', a:000), '\n\+$', '', '')
-endfunction
-
 autocmd BufRead *.mips set ft=mips
 autocmd BufRead *.m set ft=matlab
 
-autocmd! BufWritePost * Neomake
