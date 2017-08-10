@@ -42,6 +42,7 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " Yank and paste to system clipboard.
 vnoremap <leader>y  "+y
+nnoremap <leader>y  "+y
 nnoremap <leader>p "+p
 
 nmap <Leader>/ :Commentary<cr>
