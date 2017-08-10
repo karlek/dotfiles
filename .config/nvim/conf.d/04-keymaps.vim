@@ -1,3 +1,6 @@
+let mapleader=" "
+let maplocalleader="\\"
+
 nmap <leader>O O<Esc>
 nmap <leader>o o<Esc>
 nmap <leader>1 :buffer 1<Esc>

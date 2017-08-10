@@ -101,8 +101,6 @@ set cindent
 " Keep more info in memory, commands etc.
 set history=1000
 
-let mapleader=" "
-let maplocalleader="\\"
 " Remove the splash message.
 set shortmess=I
 
