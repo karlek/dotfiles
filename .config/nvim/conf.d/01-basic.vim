@@ -130,6 +130,3 @@ fun! LastPosition()
     endif
 endfun
 
-autocmd BufRead *.mips set ft=mips
-autocmd BufRead *.m set ft=matlab
-
