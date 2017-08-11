@@ -130,3 +130,19 @@ fun! LastPosition()
     endif
 endfun
 
+function! s:plug_gx()
+	" Add netrw_gx support for Plug repos.
+	if getline('.') =~ '^Plug\s'
+		let cfile = expand('<cfile>')
+		if cfile !~ 'github\.com' && !filereadable(cfile)
+			call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
+						\ 'https://github.com/'.cfile)), netrw#CheckIfRemote())
+			return
+		endif
+	endif
+
+	call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
+				\ '<cfile>')), netrw#CheckIfRemote())
+endfunction
+
+nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
