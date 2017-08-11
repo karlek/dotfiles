@@ -32,6 +32,7 @@ Plug 'tpope/vim-commentary'                                                   " 
 Plug 'tpope/vim-repeat'                                                       " Extended repeat for some plugins
 Plug 'tpope/vim-vinegar'                                                      " Netrw enhancer.
 Plug 'tpope/vim-surround'                                                     " Change surrounding characters
+Plug 'tpope/vim-sleuth'                                                       " Automatically set buffer options
 Plug 'vim-scripts/visSum.vim'                                                 " Sum visual selection
 Plug 'matze/vim-move'														  " Move blocks of text
 Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }            " Completion engine
