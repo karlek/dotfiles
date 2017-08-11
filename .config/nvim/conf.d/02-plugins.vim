@@ -1,121 +1,56 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Completion engine.
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/context_filetype.vim'
-Plug 'Shougo/neopairs.vim'
+" Languages
+Plug 'sheerun/vim-polyglot'                                                   " Language support for multiple languages
+Plug 'vim-scripts/headers.vim'                                                " HTTP Header highlighting
+Plug 'zchee/deoplete-jedi',       { 'for': 'python' }                         " Completion for python
+Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries' } " Golang support
+Plug 'zchee/deoplete-go',         { 'for': 'go', 'do': 'make'}                " Completion for go
+Plug 'eagletmt/neco-ghc',         { 'for': 'haskell' }                        " Haskell support
+Plug 'eagletmt/ghcmod-vim',       { 'for': 'haskell' }                        " Haskell support
+Plug 'ap/vim-css-color',          { 'for': 'css' }                            " Css colors
+Plug 'arakashic/chromatica.nvim', { 'for': 'c' }                              " Clang highlighting for c-family
+Plug 'Harenome/vim-mipssyntax',   { 'for': 'mips' }                           " Mips syntax
+Plug 'vim-scripts/matlab.vim',    { 'for': 'matlab' }                         " Matlab syntax
+Plug 'lervag/vimtex',             { 'for': 'latex' }                          " LaTeX handling
+Plug 'racer-rust/vim-racer',      { 'for': 'rust' }                           " Rust racer
 
-" Completion for python
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-" Completion for go
-Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make'}
+" Snippets
+Plug 'Shougo/neosnippet'                                                      " Snippet engine
+Plug 'Shougo/neosnippet-snippets'                                             " Snippets for a plethora of languages
+Plug 'honza/vim-snippets'                                                     " More snippets
 
-" Snippets!
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'honza/vim-snippets'
+" Functionality
+Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
+Plug 'can3p/incbool.vim'													  " Toggle true/false
+Plug 'danro/rename.vim'                                                       " Rename files
+Plug 'junegunn/vim-easy-align'                                                " Easy alignment
+Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack
+Plug 'neomake/neomake'                                                        " Make and lint system
+Plug 'tpope/vim-speeddating'												  " Increment dates and times
+Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
+Plug 'tpope/vim-repeat'                                                       " Extended repeat for some plugins
+Plug 'tpope/vim-vinegar'                                                      " Netrw enhancer.
+Plug 'tpope/vim-surround'                                                     " Change surrounding characters
+Plug 'vim-scripts/visSum.vim'                                                 " Sum visual selection
+Plug 'matze/vim-move'														  " Move blocks of text
+Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }            " Completion engine
+Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 
-" Language support for multiple languages.
-Plug 'sheerun/vim-polyglot'
+" Appearance
+Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
+Plug 'blueyed/vim-diminactive'                                                " Dim inactive pane/window
+Plug 'itchyny/lightline.vim'                                                  " Lightline status line
+Plug 'kshenoy/vim-signature'                                                  " Vim marker sidebar
+Plug 'ctrlpvim/ctrlp.vim'                                                     " Switch buffer plugin
+Plug 'mhinz/vim-startify'                                                     " Start screen vim
+Plug 'mbbill/undotree'                                                        " Undo tree
+Plug 'majutsushi/tagbar'                                                      " Tagbar
+Plug 'junegunn/goyo.vim'													  " Zen-mode
+Plug 'google/vim-searchindex'												  " Number of search results
 
-" Golang support
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+" Web editing
+Plug 'jaxbot/browserlink.vim',    { 'for': 'html' }                           " Live reload
+Plug 'mattn/emmet-vim',           { 'for': 'html' }                           " Emmet
 
-" Haskell support.
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-
-" Clang highlighting for c-family.
-Plug 'arakashic/chromatica.nvim', { 'for': 'c' }
-
-" Mips syntax
-Plug 'Harenome/vim-mipssyntax', { 'for': 'mips' }
-
-" Matlab syntax
-Plug 'vim-scripts/matlab.vim', { 'for': 'matlab' }
-
-" LaTeX handling.
-Plug 'lervag/vimtex', { 'for': 'latex' }
-
-" Rust racer.
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-
-" Switch buffer plugin.
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Start screen vim
-Plug 'mhinz/vim-startify'
-
-" Rename files.
-Plug 'danro/rename.vim'
-
-" Yankstack
-Plug 'maxbrunsfeld/vim-yankstack'
-
-" Undo tree
-Plug 'mbbill/undotree'
-
-" Tagbar
-Plug 'majutsushi/tagbar'
-
-" Easy motion (vimfx)
-Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }
-
-" zen-mode
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-
-" Live reload.
-Plug 'jaxbot/browserlink.vim', { 'for': 'html' }
-
-" Emmet
-Plug 'mattn/emmet-vim', { 'for': 'html' }
-
-" " Autodetect Indentation
-" Plug 'tpope/vim-sleuth'
-
-" Change surrounding characters.
-Plug 'tpope/vim-surround'
-
-" Toggle comments plugin.
-Plug 'tpope/vim-commentary'
-
-" Extended repeat for some plugins.
-Plug 'tpope/vim-repeat'
-
-" Header highlighting.
-Plug 'vim-scripts/headers.vim'
-
-" " Colorscheme pack.
-Plug 'karlek/vim-colorschemes'
-
-" Css colors
-Plug 'ap/vim-css-color', { 'for': 'css' }
-
-" Dim inactive pane/window
-Plug 'blueyed/vim-diminactive'
-
-" Dependency. Asynch engine for old plugins.
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-
-" Lightline status line.
-Plug 'itchyny/lightline.vim'
-
-" Function argument handling. d2aa (|a, b, c) -> (c)
-Plug 'b4winckler/vim-angry'
-
-" Vim marker sidebar.
-Plug 'kshenoy/vim-signature'
-
-" Sum visual selection
-Plug 'vim-scripts/visSum.vim'
-
-" Easy alignment.
-Plug 'junegunn/vim-easy-align'
-
-" Better swap-handling
-" Plug 'gioele/vim-autoswap'
-
-" Make and lint system.
-Plug 'neomake/neomake'
-
-call plug#end()            " required
+call plug#end()                                                               " required
