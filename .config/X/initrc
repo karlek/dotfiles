@@ -14,6 +14,7 @@ xrdb ~/.config/X/resources
 
 # Load keyboard changes from .Xmodmap.
 xmodmap ~/.config/X/modmap
+setxkbmap -option caps:escape &
 
 # Urxvt daemon.
 urxvtd -q -f -o
