@@ -125,6 +125,10 @@ function imgcmp
   compare -metric RMSE $argv[1] $argv[2] NULL:
 end
 
+function castyt
+	youtube-dl -o - $argv | castnow --quiet -
+end
+
 # Sublime text.
 add_alias subl3 subl 'subl3'
 
