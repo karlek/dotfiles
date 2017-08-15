@@ -22,6 +22,7 @@ Plug 'honza/vim-snippets'                                                     " 
 
 " Functionality
 Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
+Plug 'mileszs/ack.vim'		                                                  " Search in files
 Plug 'can3p/incbool.vim'													  " Toggle true/false
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
