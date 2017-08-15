@@ -21,6 +21,29 @@ function add_alias $argv
 	end
 end
 
+function add_abbr $argv
+	set -l abbr ""
+	set -l command ""
+	set -l binary ""
+	if test (count $argv) = 2
+		set binary $argv[1]
+		set abbr $argv[1]
+		set command $argv[2]
+	else if test (count $argv) = 3
+		set binary $argv[1]
+		set abbr $argv[2]
+		set command $argv[3]
+	else
+		echo "Bad call to add_abbr: [ $argv ]" 1>&2
+		return
+	end
+
+	which $binary > /dev/null 2> /dev/null
+	if test $status -eq 0
+		abbr $abbr $command
+	end
+end
+
 # Folder aliases.
 alias ...    'cd ../..'
 alias ....   'cd ../../..'
