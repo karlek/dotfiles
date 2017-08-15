@@ -75,7 +75,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Make Y behave consistently with other capitals
-noremap Y y$
+nnoremap Y y$
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
