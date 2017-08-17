@@ -146,3 +146,5 @@ function! s:plug_gx()
 endfunction
 
 nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
+
+set tags=./tags;
