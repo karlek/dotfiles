@@ -8,7 +8,7 @@ alias gotest='go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | 
 alias ccat 'pygmentize -g'
 
 # Stdin to clipboard.
-alias xin='xclip -in -selection clip'
+alias in='xclip -in -selection clip'
 # Clipboard to stdout.
 alias xout='xclip -out'
 
