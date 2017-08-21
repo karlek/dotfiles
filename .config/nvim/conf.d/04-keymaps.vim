@@ -75,7 +75,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Make Y behave consistently with other capitals
-noremap Y y$
+nnoremap Y y$
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -96,3 +96,9 @@ nmap ga <Plug>(EasyAlign)
 " Smooth scrolling.
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+
+" Switch buffers.
+nnoremap <C-b> :CtrlPBuffer<cr>
+
+" Search in files.
+nnoremap <C-g> :Ack

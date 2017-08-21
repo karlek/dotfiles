@@ -28,27 +28,27 @@ alias musb='mount /mnt'
 add_alias grc a 'grc a'
 
 # Sort packages by size
-alias pacbig="expac -H M '%m\t%n' | sort -h"
+add_alias expac  pacbig   "expac -H M '%m\t%n' | sort -h"
 # Export installed packages.
-alias pacexp='pacman -Qqett'
-alias pacclean="sudo pacman -Rs (pacman -Qqtd)"
+add_alias pacman pacexp   "pacman -Qqett"
+add_alias pacman pacclean "sudo pacman -Rs (pacman -Qqtd)"
 
 # Pacaur shortcuts
-abbr pa  'pacaur'
-abbr pas 'pacaur -Suy'
-abbr par 'pacaur -Rns'
-abbr pss 'pacaur -Ss'
+add_abbr 'pacaur' pa  'pacaur'
+add_abbr 'pacaur' pas 'pacaur -Suy'
+add_abbr 'pacaur' par 'pacaur -Rns'
+add_abbr 'pacaur' pss 'pacaur -Ss'
 
 # Git shortcuts
-abbr gs  'git status'
-abbr ga  'git add'
-abbr gap 'git add -p'
-abbr gc  'git commit --verbose --gpg-sign'
-abbr gp  'git push'
-abbr gd  'git diff'
-abbr gl  'git lg'
-abbr glp 'git lg -p'
-abbr gdc 'git diff --cached'
+add_abbr 'git' gs  'git status'
+add_abbr 'git' ga  'git add'
+add_abbr 'git' gap 'git add -p'
+add_abbr 'git' gc  'git commit --verbose --gpg-sign'
+add_abbr 'git' gp  'git push'
+add_abbr 'git' gd  'git diff'
+add_abbr 'git' gl  'git lg'
+add_abbr 'git' glp 'git lg -p'
+add_abbr 'git' gdc 'git diff --cached'
 
 alias yt='youtube-dl'
 
