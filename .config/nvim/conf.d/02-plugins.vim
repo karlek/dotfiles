@@ -1,7 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Languages
-Plug 'sheerun/vim-polyglot'                                                   " Language support for multiple languages
 Plug 'vim-scripts/headers.vim'                                                " HTTP Header highlighting
 Plug 'zchee/deoplete-jedi',       { 'for': 'python' }                         " Completion for python
 Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries' } " Golang support
@@ -24,7 +23,7 @@ Plug 'honza/vim-snippets'                                                     " 
 Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
-Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack
+Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack or https://github.com/vim-scripts/YankRing.vim
 Plug 'neomake/neomake'                                                        " Make and lint system
 Plug 'tpope/vim-speeddating'												  " Increment dates and times
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
