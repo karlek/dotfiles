@@ -53,9 +53,6 @@ alias diff='diff --color=auto -u'
 # Cleaner output.
 alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 
-# Neovim support.
-add_alias vim nvim
-
 # Colored pup
 add_alias pup 'pup --color'
 
