@@ -92,3 +92,7 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Smooth scrolling.
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>

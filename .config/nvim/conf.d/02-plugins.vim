@@ -22,7 +22,6 @@ Plug 'honza/vim-snippets'                                                     " 
 
 " Functionality
 Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
-Plug 'can3p/incbool.vim'													  " Toggle true/false
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
 Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack
@@ -35,6 +34,7 @@ Plug 'tpope/vim-surround'                                                     " 
 Plug 'tpope/vim-sleuth'                                                       " Automatically set buffer options
 Plug 'vim-scripts/visSum.vim'                                                 " Sum visual selection
 Plug 'matze/vim-move'														  " Move blocks of text
+Plug 'terryma/vim-smooth-scroll'											  " Smooth scrolling
 Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }            " Completion engine
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 

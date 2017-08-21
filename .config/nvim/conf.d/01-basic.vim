@@ -131,6 +131,9 @@ fun! LastPosition()
     endif
 endfun
 
+" Override gx.
+nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
+
 function! s:plug_gx()
 	" Add netrw_gx support for Plug repos.
 	if getline('.') =~ '^Plug\s'
@@ -145,5 +148,3 @@ function! s:plug_gx()
 	call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
 				\ '<cfile>')), netrw#CheckIfRemote())
 endfunction
-
-nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
