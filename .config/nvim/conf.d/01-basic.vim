@@ -148,3 +148,9 @@ endfunction
 nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
 
 set tags=./tags;
+
+augroup AutoSaveFolds
+    autocmd!
+    autocmd BufWinLeave * mkview
+    autocmd BufWinEnter * silent! loadview
+augroup END
