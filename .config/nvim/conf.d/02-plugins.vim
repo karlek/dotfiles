@@ -39,6 +39,7 @@ Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }            " 
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 
 " Appearance
+Plug 'w0ng/vim-hybrid',                                                       " Hybrid colorscheme
 Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
 Plug 'blueyed/vim-diminactive'                                                " Dim inactive pane/window
 Plug 'itchyny/lightline.vim'                                                  " Lightline status line
