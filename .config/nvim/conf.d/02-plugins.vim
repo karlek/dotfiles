@@ -36,6 +36,7 @@ Plug 'tpope/vim-surround'                                                     " 
 Plug 'tpope/vim-sleuth'                                                       " Automatically set buffer options
 Plug 'vim-scripts/visSum.vim'                                                 " Sum visual selection
 Plug 'matze/vim-move'														  " Move blocks of text
+Plug 'tpope/vim-unimpaired'													  " Common options as keybindings
 Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }            " Completion engine
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 
