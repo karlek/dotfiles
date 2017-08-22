@@ -2,7 +2,7 @@
 set -x GOPATH           "$HOME/Desktop/comp/go"
 set -x GOROOT           "/usr/lib/go"
 set -x EDITOR           "nvim"
-set -x BROWSER          "firefox"
+set -x BROWSER          "firefox-nightly"
 set -x STEAM_RUNTIME    1
 
 # Set locale.
