@@ -1,7 +1,7 @@
 set background=dark
 
 " Other great colorschemes:
-" evening, pride, badwolf, PaperColor
+" evening, pride, badwolf, PaperColor, hybrid
 colorscheme PaperColor 
 
 let g:lightline = { 'colorscheme': 'seoul256' }

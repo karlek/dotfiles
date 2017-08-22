@@ -11,7 +11,7 @@ set synmaxcol=500
 " Show command and selected characters in status line.
 set showcmd
 
-" Automatically reload file if changed by envrionment.
+" Automatically reload file if changed by environment.
 set autoread
 " Auto change directory to current files.
 set autochdir
@@ -25,7 +25,7 @@ set fileencodings=ucs-bom,utf8,prc
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
-" Explicitly file-endings.
+" Explicitly state file-endings.
 set ffs=unix,dos,mac
 
 " Hides buffers instead of forcing them to close.
@@ -38,7 +38,7 @@ set langmenu=en helplang=en
 " Line numbering
 set number
 
-" Show matching paranthesis.
+" Show matching parenthesis.
 set showmatch
 
 " "Just turn the dang bell off".
@@ -104,9 +104,10 @@ set history=1000
 " Remove the splash message.
 set shortmess=I
 
-" Expand %% to current files working directory.
 cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
+" Expand $$ to nvim config folder.
 cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
+" Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
 function! ChompedSystem( ... )
@@ -129,6 +130,9 @@ fun! LastPosition()
         execute "normal! g`\"" |
     endif
 endfun
+
+" Override gx.
+nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
 
 function! s:plug_gx()
 	" Add netrw_gx support for Plug repos.

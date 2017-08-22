@@ -35,7 +35,7 @@ bindsym $mod+Return exec --no-startup-id urxvtc
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r exec --no-startup-id "rofi -threads 0 -combi-modi window,drun,ssh -show combi"
+bindsym $mod+r exec --no-startup-id "dmenu_run -fn FiraCode:bold:pixelSize=22 -h 50 -w 500 -x 1030 -y 695"
 
 bindsym XF86AudioLowerVolume exec --no-startup-id "ponymix -d analog decrease 3; ponymix -d bluez decrease 3; ponymix -d hdmi decrease 3"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "ponymix -d analog increase 3; ponymix -d bluez increase 3; ponymix -d hdmi increase 3"
@@ -194,9 +194,6 @@ bindsym $mod+t [instance="terminal"] scratchpad show
 
 assign [class="^Firefox$"]			→ 1
 assign [class="^Deluge$"]	     	→ 8
-assign [instance="mutt"]			→ 9
-assign [class="^[Ss]cud[cC]loud$"]	→ 10
-assign [title="Messenger"]			→ 10
 
 exec --no-startup-id "/home/_/sh/random.fish"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"

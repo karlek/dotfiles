@@ -1,7 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Languages
-Plug 'sheerun/vim-polyglot'                                                   " Language support for multiple languages
 Plug 'vim-scripts/headers.vim'                                                " HTTP Header highlighting
 Plug 'zchee/deoplete-jedi',       { 'for': 'python' }                         " Completion for python
 Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries' } " Golang support
@@ -23,10 +22,9 @@ Plug 'honza/vim-snippets'                                                     " 
 " Functionality
 Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'mileszs/ack.vim'		                                                  " Search in files
-Plug 'can3p/incbool.vim'													  " Toggle true/false
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
-Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack
+Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack or https://github.com/vim-scripts/YankRing.vim
 Plug 'neomake/neomake'                                                        " Make and lint system
 Plug 'tpope/vim-speeddating'												  " Increment dates and times
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
@@ -37,10 +35,12 @@ Plug 'tpope/vim-sleuth'                                                       " 
 Plug 'vim-scripts/visSum.vim'                                                 " Sum visual selection
 Plug 'matze/vim-move'														  " Move blocks of text
 Plug 'tpope/vim-unimpaired'													  " Common options as keybindings
+Plug 'terryma/vim-smooth-scroll'											  " Smooth scrolling
 Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }            " Completion engine
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 
 " Appearance
+Plug 'w0ng/vim-hybrid',                                                       " Hybrid colorscheme
 Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
 Plug 'blueyed/vim-diminactive'                                                " Dim inactive pane/window
 Plug 'itchyny/lightline.vim'                                                  " Lightline status line
