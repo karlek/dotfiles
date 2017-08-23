@@ -11,6 +11,9 @@ set synmaxcol=500
 " Show command and selected characters in status line.
 set showcmd
 
+" Don't show mode in command-line, because we already show it in lightline.
+set noshowmode
+
 " Automatically reload file if changed by environment.
 set autoread
 " Auto change directory to current files.
