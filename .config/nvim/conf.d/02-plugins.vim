@@ -1,6 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Languages
+Plug 'sheerun/vim-polyglot'                                                   " Add multiple languages
 Plug 'vim-scripts/headers.vim'                                                " HTTP Header highlighting
 Plug 'zchee/deoplete-jedi',       { 'for': 'python' }                         " Completion for python
 Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries' } " Golang support
@@ -13,6 +14,7 @@ Plug 'Harenome/vim-mipssyntax',   { 'for': 'mips' }                           " 
 Plug 'vim-scripts/matlab.vim',    { 'for': 'matlab' }                         " Matlab syntax
 Plug 'lervag/vimtex',             { 'for': 'latex' }                          " LaTeX handling
 Plug 'racer-rust/vim-racer',      { 'for': 'rust' }                           " Rust racer
+Plug 'tpope/vim-jdaddy',          { 'for': 'json'}                            " JSON handler.
 
 " Snippets
 Plug 'Shougo/neosnippet'                                                      " Snippet engine
