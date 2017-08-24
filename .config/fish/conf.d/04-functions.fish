@@ -4,9 +4,6 @@ alias serve='/bin/sh -c "(cd $argv[1] && python -m http.server)"'
 # Colored `go test`.
 alias gotest='go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/'''
 
-# Colorized cat (will guess file type based on contents)
-alias ccat 'pygmentize -g'
-
 # Stdin to clipboard.
 alias in='xclip -in -selection clip'
 # Clipboard to stdout.
@@ -128,9 +125,6 @@ end
 function castyt
 	youtube-dl -o - $argv | castnow --quiet -
 end
-
-# Sublime text.
-add_alias subl3 subl 'subl3'
 
 function unstaged
   begin;
