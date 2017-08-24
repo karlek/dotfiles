@@ -11,7 +11,7 @@ alias xout='xclip -out'
 
 # Pong, reverse dns: `rdns <ip>` and my local ip.
 alias pong='ping 8.8.8.8'
-alias rdns='dig +short -x'
+add_alias dig rdns 'dig +short -x'
 alias myip='ip route list | grep -o -P "src\s([0-9]{1,3}.){3}[0-9]{1,3}" | head -n1 | cut -c 5-'
 
 # Screen-saver setting.
@@ -47,14 +47,14 @@ add_abbr 'git' gl  'git lg'
 add_abbr 'git' glp 'git lg -p'
 add_abbr 'git' gdc 'git diff --cached'
 
-alias yt='youtube-dl'
+add_alias youtube-dl yt 
 
 # Shortcut for ssh.
 alias laputa='mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
 alias irc='mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
 
 # Volume.
-alias vol='printf "%d%% and %s\n" (pamixer 0 --get-volume) (pamixer --get-mute | sed "s/true/mute/" | sed "s/false/voluble/")'
+add_alias pamixer vol 'printf "%d%% and %s\n" (pamixer 0 --get-volume) (pamixer --get-mute | sed "s/true/mute/" | sed "s/false/voluble/")'
 
 # Screen cast.
 alias cast='ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
