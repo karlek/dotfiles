@@ -1,33 +1,29 @@
-set background=dark
-
 " Other great colorschemes:
 " evening, pride, badwolf, PaperColor, hybrid
-colorscheme PaperColor 
 
-let g:lightline = { 'colorscheme': 'seoul256' }
+let g:dark_lightline = 'Dracula'
+let g:bright_lightline = 'PaperColor'
+let g:bright_colorscheme = 'PaperColor'
+let g:dark_colorscheme = 'PaperColor'
+let g:lightline = {}
 
-let s:switch = 1
-fun! s:Bright()
-      if s:switch
+let sun = system("sunwait poll sun up daylight 59N 18E")
+if sun == "DAY"
+      set background=light
+      execute "colorscheme " . g:bright_colorscheme
+else
+      set background=dark
+      execute "colorscheme " . g:dark_colorscheme
+endif
+function! s:ToggleBright()
+      if &background == "dark"
             set background=light
-            " colorscheme PaperColor
-            let g:lightline.colorscheme = 'PaperColor'
-
-            let s:switch = 0
+            let g:lightline.colorscheme = g:bright_lightline
+            execute "colorscheme " . g:bright_colorscheme
       else
             set background=dark
-            " colorscheme PaperColor
-            let g:lightline.colorscheme = 'seoul256'
-
-            let s:switch = 1
-      end
-      " Secondly tell the lightline to load the settings of g:lightline
-      call lightline#init()
-
-      " Thirdly generate the colors based on the value of g:lightline.colorscheme
-      call lightline#colorscheme()
-
-      " Lastly update all the statusline of the windows
-      call lightline#update()
-endf
-command! Bright :call s:Bright()
+            let g:lightline.colorscheme = g:dark_lightline
+            execute "colorscheme " . g:dark_colorscheme
+      endif
+endfunction
+command! ToggleBright :call s:ToggleBright()
