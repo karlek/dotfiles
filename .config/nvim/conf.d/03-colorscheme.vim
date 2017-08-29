@@ -11,9 +11,11 @@ let sun = system("sunwait poll sun up daylight 59N 18E")
 if sun == "DAY"
       set background=light
       execute "colorscheme " . g:bright_colorscheme
+      let g:lightline.colorscheme = g:bright_lightline
 else
       set background=dark
       execute "colorscheme " . g:dark_colorscheme
+      let g:lightline.colorscheme = g:dark_lightline
 endif
 function! s:ToggleBright()
       if &background == "dark"
@@ -25,5 +27,7 @@ function! s:ToggleBright()
             let g:lightline.colorscheme = g:dark_lightline
             execute "colorscheme " . g:dark_colorscheme
       endif
+      call lightline#init()
+      call lightline#enable()
 endfunction
 command! ToggleBright :call s:ToggleBright()
