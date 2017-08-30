@@ -113,10 +113,6 @@ cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
-function! ChompedSystem( ... )
-    return substitute(call('system', a:000), '\n\+$', '', '')
-endfunction
-
 " Run Neomake on save.
 autocmd! BufWritePost * Neomake
 
