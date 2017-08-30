@@ -79,9 +79,6 @@ alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 # Colored pup
 add_alias pup 'pup --color'
 
-# Stack ghci
-add_alias ghci 'stack ghci'
-
 # Cleaner git.
 add_alias hub git hub
 
