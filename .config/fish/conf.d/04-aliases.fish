@@ -97,5 +97,7 @@ add_alias grc ping 'grc ping'
 # Colored go output.
 add_alias colorgo go colorgo
 
+add_alias nvim vim nvim
+
 # XQuery selector.
 add_alias xidel 'xidel --color=always'

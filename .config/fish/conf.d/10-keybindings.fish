@@ -11,8 +11,8 @@ function fish_user_key_bindings
     # Alt+. : insert last argument from the last command.
     bind \e. 'history-token-search-backward'
 
-    # Alt+1 : pipe to xin
-    bind \e1 'commandline -i "| xin"'
+    # Alt+1 : pipe to in
+    bind \e1 'commandline -i "| in"'
 
     # Alt+2 : pipe stderr to stdout
     bind \e2 'commandline -i "2>&1"'

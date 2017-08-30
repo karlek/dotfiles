@@ -14,5 +14,4 @@ function! MyFoldText()
     return line . repeat(" ",fillcharcount) . foldedlinecount . ' '
 endfunction
 
-set foldmethod=syntax
 set foldtext=MyFoldText()

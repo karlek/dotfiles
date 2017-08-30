@@ -25,6 +25,12 @@ xkbset m
 # Remove bell
 xset -b
 
+# Automatically lock after 5 minutes.
+xautolock -time 5 -locker /usr/bin/sflock &
+
+# Automatically lock on lid close.
+xss-lock -- /usr/bin/sflock &
+
 # Start i3.
 exec i3 --shmlog-size=26214400 -V >> ~/.cache/i3/i3log-$(date +'%F-%k-%M-%S').log 2>&1
 
