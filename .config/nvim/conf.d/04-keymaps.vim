@@ -101,4 +101,4 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
 nnoremap <C-b> :CtrlPBuffer<cr>
 
 " Search in files.
-nnoremap <C-g> :Ack
+nnoremap <C-g> :Ack 
