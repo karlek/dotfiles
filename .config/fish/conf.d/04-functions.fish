@@ -35,6 +35,7 @@ add_abbr 'pacaur' pa  'pacaur'
 add_abbr 'pacaur' pas 'pacaur -Suy'
 add_abbr 'pacaur' par 'pacaur -Rns'
 add_abbr 'pacaur' pss 'pacaur -Ss'
+add_abbr 'pacaur' pql 'pacaur -Ql'
 
 # Git shortcuts
 add_abbr 'git' gs  'git status'
