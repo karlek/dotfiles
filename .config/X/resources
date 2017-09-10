@@ -75,7 +75,8 @@ URxvt.keysym.C-s: 				perl:keyboard-select:search
 ! Keyboard copy
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
-URxvt.iso14755: 				False
+URxvt.iso14755: 				false
+URxvt.clipboard.autocopy:		true
 
 ! Vim related
 URxvt.keysym.C-Page_Up        : \033[5;5~
