@@ -8,7 +8,6 @@ function add_to_path -d "Add the given directory to user's path"
 	end
 end
 add_to_path "$HOME/.local/bin"
-add_to_path "$HOME/sh"
 add_to_path "$GEM_PATH"
 add_to_path "$GOROOT/bin"
 add_to_path "$GOPATH/bin"
