@@ -1,0 +1,59 @@
+#!/usr/bin/fish
+set tags (cmus-remote -C status | grep "^tag" | cut -c 5-)
+set file (cmus-remote -C status | grep "^file" | cut -c 6- | tr '\n' '\0' | xargs -0 basename)
+set artist ""
+set title (echo $file | string split -r -m1 '.' | head -n1) 
+
+set services "genius" "musixmatch" 
+
+for tag in $tags
+    set info (string split -m1 " " $tag)
+    switch $info[1]
+      case "artist"
+        set artist $info[2]
+      case "title"
+        set title $info[2]
+    end
+end
+
+set query (string trim "$artist $title")
+if count $argv > /dev/null
+    if [ $argv[1] = "manual" ]
+        set query $argv[2]
+        set -e argv[1..2]
+    end
+    if count $argv > /dev/null
+        if [ $argv[1] = "query" ]
+            echo $query
+            exit
+        end
+    end
+    if count $argv > /dev/null
+        if [ $argv[1] = "genius" ]
+            set services[1] "genius"
+            set services[2] "musixmatch"
+            set -e argv[1]
+        end
+        if [ $argv[1] = "musixmatch" ]
+            set services[1] "musixmatch"
+            set services[2] "genius"
+            set -e argv[1]
+        end
+    end
+end
+for service in $services
+    switch $service
+        case 'genius'
+            genius $query $argv
+            if test $status -eq 0
+                exit 
+            end
+        case 'musixmatch'
+            musixmatch $query $argv
+            if test $status -eq 0
+                exit 
+            end
+    end
+end
+echo "Not found :(" > /dev/stderr
+exit 1

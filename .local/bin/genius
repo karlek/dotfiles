@@ -1,0 +1,42 @@
+#!/usr/bin/fish
+set endpoint "http://api.genius.com/search?access_token=Dm4Hn6Hsg3NGXks49s7Do1pWBdOou9Jcv3eq6RxOPz2ZV23H38RnESjOeJvXb6uD&q="
+set query $argv[1]
+set -e argv[1]
+set return_value 0
+
+http --follow "$endpoint$query" > /tmp/results.json
+set genius (jshon -e response -e hits -e 0 -e result -e path -u < /tmp/results.json 2> /dev/null)
+
+if test $status -eq 1 > /dev/null
+    set return_value 1
+else
+    set url "http://genius.com$genius" 
+    if count $argv > /dev/null
+        if [ $argv[1] = "open" ]
+            echo $url
+            firefox $url
+            exit
+        end
+    end
+    wget --quiet $url -O /tmp/lyrics.html
+    # Removes problem with annotation near the weird google tag.
+    sed -i -e 's/div><a/div>\n<a/g' /tmp/lyrics.html
+    # Removes google tag.
+    sed -i '/avoid-selection/d' /tmp/lyrics.html
+    xidel --silent --data=/tmp/lyrics.html --css '.lyrics' > /tmp/output
+    # Fix html entities and utf-8 non-convertable characters.
+    # http://www.fvue.nl/wiki/Recode:_Ambiguous_output_in_step_%60UTF-8..ISO-10646-UCS-2'
+    iconv /tmp/output -f utf-8 -t ascii//translit
+    echo
+    echo $url
+end
+if test -e /tmp/results.json
+    rm /tmp/results.json
+end
+if test -e /tmp/lyrics.html
+    rm /tmp/lyrics.html
+end
+if test -e /tmp/output
+    rm /tmp/output
+end
+exit $return_value

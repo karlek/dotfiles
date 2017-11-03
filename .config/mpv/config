@@ -6,7 +6,7 @@
 
 use-filedir-conf                        # look for additional config files in the directory of the opened file
 keep-open                               # keep the player open when a file's end is reached
-deinterlace=auto                        # 'auto' does not imply interlacing-detection
+deinterlace=yes                         
 fullscreen=yes     
 term-osd-bar                            # Display a progress bar on the terminal
 msg-color=yes							# Color output in terminal

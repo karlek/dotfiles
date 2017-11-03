@@ -1,5 +1,5 @@
 # Set environment variables.
-set -x GOPATH           "$HOME/Desktop/comp/go"
+set -x GOPATH           "$XDG_DATA_HOME/go"
 set -x GOROOT           "/usr/lib/go"
 set -x EDITOR           "nvim"
 set -x BROWSER          "firefox-nightly"

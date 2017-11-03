@@ -48,8 +48,6 @@ add_abbr 'git' gl  'git lg'
 add_abbr 'git' glp 'git lg -p'
 add_abbr 'git' gdc 'git diff --cached'
 
-add_alias youtube-dl yt 
-
 # Shortcut for ssh.
 alias laputa='mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
 alias irc='mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
