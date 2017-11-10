@@ -129,3 +129,10 @@ function unstaged
     find . -type f | cut -c 3-; git ls-files;
   end | sort | uniq -u
 end
+
+function z
+  zathura $argv &
+  disown; and sleep 1; and exit
+end
+
+alias low_qual "find . -iname '*.mp3' -print0 | xargs -0 mp3info -r a -p '%f\t%r\n' | awk -F\t '{if (\$2 <= 128) print \$1}'"
