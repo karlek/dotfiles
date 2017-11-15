@@ -8,5 +8,5 @@ case $current in
 		setxkbmap us
 		;;
 esac
-xmodmap ~/.Xmodmap
+xmodmap $XDG_CONFIG_HOME/X/modmap
 
