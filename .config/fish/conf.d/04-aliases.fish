@@ -99,9 +99,6 @@ add_alias colorgo go colorgo
 
 add_alias nvim vim nvim
 
-# ag is so much nicer to type than rg.
-add_alias rg ag rg
-
 # XQuery selector.
 add_alias xidel 'xidel --color=always'
 
