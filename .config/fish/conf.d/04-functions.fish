@@ -53,6 +53,8 @@ add_abbr 'git' gdc 'git diff --cached'
 alias laputa='mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
 alias irc='mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
 
+alias vecka='date "+%V"'
+
 # Volume.
 add_alias pamixer vol 'printf "%d%% and %s\n" (pamixer 0 --get-volume) (pamixer --get-mute | sed "s/true/mute/" | sed "s/false/voluble/")'
 
