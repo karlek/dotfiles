@@ -58,4 +58,7 @@ Plug 'google/vim-searchindex'												  " Number of search results
 Plug 'jaxbot/browserlink.vim',    { 'for': 'html' }                           " Live reload
 Plug 'mattn/emmet-vim',           { 'for': 'html' }                           " Emmet
 
+" Dependencies
+Plug 'Shougo/vimproc.vim',                                                    " Dependency for ghcmod-vim
+
 call plug#end()                                                               " required
