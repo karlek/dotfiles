@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 gaps inner 5
+gaps outer 0
 smart_gaps on
 
 set $mod Mod4
