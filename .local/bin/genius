@@ -24,9 +24,7 @@ else
     # Removes google tag.
     sed -i '/avoid-selection/d' /tmp/lyrics.html
     xidel --silent --data=/tmp/lyrics.html --css '.lyrics' > /tmp/output
-    # Fix html entities and utf-8 non-convertable characters.
-    # http://www.fvue.nl/wiki/Recode:_Ambiguous_output_in_step_%60UTF-8..ISO-10646-UCS-2'
-    iconv /tmp/output -f utf-8 -t ascii//translit
+    cat /tmp/output
     echo
     echo $url
 end
