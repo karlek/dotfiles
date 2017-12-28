@@ -113,9 +113,6 @@ cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
-" Run Neomake on save.
-autocmd! BufWritePost * Neomake
-
 " Return to last edit position when opening files.
 autocmd BufReadPost * call LastPosition()
 
