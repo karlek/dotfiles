@@ -170,11 +170,6 @@ mode "resize" {
 #}
 #
 
-bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h.png' -e 'mv $f ~/ && xclip -selection clipboard -t image/png ~/$f'
-bindsym --release Shift+Print exec scrot -s '%Y-%m-%d_%H:%M:%S_$wx$h.png' -e 'mv $f ~/ && xclip -selection clipboard -t image/png ~/$f'
-
-bindsym Mod1+Tab workspace next
-bindsym Mod1+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
 exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
