@@ -93,6 +93,11 @@ end
 
 alias tolower="tr '[:upper:]' '[:lower:]'"
 alias toupper="tr '[:lower:]' '[:upper:]'"
+alias tozero="tr '\n' '\0'"
+
+function last-modified $argv
+  find $argv -type f -printf "%T@\t%p\n" | sort -k1 -n --reverse | awk -F'\t' '{print $2}'
+end
 
 function oflen
   grep "^.\{$argv\}\$"
