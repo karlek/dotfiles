@@ -10,7 +10,10 @@ let g:deoplete#auto_complete_start_length = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
-autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
+augroup ClosePum
+  autocmd!
+  autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
+augroup END
 
 " Rust settings
 let g:deoplete#sources#rust = 'vim-racer'
