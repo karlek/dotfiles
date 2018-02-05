@@ -29,7 +29,7 @@ set fileencodings=ucs-bom,utf8,prc
 set lazyredraw
 
 " Explicitly state file-endings.
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
 " Hides buffers instead of forcing them to close.
 set hidden
@@ -48,13 +48,13 @@ set showmatch
 set belloff=all
 
 " Keep undo history across sessions by storing it in a file
-let swapDir = $XDG_CACHE_HOME.'/nvim/swap'
-if !isdirectory(swapDir)
-    call mkdir(swapDir)
+let g:swapDir = $XDG_CACHE_HOME.'/nvim/swap'
+if !isdirectory(g:swapDir)
+    call mkdir(g:swapDir)
 endif
-let &directory=swapDir
-let &backupdir=swapDir
-let &undodir=swapDir
+let &directory=g:swapDir
+let &backupdir=g:swapDir
+let &undodir=g:swapDir
 set undofile
 
 " More XDG.
@@ -74,9 +74,9 @@ set wildmode=list:longest,full
 " Start searching automatically when typing
 set incsearch
 
-" Ignore case when searching, and switch to case sensitive when having both
-" cases.
+" Ignore case when searching.
 set ignorecase
+" Switch to case sensitive when having both cases in query.
 set smartcase
 
 " Allow switching of buffers without saving them first.
