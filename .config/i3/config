@@ -189,5 +189,4 @@ exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
 exec --no-startup-id "feh --no-fehbg --randomize --bg-max ~/Desktop/img/walls"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
 exec --no-startup-id "caffeine"
-exec --no-startup-id "/home/_/.config/i3/focus-last.sh"
 exec_always --no-startup-id /usr/bin/compton --config /home/_/.config/compton.conf
