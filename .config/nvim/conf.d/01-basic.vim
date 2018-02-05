@@ -114,40 +114,16 @@ cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 cabbr <expr> %% expand('%:p:h')
 
 " Run Neomake on save.
-autocmd! BufWritePost * Neomake
+augroup Neomake
+    autocmd!
+    autocmd BufWritePost * Neomake
+augroup END
 
 " Return to last edit position when opening files.
-autocmd BufReadPost * call LastPosition()
+augroup LastPosition
+    autocmd!
+    autocmd BufReadPost * call LastPosition()
+augroup END
 
-fun! LastPosition()
-    " Ignore git commit messages.
-    let name = fnamemodify( expand('%'), ':t:r' )
-    if name =~ 'COMMIT_EDITMSG'
-        return
-    endif
-    if line("'\"") > 0 && line("'\"") <= line("$") |
-        execute "normal! g`\"" |
-    endif
-endfun
-
-" Override gx.
-nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
-
-function! s:plug_gx()
-	" Add netrw_gx support for Plug repos.
-	if getline('.') =~ '^Plug\s'
-		let cfile = expand('<cfile>')
-		if cfile !~ 'github\.com' && !filereadable(cfile)
-			call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
-						\ 'https://github.com/'.cfile)), netrw#CheckIfRemote())
-			return
-		endif
-	endif
-
-	call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
-				\ '<cfile>')), netrw#CheckIfRemote())
-endfunction
-
-nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
-
+" Search for tag-file, used for method jumping
 set tags=./tags;
