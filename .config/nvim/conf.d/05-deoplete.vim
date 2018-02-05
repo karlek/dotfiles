@@ -29,9 +29,16 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 let g:deoplete#sources#go#use_cache = 1
 let g:deoplete#sources#go#json_directory = $XDG_CACHE_HOME.'/nvim/deoplete/go/cache.json'
 
+" Python settings
+let g:deoplete#sources#jedi = 'jedi'
+" let g:deoplete#sources#jedi#python_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#jedi#use_cache = 1
+let g:deoplete#sources#jedi#json_directory = $XDG_CACHE_HOME.'/nvim/deoplete/jedi/cache.json'
+
 " Prioritize language recommendations before buffers.
 call deoplete#custom#set('go', 'rank', 1000)
 call deoplete#custom#set('racer', 'rank', 1000)
+call deoplete#custom#set('jedi', 'rank', 1000)
 call deoplete#custom#set('ns', 'rank', 1000)
 
 " deoplete.nvim recommend, fixes deoplete lol. 
@@ -57,3 +64,5 @@ imap <silent><expr><TAB> <SID>tab_complete()
 
 " for insert mode
 inoremap <S-Tab> <C-p>
+
+set shortmess+=c
