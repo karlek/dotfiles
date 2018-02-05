@@ -176,21 +176,22 @@ bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
-exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
-for_window [instance="cmus"] move window to scratchpad
-bindsym $mod+i [instance="cmus"] scratchpad show
-
 for_window [instance="pomodoro.*"] floating enable
 
-exec --no-startup-id "urxvtc -name terminal"
+assign [class="^Firefox$"] → 1
+assign [class="^Deluge$"]  → 8
+
 for_window [instance="terminal"] move window to scratchpad
 bindsym $mod+t [instance="terminal"] scratchpad show 
 
-assign [class="^Firefox$"]			→ 1
-assign [class="^Deluge$"]	     	→ 8
+exec --no-startup-id urxvtc -name terminal
 
+for_window [instance="cmus"] move window to scratchpad
+bindsym $mod+i [instance="cmus"] scratchpad show
+
+exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
 exec --no-startup-id "feh --no-fehbg --randomize --bg-max ~/Desktop/img/walls"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
 exec --no-startup-id "caffeine"
-exec --no-startup-id '/home/_/.config/i3/focus-last.sh'
+exec --no-startup-id "/home/_/.config/i3/focus-last.sh"
 exec_always --no-startup-id /usr/bin/compton --config /home/_/.config/compton.conf
