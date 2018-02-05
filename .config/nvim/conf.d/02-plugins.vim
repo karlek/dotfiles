@@ -3,9 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Languages
 Plug 'sheerun/vim-polyglot'                                                   " Add multiple languages
 Plug 'vim-scripts/headers.vim'                                                " HTTP Header highlighting
-Plug 'zchee/deoplete-jedi',       { 'for': 'python' }                         " Completion for python
 Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries' } " Golang support
-Plug 'zchee/deoplete-go',         { 'for': 'go', 'do': 'make'}                " Completion for go
 Plug 'eagletmt/neco-ghc',         { 'for': 'haskell' }                        " Haskell support
 Plug 'eagletmt/ghcmod-vim',       { 'for': 'haskell' }                        " Haskell support
 Plug 'ap/vim-css-color',          { 'for': 'css' }                            " Css colors
@@ -15,6 +13,9 @@ Plug 'vim-scripts/matlab.vim',    { 'for': 'matlab' }                         " 
 Plug 'lervag/vimtex',             { 'for': 'latex' }                          " LaTeX handling
 Plug 'racer-rust/vim-racer',      { 'for': 'rust' }                           " Rust racer
 Plug 'tpope/vim-jdaddy',          { 'for': 'json'}                            " JSON handler.
+
+" Completion
+Plug 'roxma/nvim-completion-manager'                                          " Completion engine
 
 " Snippets
 Plug 'Shougo/neosnippet'                                                      " Snippet engine
@@ -27,7 +28,7 @@ Plug 'mileszs/ack.vim'		                                                  " Sear
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
 Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack or https://github.com/vim-scripts/YankRing.vim
-Plug 'neomake/neomake'                                                        " Make and lint system
+Plug 'w0rp/ale'                                                               " Make and lint system
 Plug 'tpope/vim-speeddating'												  " Increment dates and times
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
 Plug 'tpope/vim-repeat'                                                       " Extended repeat for some plugins
@@ -38,7 +39,6 @@ Plug 'vim-scripts/visSum.vim'                                                 " 
 Plug 'matze/vim-move'														  " Move blocks of text
 Plug 'tpope/vim-unimpaired'													  " Common options as keybindings
 Plug 'terryma/vim-smooth-scroll'											  " Smooth scrolling
-Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }            " Completion engine
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 
 " Appearance
@@ -57,5 +57,8 @@ Plug 'google/vim-searchindex'												  " Number of search results
 " Web editing
 Plug 'jaxbot/browserlink.vim',    { 'for': 'html' }                           " Live reload
 Plug 'mattn/emmet-vim',           { 'for': 'html' }                           " Emmet
+
+" Dependencies
+Plug 'Shougo/vimproc.vim',                                                    " Dependency for ghcmod-vim
 
 call plug#end()                                                               " required

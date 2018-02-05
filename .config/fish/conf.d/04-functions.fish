@@ -70,12 +70,15 @@ function m
   end
 end
 
+# Image viewer
+add_alias feh f '.'
+
 # View images in current directory.
-function v
+function f
   if count $argv > /dev/null
-    viewnior --fullscreen $argv
+    feh -B black -. $argv
   else
-    viewnior --fullscreen .
+    feh -B black -. .
   end
 end
 

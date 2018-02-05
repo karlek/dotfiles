@@ -101,6 +101,3 @@ add_alias nvim vim nvim
 
 # XQuery selector.
 add_alias xidel 'xidel --color=always'
-
-# Image viewer
-add_alias feh f 'feh -B black -. .'
