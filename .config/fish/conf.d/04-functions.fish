@@ -95,6 +95,10 @@ function duf
   end
 end
 
+function sum
+  awk '{s+=$1} END {print s}'
+end
+
 alias tolower="tr '[:upper:]' '[:lower:]'"
 alias toupper="tr '[:lower:]' '[:upper:]'"
 alias tozero="tr '\n' '\0'"
