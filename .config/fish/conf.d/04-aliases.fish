@@ -99,5 +99,7 @@ add_alias colorgo go colorgo
 
 add_alias nvim vim nvim
 
+add_alias stack ghci 'stack ghci'
+
 # XQuery selector.
 add_alias xidel 'xidel --color=always'
