@@ -1,6 +1,9 @@
 # Serve folder on port 8000.
 alias serve='/bin/sh -c "(cd $argv[1] && python -m http.server)"'
 
+# Strip file extensions.
+alias stripext="sed 's/\.[^.]*\$//'"
+
 # Colored `go test`.
 alias gotest='go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/'''
 
