@@ -17,9 +17,9 @@ function fish_prompt
 	# Lazy cat if last command had non-zero return value.
 	# Otherwise curious fat cat.
 	if test $status -ne 0
-		__toaster_color_echo $__toaster_color_yellow "(^-.-^)ﾉ"
+		__toaster_color_echo $__toaster_color_yellow "(^-.-^)ノ"
 	else
-		__toaster_color_echo $__toaster_color_yellow "(^._.^)ﾉ"
+		__toaster_color_echo $__toaster_color_yellow "(^._.^)ノ"
 	end
 
 	__toaster_color_echo $__toaster_color_blue " "(hostname)
