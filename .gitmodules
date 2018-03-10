@@ -1,4 +1,0 @@
-[submodule ".local/share/fish/LS_COLORS"]
-	path = .local/share/fish/LS_COLORS
-	url = git@github.com:trapd00r/LS_COLORS.git
-	branch = master
