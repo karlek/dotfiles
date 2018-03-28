@@ -7,7 +7,7 @@ let g:bright_colorscheme = 'PaperColor'
 let g:dark_colorscheme = 'PaperColor'
 let g:lightline = {}
 
-let sun = ChompedSystem("sunwait poll sun up daylight 59N 18E")
+let sun = ChompedSystem("sunwait poll sun up daylight 38N 140E")
 if sun == "DAY"
       set background=light
       execute "colorscheme " . g:bright_colorscheme
