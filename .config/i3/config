@@ -177,6 +177,7 @@ for_window [instance="cmus"] move window to scratchpad
 bindsym $mod+i [instance="cmus"] scratchpad show
 
 for_window [instance="pomodoro.*"] floating enable
+for_window [instance="warcraft iii.exe"] floating enable
 
 exec --no-startup-id "urxvtc -name terminal"
 for_window [instance="terminal"] move window to scratchpad
