@@ -21,29 +21,6 @@ function add_alias $argv
 	end
 end
 
-function add_abbr $argv
-	set -l abbr ""
-	set -l command ""
-	set -l binary ""
-	if test (count $argv) = 2
-		set binary $argv[1]
-		set abbr $argv[1]
-		set command $argv[2]
-	else if test (count $argv) = 3
-		set binary $argv[1]
-		set abbr $argv[2]
-		set command $argv[3]
-	else
-		echo "Bad call to add_abbr: [ $argv ]" 1>&2
-		return
-	end
-
-	which $binary > /dev/null 2> /dev/null
-	if test $status -eq 0
-		abbr $abbr $command
-	end
-end
-
 # Folder aliases.
 alias ...    'cd ../..'
 alias ....   'cd ../../..'
@@ -103,3 +80,57 @@ add_alias stack ghci 'stack ghci'
 
 # XQuery selector.
 add_alias xidel 'xidel --color=always'
+
+# Serve folder on port 8000.
+alias serve='/bin/sh -c "(cd $argv[1] && python -m http.server)"'
+
+# Strip file extensions.
+alias stripext="sed 's/\.[^.]*\$//'"
+
+# Colored `go test`.
+alias gotest='go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/'''
+
+# Stdin to clipboard.
+alias in='xclip -in -selection clip'
+# Clipboard to stdout.
+alias xout='xclip -out'
+
+# Pong, reverse dns: `rdns <ip>` and my local ip.
+alias pong='ping 8.8.8.8'
+add_alias dig rdns 'dig +short -x'
+alias myip='ip route list | grep -o -P "src\s([0-9]{1,3}.){3}[0-9]{1,3}" | head -n1 | cut -c 5-'
+
+# Screen-saver setting.
+alias no-ss='xset -dpms s off'
+alias ss='xset -dpms s on'
+
+alias suspend='systemctl suspend'
+alias musb='mount /mnt'
+
+# Date and battery
+add_alias grc a 'grc a'
+
+# Sort packages by size
+add_alias expac  pacbig   "expac -H M '%m\t%n' | sort -h"
+# Export installed packages.
+add_alias pacman pacexp   "pacman -Qqett"
+add_alias pacman pacclean "sudo pacman -Rs (pacman -Qqtd)"
+
+# Shortcut for ssh.
+alias laputa='mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
+alias irc='mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
+
+alias vecka='date "+%V"'
+
+# Volume.
+add_alias pamixer vol 'printf "%d%% and %s\n" (pamixer 0 --get-volume) (pamixer --get-mute | sed "s/true/mute/" | sed "s/false/voluble/")'
+
+# Screen cast.
+alias cast='ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
+
+alias tolower="tr '[:upper:]' '[:lower:]'"
+alias toupper="tr '[:lower:]' '[:upper:]'"
+alias tozero="tr '\n' '\0'"
+
+# Find low quality audio mp3 files in all sub-directories.
+alias low_qual "find . -iname '*.mp3' -print0 | xargs -0 mp3info -r a -p '%f\t%r\n' | awk -F\t '{if (\$2 <= 128) print \$1}'"
