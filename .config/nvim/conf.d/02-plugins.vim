@@ -11,7 +11,8 @@ Plug 'arakashic/chromatica.nvim', { 'for': 'c' }                              " 
 Plug 'Harenome/vim-mipssyntax',   { 'for': 'mips' }                           " Mips syntax
 Plug 'vim-scripts/matlab.vim',    { 'for': 'matlab' }                         " Matlab syntax
 Plug 'lervag/vimtex',             { 'for': 'latex' }                          " LaTeX handling
-Plug 'racer-rust/vim-racer',      { 'for': 'rust' }                           " Rust racer
+Plug 'racer-rust/vim-racer',      { 'for': 'rust' }                           " Rust racer autocompletion, etc.
+Plug 'rust-lang/rust.vim',        { 'for': 'rust' }                           " Rust langauge support.
 Plug 'tpope/vim-jdaddy',          { 'for': 'json'}                            " JSON handler.
 
 " Completion
@@ -29,26 +30,21 @@ Plug 'danro/rename.vim'                                                       " 
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
 Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack or https://github.com/vim-scripts/YankRing.vim
 Plug 'w0rp/ale'                                                               " Make and lint system
-Plug 'tpope/vim-speeddating'												  " Increment dates and times
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
 Plug 'tpope/vim-repeat'                                                       " Extended repeat for some plugins
 Plug 'tpope/vim-vinegar'                                                      " Netrw enhancer.
 Plug 'tpope/vim-surround'                                                     " Change surrounding characters
 Plug 'tpope/vim-sleuth'                                                       " Automatically set buffer options
-Plug 'vim-scripts/visSum.vim'                                                 " Sum visual selection
-Plug 'matze/vim-move'														  " Move blocks of text
 Plug 'tpope/vim-unimpaired'													  " Common options as keybindings
 Plug 'terryma/vim-smooth-scroll'											  " Smooth scrolling
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 
 " Appearance
-Plug 'w0ng/vim-hybrid',                                                       " Hybrid colorscheme
 Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
 Plug 'blueyed/vim-diminactive'                                                " Dim inactive pane/window
 Plug 'itchyny/lightline.vim'                                                  " Lightline status line
 Plug 'kshenoy/vim-signature'                                                  " Vim marker sidebar
 Plug 'ctrlpvim/ctrlp.vim'                                                     " Switch buffer plugin
-Plug 'mhinz/vim-startify'                                                     " Start screen vim
 Plug 'mbbill/undotree'                                                        " Undo tree
 Plug 'majutsushi/tagbar'                                                      " Tagbar
 Plug 'junegunn/goyo.vim'													  " Zen-mode
