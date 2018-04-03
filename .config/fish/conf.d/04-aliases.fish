@@ -96,7 +96,7 @@ alias in='xclip -in -selection clip'
 alias xout='xclip -out'
 
 # Pong, reverse dns: `rdns <ip>` and my local ip.
-alias pong='ping 8.8.8.8'
+alias pong='ping 1.1.1.1'
 add_alias dig rdns 'dig +short -x'
 alias myip='ip route list | grep -o -P "src\s([0-9]{1,3}.){3}[0-9]{1,3}" | head -n1 | cut -c 5-'
 
