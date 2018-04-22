@@ -1,22 +1,16 @@
 " Other great colorschemes:
 " evening, pride, badwolf, PaperColor, hybrid
 
-let g:dark_lightline = 'Dracula'
+let g:dark_lightline = 'darcula'
 let g:bright_lightline = 'PaperColor'
 let g:bright_colorscheme = 'PaperColor'
 let g:dark_colorscheme = 'PaperColor'
 let g:lightline = {}
 
-let sun = ChompedSystem("sunwait poll sun up daylight 38N 140E")
-if sun == "DAY"
-      set background=light
-      execute "colorscheme " . g:bright_colorscheme
-      let g:lightline.colorscheme = g:bright_lightline
-else
-      set background=dark
-      execute "colorscheme " . g:dark_colorscheme
-      let g:lightline.colorscheme = g:dark_lightline
-endif
+set background=dark
+execute "colorscheme " . g:dark_colorscheme
+let g:lightline.colorscheme = g:dark_lightline
+
 function! s:ToggleBright()
       if &background == "dark"
             set background=light
