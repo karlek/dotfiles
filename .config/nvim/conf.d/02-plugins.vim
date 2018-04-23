@@ -28,7 +28,6 @@ Plug 'honza/vim-snippets'                                                     " 
 Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
-Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack or https://github.com/vim-scripts/YankRing.vim
 Plug 'w0rp/ale'                                                               " Make and lint system
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
 Plug 'tpope/vim-repeat'                                                       " Extended repeat for some plugins
