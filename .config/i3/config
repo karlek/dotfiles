@@ -177,14 +177,17 @@ for_window [instance="cmus"] move window to scratchpad
 bindsym $mod+i [instance="cmus"] scratchpad show
 
 for_window [instance="pomodoro.*"] floating enable
+for_window [instance="Unity"] floating enable
 for_window [instance="warcraft iii.exe"] floating enable
 
 exec --no-startup-id "urxvtc -name terminal"
 for_window [instance="terminal"] move window to scratchpad
 bindsym $mod+t [instance="terminal"] scratchpad show 
 
-assign [class="^Firefox$"]			→ 1
-assign [class="^Deluge$"]	     	→ 8
+assign [class="^Firefox$"] → 1
+assign [instance="Unity"] → 2
+assign [instance="Steam"] → 3
+assign [class="^qBittorrent$"] → 8
 
 exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/Desktop/img/walls"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
