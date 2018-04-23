@@ -28,30 +28,30 @@ alias .....  'cd ../../../..'
 alias ...... 'cd ../../../../..'
 
 # Interactive copy and move (ask before overwritting files).
-alias cp='cp -i'
-alias mv='mv -i'
+alias cp 'cp -i'
+alias mv 'mv -i'
 
 # Instant reset.
-alias reset='tput reset'
+alias reset 'tput reset'
 
 # Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
 # (-v) natural sort of numbers.
-alias ls='ls --color=auto --classify -X -v'
+alias ls 'ls --color=auto --classify -X -v'
 
 # Calendar start on monday.
-alias cal="cal -m"
+alias cal "cal -m"
 
 # Colored grep.
-alias grep='grep --color=auto'
+alias grep 'grep --color=auto'
 
 # Fix coloring for less.
-alias less='less -R'
+alias less 'less -R'
 
 # Colorized and better syntax for diff.
-alias diff='diff --color=auto -u'
+alias diff 'diff --color=auto -u'
 
 # Cleaner output.
-alias time='time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
+alias time 'time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
 
 # Colored pup
 add_alias pup 'pup --color'
@@ -82,30 +82,30 @@ add_alias stack ghci 'stack ghci'
 add_alias xidel 'xidel --color=always'
 
 # Serve folder on port 8000.
-alias serve='/bin/sh -c "(cd $argv[1] && python -m http.server)"'
+alias serve '/bin/sh -c "(cd $argv[1] && python -m http.server)"'
 
 # Strip file extensions.
-alias stripext="sed 's/\.[^.]*\$//'"
+alias stripext "sed 's/\.[^.]*\$//'"
 
 # Colored `go test`.
-alias gotest='go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/'''
+alias gotest 'go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/'''
 
 # Stdin to clipboard.
-alias in='xclip -in -selection clip'
+alias in 'xclip -in -selection clip'
 # Clipboard to stdout.
-alias xout='xclip -out'
+alias xout 'xclip -out'
 
 # Pong, reverse dns: `rdns <ip>` and my local ip.
-alias pong='ping 1.1.1.1'
+alias pong 'ping 1.1.1.1'
 add_alias dig rdns 'dig +short -x'
-alias myip='ip route list | grep -o -P "src\s([0-9]{1,3}.){3}[0-9]{1,3}" | head -n1 | cut -c 5-'
+alias myip 'ip route list | grep -o -P "src\s([0-9]{1,3}.){3}[0-9]{1,3}" | head -n1 | cut -c 5-'
 
 # Screen-saver setting.
-alias no-ss='xset -dpms s off'
-alias ss='xset -dpms s on'
+alias no-ss 'xset -dpms s off'
+alias ss 'xset -dpms s on'
 
-alias suspend='systemctl suspend'
-alias musb='mount /mnt'
+alias suspend 'systemctl suspend'
+alias musb 'mount /mnt'
 
 # Date and battery
 add_alias grc a 'grc a'
@@ -117,20 +117,20 @@ add_alias pacman pacexp   "pacman -Qqett"
 add_alias pacman pacclean "sudo pacman -Rs (pacman -Qqtd)"
 
 # Shortcut for ssh.
-alias laputa='mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
-alias irc='mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
+alias laputa 'mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
+alias irc 'mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
 
-alias vecka='date "+%V"'
+alias vecka 'date "+%V"'
 
 # Volume.
 add_alias pamixer vol 'printf "%d%% and %s\n" (pamixer 0 --get-volume) (pamixer --get-mute | sed "s/true/mute/" | sed "s/false/voluble/")'
 
 # Screen cast.
-alias cast='ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
+alias cast 'ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
 
-alias tolower="tr '[:upper:]' '[:lower:]'"
-alias toupper="tr '[:lower:]' '[:upper:]'"
-alias tozero="tr '\n' '\0'"
+alias tolower "tr '[:upper:]' '[:lower:]'"
+alias toupper "tr '[:lower:]' '[:upper:]'"
+alias tozero "tr '\n' '\0'"
 
 # Find low quality audio mp3 files in all sub-directories.
 alias low_qual "find . -iname '*.mp3' -print0 | xargs -0 mp3info -r a -p '%f\t%r\n' | awk -F\t '{if (\$2 <= 128) print \$1}'"
