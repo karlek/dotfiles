@@ -45,6 +45,7 @@ Plug 'blueyed/vim-diminactive'                                                " 
 Plug 'itchyny/lightline.vim'                                                  " Lightline status line
 Plug 'kshenoy/vim-signature'                                                  " Vim marker sidebar
 Plug 'ctrlpvim/ctrlp.vim'                                                     " Switch buffer plugin
+Plug 'JazzCore/ctrlp-cmatcher',   { 'do': './install.sh'}                     " Faster matcher
 Plug 'mbbill/undotree'                                                        " Undo tree
 Plug 'majutsushi/tagbar'                                                      " Tagbar
 Plug 'junegunn/goyo.vim'													  " Zen-mode
