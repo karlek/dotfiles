@@ -1,8 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Languages
-Plug 'vim-scripts/headers.vim'                                                " HTTP Header highlighting
-" Plug 'sheerun/vim-polyglot'                                                   " Add multiple languages
 Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries' } " Golang support
 Plug 'eagletmt/neco-ghc',         { 'for': 'haskell' }                        " Haskell support
 Plug 'eagletmt/ghcmod-vim',       { 'for': 'haskell' }                        " Haskell support
