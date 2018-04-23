@@ -25,7 +25,6 @@ Plug 'honza/vim-snippets'                                                     " 
 
 " Functionality
 Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
-Plug 'mileszs/ack.vim'		                                                  " Search in files
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
 Plug 'maxbrunsfeld/vim-yankstack'                                             " Yankstack or https://github.com/vim-scripts/YankRing.vim
