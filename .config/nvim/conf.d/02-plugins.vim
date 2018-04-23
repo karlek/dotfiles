@@ -1,8 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Languages
-Plug 'sheerun/vim-polyglot'                                                   " Add multiple languages
 Plug 'vim-scripts/headers.vim'                                                " HTTP Header highlighting
+" Plug 'sheerun/vim-polyglot'                                                   " Add multiple languages
 Plug 'fatih/vim-go',              { 'for': 'go', 'do': ':GoInstallBinaries' } " Golang support
 Plug 'eagletmt/neco-ghc',         { 'for': 'haskell' }                        " Haskell support
 Plug 'eagletmt/ghcmod-vim',       { 'for': 'haskell' }                        " Haskell support
@@ -14,6 +14,7 @@ Plug 'lervag/vimtex',             { 'for': 'latex' }                          " 
 Plug 'racer-rust/vim-racer',      { 'for': 'rust' }                           " Rust racer autocompletion, etc.
 Plug 'rust-lang/rust.vim',        { 'for': 'rust' }                           " Rust langauge support.
 Plug 'tpope/vim-jdaddy',          { 'for': 'json'}                            " JSON handler.
+Plug 'dag/vim-fish',              { 'for': 'fish' }                           " Fish support.
 
 " Completion
 Plug 'roxma/nvim-completion-manager'                                          " Completion engine
