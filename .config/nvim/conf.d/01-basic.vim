@@ -147,7 +147,9 @@ nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
 
 set tags=./tags;
 
-" Don't immediately jump to first result.
-cnoreabbrev grep grep!
-set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+" Change folder automatically
+autocmd BufEnter * silent! lcd %:p:h
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:-\ ,eol:¬\,trail:·
+set list
