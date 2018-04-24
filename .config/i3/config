@@ -184,10 +184,10 @@ exec --no-startup-id "urxvtc -name terminal"
 for_window [instance="terminal"] move window to scratchpad
 bindsym $mod+t [instance="terminal"] scratchpad show 
 
-assign [class="^Firefox$"] → 1
+assign [class="Nightly"] → 1
 assign [instance="Unity"] → 2
 assign [instance="Steam"] → 3
-assign [class="^qBittorrent$"] → 8
+assign [class="qBittorrent"] → 8
 
 exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/Desktop/img/walls"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
