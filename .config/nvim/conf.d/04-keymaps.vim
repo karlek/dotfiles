@@ -101,14 +101,14 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
 " Switch buffers.
 nnoremap <C-b> :CtrlPBuffer<cr>
 
-" Search in files.
-nnoremap <C-g> :grep!<space>
-
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" bind K to grep word under cursor
-nnoremap \| :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" Search in files.
+nnoremap <C-g> :call Search("")<left><left>
+
+" bind | to grep word under cursor
+nnoremap \| :call Search("<C-R><C-W>")<cr>
