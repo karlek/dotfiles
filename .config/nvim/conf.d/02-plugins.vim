@@ -36,7 +36,8 @@ Plug 'tpope/vim-unimpaired'                                                   " 
 Plug 'terryma/vim-smooth-scroll'                                              " Smooth scrolling
 Plug 'jiangmiao/auto-pairs'                                                   " Auto inserts/deletes brackets, parens, quotes.
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
-Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'                                                        " Ack (ag) integration.
+Plug 'milkypostman/vim-togglelist'                                            " Add shortcuts for toggling quick- and location list.
 
 " Appearance
 Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
