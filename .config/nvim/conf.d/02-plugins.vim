@@ -26,14 +26,14 @@ Plug 'honza/vim-snippets'                                                     " 
 Plug 'b4winckler/vim-angry'                                                   " Function argument handling. d2aa (|a, b, c) -> (c)
 Plug 'danro/rename.vim'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
-Plug 'w0rp/ale'                                                               " Make and lint system
+Plug 'neomake/neomake'                                                        " Make and lint system
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
 Plug 'tpope/vim-repeat'                                                       " Extended repeat for some plugins
 Plug 'tpope/vim-vinegar'                                                      " Netrw enhancer.
 Plug 'tpope/vim-surround'                                                     " Change surrounding characters
 Plug 'tpope/vim-sleuth'                                                       " Automatically set buffer options
-Plug 'tpope/vim-unimpaired'													  " Common options as keybindings
-Plug 'terryma/vim-smooth-scroll'											  " Smooth scrolling
+Plug 'tpope/vim-unimpaired'                                                   " Common options as keybindings
+Plug 'terryma/vim-smooth-scroll'                                              " Smooth scrolling
 Plug 'jiangmiao/auto-pairs'                                                   " Auto inserts/deletes brackets, parens, quotes.
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
 Plug 'mileszs/ack.vim'
@@ -47,8 +47,8 @@ Plug 'ctrlpvim/ctrlp.vim'                                                     " 
 Plug 'JazzCore/ctrlp-cmatcher',   { 'do': './install.sh'}                     " Faster matcher
 Plug 'mbbill/undotree'                                                        " Undo tree
 Plug 'majutsushi/tagbar'                                                      " Tagbar
-Plug 'junegunn/goyo.vim'													  " Zen-mode
-Plug 'google/vim-searchindex'												  " Number of search results
+Plug 'junegunn/goyo.vim'                                                      " Zen-mode
+Plug 'google/vim-searchindex'                                                 " Number of search results
 
 " Web editing
 Plug 'jaxbot/browserlink.vim',    { 'for': 'html' }                           " Live reload
