@@ -65,7 +65,7 @@ nnoremap <leader>/ :Commentary<cr>
 vnoremap <leader>/ :Commentary<cr>
 
 " Clear search highlighting.
-nnoremap <silent> <leader>l :nohl<CR><C-l>
+nnoremap <silent> <leader>c :nohl<CR><C-l>
 
 " Remove trailing spaces.
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
