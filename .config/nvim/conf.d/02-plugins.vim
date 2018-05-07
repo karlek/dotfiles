@@ -43,13 +43,15 @@ Plug 'wellle/targets.vim'                                                     " 
 Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
 Plug 'blueyed/vim-diminactive'                                                " Dim inactive pane/window
 Plug 'itchyny/lightline.vim'                                                  " Lightline status line
-Plug 'kshenoy/vim-signature'                                                  " Vim marker sidebar
 Plug 'ctrlpvim/ctrlp.vim'                                                     " Switch buffer plugin
 Plug 'JazzCore/ctrlp-cmatcher',   { 'do': './install.sh'}                     " Faster matcher
-Plug 'mbbill/undotree'                                                        " Undo tree
-Plug 'majutsushi/tagbar'                                                      " Tagbar
 Plug 'junegunn/goyo.vim'                                                      " Zen-mode
 Plug 'google/vim-searchindex'                                                 " Number of search results
+
+" Sidebars
+Plug 'mbbill/undotree'                                                        " Undo tree
+Plug 'majutsushi/tagbar'                                                      " Tagbar
+Plug 'kshenoy/vim-signature'                                                  " Vim marker sidebar
 
 " Web editing
 Plug 'jaxbot/browserlink.vim',    { 'for': 'html' }                           " Live reload
