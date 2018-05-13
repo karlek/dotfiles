@@ -33,6 +33,10 @@ nnoremap <C-PageDown> :bnext<cr>
 nnoremap <leader>n :enew<cr>
 nnoremap <leader>d :bp <BAR> bd #<CR>
 
+" Special characters in regex are special. More perl like regular expressions.
+nnoremap / /\v
+vnoremap / /\v
+
 " Fast sourcing
 nnoremap <leader>r :source $MYVIMRC<CR>
 
