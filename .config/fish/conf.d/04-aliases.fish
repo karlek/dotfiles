@@ -137,3 +137,5 @@ alias low_qual "find . -iname '*.mp3' -print0 | xargs -0 mp3info -r a -p '%f\t%r
 
 # Muscle memory
 add_alias yay pacaur 'yay'
+
+add_alias youtube-dl youtube-playlist 'youtube-dl --playlist-reverse -cwi --download-archive downloaded.txt --no-post-overwrites -o "%(playlist_index)s - %(title)s.%(ext)s"'
