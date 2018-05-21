@@ -65,3 +65,5 @@ Plug 'vimwiki/vimwiki'
 Plug 'reedes/vim-pencil'
 
 call plug#end()                                                               " required
+
+runtime! conf.d/plugins/*
