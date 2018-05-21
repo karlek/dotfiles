@@ -5,7 +5,7 @@
 !-------------------------------------------------------------------------------
 
 ! Fonts
-URxvt.font:					  xft:Fira Mono:size=12:antialias=true
+URxvt.font:                   xft:Fira Mono:size=12:antialias=true
 URxvt.boldFont:               xft:Fira Mono:bold:size=12:antialias=true
 
 Xft.antialias:                true
@@ -59,18 +59,13 @@ URxvt.keysym.C-equal:         perl:font-size:reset
 URxvt.keysym.C-slash:         perl:font-size:show
 
 ! Keyboard select
-URxvt.keysym.C-Escape:        perl:keyboard-select:activate
-URxvt.keysym.C-s:             perl:keyboard-select:search
+URxvt.keysym.C-S:             perl:keyboard-select:search
 
 ! Keyboard copy
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755:               false
 URxvt.clipboard.autocopy:     true
-
-! Vim related
-URxvt.keysym.C-Page_Up:       \033[5;5~
-URxvt.keysym.C-Page_Down:     \033[6;5~
 
 ! Clickable URLs
 URxvt.url-launcher:           xdg-open
@@ -82,7 +77,7 @@ URxvt.cursorUnderline:        true
 URxvt.cursorBlink:            false
 ! Pointer
 URxvt.pointerBlank:           true
-! URxvt*cursor:					i-beam
+! URxvt*cursor:               i-beam
 
 !-------------------------------------------------------------------------------
 ! Color scheme
