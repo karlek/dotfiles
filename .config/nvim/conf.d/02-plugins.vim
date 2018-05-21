@@ -60,4 +60,8 @@ Plug 'mattn/emmet-vim',           { 'for': 'html' }                           " 
 " Dependencies
 Plug 'Shougo/vimproc.vim',                                                    " Dependency for ghcmod-vim
 
+" Testing zone
+Plug 'vimwiki/vimwiki'
+Plug 'reedes/vim-pencil'
+
 call plug#end()                                                               " required

@@ -134,7 +134,7 @@ function! s:plug_gx()
 		let cfile = expand('<cfile>')
 		if cfile !~ 'github\.com' && !filereadable(cfile)
 			call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
-						\ 'https://github.com/'.cfile)), netrw#CheckIfRemote())
+                \ 'https://github.com/'.cfile)), netrw#CheckIfRemote())
 			return
 		endif
 	endif
@@ -151,5 +151,8 @@ set tags=./tags;
 autocmd BufEnter * silent! lcd %:p:h
 
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:-\ ,eol:¬\,trail:·
+set listchars=tab:\|\ ,eol:¬\,trail:·
 set list
+
+" Automatically remove netrw buffers.
+autocmd FileType netrw setl bufhidden=delete
