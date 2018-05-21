@@ -1,7 +1,7 @@
 # Find shortest movie in folder
 function dur_backend
     if not count $argv > /dev/null
-        set -x movies (find . -iname '*.mp4' -o -iname '*.mkv' -o -iname '*.avi' -o -iname '*.mov')
+        set -x movies (find . -iname '*.mp4' -o -iname '*.mkv' -o -iname '*.avi' -o -iname '*.mov' -o -iname '*.webm')
     else
         set -x movies $argv
     end
