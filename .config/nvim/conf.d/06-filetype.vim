@@ -8,4 +8,3 @@ autocmd BufRead *.m set ft=matlab
 augroup filetypedetect
     au! BufRead,BufNewFile *.conf setfiletype config
 augroup END
-

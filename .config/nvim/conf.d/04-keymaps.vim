@@ -114,5 +114,5 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Search in files.
 nnoremap <C-g> :call Search("")<left><left>
 
-" bind | to grep word under cursor
+" Bind | to grep word under cursor
 nnoremap \| :call Search("<C-R><C-W>")<cr>
