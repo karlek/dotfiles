@@ -28,8 +28,6 @@ nnoremap <leader>6 :buffer 6<Esc>
 nnoremap <leader>7 :buffer 7<Esc>
 nnoremap <leader>8 :buffer 8<Esc>
 nnoremap <leader>9 :buffer 9<Esc>
-nnoremap <C-PageUp> :bprev<cr>
-nnoremap <C-PageDown> :bnext<cr>
 nnoremap <leader>n :enew<cr>
 nnoremap <leader>d :bp <BAR> bd #<CR>
 
