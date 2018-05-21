@@ -44,7 +44,7 @@ nnoremap <leader>r :source $MYVIMRC<CR>
 nnoremap <leader>w :w!<cr>
 
 " Change between two open files quickly
-nnoremap <leader><leader> :e#<CR>
+nnoremap <leader><leader> <C-^>
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
