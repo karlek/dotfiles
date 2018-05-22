@@ -40,3 +40,5 @@ add_abbr 'git' gd  'git diff'
 add_abbr 'git' gl  'git lg'
 add_abbr 'git' glp 'git lg -p'
 add_abbr 'git' gdc 'git diff --cached'
+
+add_abbr spectro spectro 'spectro --local --parallel'
