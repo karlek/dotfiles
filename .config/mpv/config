@@ -86,7 +86,7 @@ ao=pulse,alsa
 audio-pitch-correction	                # automatically insert scaletempo when playing with higher speed
 volume-max=200                          # maximum volume in %, everything above 100 results in amplification
 volume=100                              # default volume, 100 = unchanged
-
+audio-buffer=10
 
 ################
 # Video Output #
