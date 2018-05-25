@@ -13,6 +13,7 @@ Plug 'racer-rust/vim-racer',      { 'for': 'rust' }                           " 
 Plug 'rust-lang/rust.vim',        { 'for': 'rust' }                           " Rust langauge support.
 Plug 'tpope/vim-jdaddy',          { 'for': 'json'}                            " JSON handler.
 Plug 'dag/vim-fish',              { 'for': 'fish' }                           " Fish support.
+Plug 'tikhomirov/vim-glsl'                                                    " Support for GLSL
 
 " Completion
 Plug 'roxma/nvim-completion-manager'                                          " Completion engine
