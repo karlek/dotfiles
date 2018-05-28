@@ -2,7 +2,14 @@ colorscheme transparent
 cd ~/Desktop/music/
 set output_plugin=pulse
 
+# New keybindings.
 bind -f common X clear
+
+# Remove unwanted keybindings.
+unbind common o
+unbind common t
+unbind common y
+unbind common m
 
 # Show filename without path.
 set altformat_playlist= %F%= %{?X!=0?%3X  ?     } %d 
