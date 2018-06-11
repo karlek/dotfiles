@@ -57,6 +57,7 @@ URxvt.keysym.C-Up:            perl:font-size:increase
 URxvt.keysym.C-Down:          perl:font-size:decrease
 URxvt.keysym.C-equal:         perl:font-size:reset
 URxvt.keysym.C-slash:         perl:font-size:show
+URxvt.keysym.C-aring:         \033[24~
 
 ! Keyboard select
 URxvt.keysym.C-S:             perl:keyboard-select:search

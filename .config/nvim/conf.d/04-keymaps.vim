@@ -102,6 +102,7 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
 
 " Switch buffers.
 nnoremap <C-b> :CtrlPBuffer<cr>
+inoremap <f12> <esc>
 
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
