@@ -2,6 +2,8 @@ colorscheme transparent
 cd ~/Desktop/music/
 set output_plugin=pulse
 
+set replaygain=album-preferred
+
 # New keybindings.
 bind -f common X clear
 
