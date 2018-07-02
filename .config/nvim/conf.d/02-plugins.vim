@@ -24,7 +24,7 @@ Plug 'Shougo/neosnippet-snippets'                                             " 
 Plug 'honza/vim-snippets'                                                     " More snippets
 
 " Functionality
-Plug 'danro/rename.vim'                                                       " Rename files
+Plug 'tpope/vim-eunuch'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
 Plug 'neomake/neomake'                                                        " Make and lint system
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
