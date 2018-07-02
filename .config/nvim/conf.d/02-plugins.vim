@@ -24,15 +24,16 @@ Plug 'Shougo/neosnippet-snippets'                                             " 
 Plug 'honza/vim-snippets'                                                     " More snippets
 
 " Functionality
-Plug 'tpope/vim-eunuch'                                                       " Rename files
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
 Plug 'neomake/neomake'                                                        " Make and lint system
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
+Plug 'tpope/vim-eunuch'                                                       " Rename files
 Plug 'tpope/vim-repeat'                                                       " Extended repeat for some plugins
-Plug 'tpope/vim-vinegar'                                                      " Netrw enhancer.
-Plug 'tpope/vim-surround'                                                     " Change surrounding characters
+Plug 'tpope/vim-rsi'                                                          " Readline insertion keybindings
 Plug 'tpope/vim-sleuth'                                                       " Automatically set buffer options
+Plug 'tpope/vim-surround'                                                     " Change surrounding characters
 Plug 'tpope/vim-unimpaired'                                                   " Common options as keybindings
+Plug 'tpope/vim-vinegar'                                                      " Netrw enhancer.
 Plug 'terryma/vim-smooth-scroll'                                              " Smooth scrolling
 Plug 'jiangmiao/auto-pairs'                                                   " Auto inserts/deletes brackets, parens, quotes.
 Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }               " Easy motion (vimfx)
