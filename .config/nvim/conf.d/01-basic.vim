@@ -11,6 +11,9 @@ set synmaxcol=500
 " Show command and selected characters in status line.
 set showcmd
 
+" Don't jump to the start of the line when switching buffers.
+set nostartofline
+
 " Don't show mode in command-line, because we already show it in lightline.
 set noshowmode
 
