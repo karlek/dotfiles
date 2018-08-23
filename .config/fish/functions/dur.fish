@@ -1,5 +1,5 @@
 # Find shortest movie in folder
-function dur_backend
+function __dur_backend
     if not count $argv > /dev/null
         set -x movies (find . -iname '*.mp4' -o -iname '*.mkv' -o -iname '*.avi' -o -iname '*.mov' -o -iname '*.webm')
     else
@@ -22,8 +22,10 @@ function dur_backend
 end
 
 # Pretty print dur.
-alias dur='dur_backend | expand -t 69,$COLUMNS'
+alias dur='__dur_backend | expand -t 69,$COLUMNS'
 
-function durshort
-    dur_backend $argv | awk -F '\t' '{print $2 "\t" $1}' | sort -n | awk -F '\t' '{print $2 "\t" $1}' | expand -t 69,$COLUMNS
+function __durshort
+    __dur_backend $argv | awk -F '\t' '{print $2 "\t" $1}' | sort -n | awk -F '\t' '{print $2 "\t" $1}' | expand -t 69,$COLUMNS
 end
+
+alias durshort='__durshort'
