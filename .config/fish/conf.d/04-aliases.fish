@@ -36,7 +36,7 @@ alias reset 'tput reset'
 
 # Colored ls, (--classify) append '/' to directories, (-X) sort alphabetically,
 # (-v) natural sort of numbers.
-alias ls 'ls --color=auto --classify -X -v'
+alias ls 'ls --color=auto --classify -X -v --group-directories-first'
 
 # Calendar start on monday.
 alias cal "cal -m"
