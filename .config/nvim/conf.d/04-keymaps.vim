@@ -1,70 +1,79 @@
 let mapleader=" "
 let maplocalleader="\\"
 
-nmap <leader>O O<Esc>
-nmap <leader>o o<Esc>
-nmap <leader>1 :buffer 1<Esc>
-nmap <leader>2 :buffer 2<Esc>
-nmap <leader>3 :buffer 3<Esc>
-nmap <leader>4 :buffer 4<Esc>
-nmap <leader>5 :buffer 5<Esc>
-nmap <leader>6 :buffer 6<Esc>
-nmap <leader>7 :buffer 7<Esc>
-nmap <leader>8 :buffer 8<Esc>
-nmap <leader>9 :buffer 9<Esc>
-nmap <C-PageUp> :bprev<cr>
-nmap <C-PageDown> :bnext<cr>
-nmap <leader>n :enew<cr>
-nmap <leader>d :bp <BAR> bd #<CR>
+" Smarter movement on wrapped lines.
+nnoremap j gj
+nnoremap k gk
+
+" Make Y behave consistently with other capitals
+nnoremap Y y$
+
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" Disable command history search.
+noremap q: <Nop>
+" Disable help key.
+noremap <F1> :echo<CR>
+inoremap <F1> <Nop>
+
+nnoremap <leader>O O<Esc>
+nnoremap <leader>o o<Esc>
+nnoremap <leader>1 :buffer 1<Esc>
+nnoremap <leader>2 :buffer 2<Esc>
+nnoremap <leader>3 :buffer 3<Esc>
+nnoremap <leader>4 :buffer 4<Esc>
+nnoremap <leader>5 :buffer 5<Esc>
+nnoremap <leader>6 :buffer 6<Esc>
+nnoremap <leader>7 :buffer 7<Esc>
+nnoremap <leader>8 :buffer 8<Esc>
+nnoremap <leader>9 :buffer 9<Esc>
+nnoremap <leader>n :enew<cr>
+nnoremap <leader>d :bp <BAR> bd #<CR>
+
+" Special characters in regex are special. More perl like regular expressions.
+nnoremap / /\v
+vnoremap / /\v
 
 " Fast sourcing
-map <leader>r :source $MYVIMRC<CR>
+nnoremap <leader>r :source $MYVIMRC<CR>
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nnoremap <leader>w :w!<cr>
 
 " Change between two open files quickly
-nnoremap <leader><leader> :e#<CR>
+nnoremap <leader><leader> <C-^>
 
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
-" Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+"Line motions
+nmap <leader>j <Plug>(easymotion-j)
+nmap <leader>k <Plug>(easymotion-k)
 
 " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
 " `s{char}{label}`
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+nmap <leader>f <Plug>(easymotion-overwin-f)
 
 " Yank and paste to system clipboard.
 vnoremap <leader>y  "+y
 nnoremap <leader>y  "+y
 nnoremap <leader>p "+p
 
-nmap <Leader>/ :Commentary<cr>
-vmap <Leader>/ :Commentary<cr>
+nnoremap <leader>/ :Commentary<cr>
+vnoremap <leader>/ :Commentary<cr>
 
 " Clear search highlighting.
-nnoremap <silent> <leader>l :nohl<CR><C-l>
-
-" Smarter movement on wrapped lines.
-nnoremap j gj
-nnoremap k gk
-
-" Disable command history search.
-map q: <Nop>
-" Disable help key.
-nmap <F1> :echo<CR>
+nnoremap <silent> <leader>c :nohl<CR><C-l>
 
 " Remove trailing spaces.
-map <F3> :setlocal spell! spelllang=en_us<CR>
-nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-nnoremap <F5> :UndotreeToggle<cr>
-nmap <F8> :TagbarToggle<CR>
+noremap <F3> :setlocal spell! spelllang=en_us<CR>
+noremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
+noremap <F5> :UndotreeToggle<cr>
+noremap <F8> :TagbarToggle<CR>
 
 " Close help with `q`.
 augroup CloseHelp
@@ -76,12 +85,6 @@ augroup END
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-" Make Y behave consistently with other capitals
-nnoremap Y y$
-
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 " Little emacs never killed nobody.
 cnoremap <C-a> <Home>
@@ -102,6 +105,16 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
 
 " Switch buffers.
 nnoremap <C-b> :CtrlPBuffer<cr>
+inoremap <f12> <esc>
+
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " Search in files.
-nnoremap <C-g> :Ack 
+nnoremap <C-g> :call Search("")<left><left>
+
+" Bind | to grep word under cursor
+nnoremap \| :call Search("<C-R><C-W>")<cr>

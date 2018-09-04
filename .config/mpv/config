@@ -86,7 +86,7 @@ ao=pulse,alsa
 audio-pitch-correction	                # automatically insert scaletempo when playing with higher speed
 volume-max=200                          # maximum volume in %, everything above 100 results in amplification
 volume=100                              # default volume, 100 = unchanged
-
+audio-buffer=10
 
 ################
 # Video Output #
@@ -95,7 +95,7 @@ volume=100                              # default volume, 100 = unchanged
 profile=opengl-hq
 
 # Defaults for all profiles
-vo=opengl,opengl-hq,vaapi,vdpau,xv,
+vo=gpu,opengl-hq,vaapi,vdpau,xv,
 tscale=catmull_rom                      # sharp: oversample <-> linear (triangle) <-> catmull_rom <-> mitchell <-> gaussian <-> bicubic : smooth
 opengl-early-flush=no
 opengl-pbo=yes
@@ -106,11 +106,11 @@ sws-scaler=gauss        # Software scaler
 framedrop=no            
 audio-display=no        # Remove music cover art.
 
-[vo.opengl]
-opengl-backend=drm
+[vo.gpu]
+gpu-context=drm
 opengl-pbo				# Make some drivers faster, especially huge videos. May cause latency issues or make it slower.
-opengl-fbo-format=rgba16
-opengl-gamma=0.9
+fbo-format=rgba16
+gamma-factor=0.9
 dither-depth=auto
 scaler-resizes-only
 scale=ewa_lanczossharp

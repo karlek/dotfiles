@@ -5,85 +5,80 @@
 !-------------------------------------------------------------------------------
 
 ! Fonts
-URxvt.font:     				xft:Fira Mono:size=12:antialias=true
-URxvt.boldFont: 				xft:Fira Mono:bold:size=12:antialias=true
+URxvt.font:                   xft:Fira Mono:size=12:antialias=true
+URxvt.boldFont:               xft:Fira Mono:bold:size=12:antialias=true
 
-Xft.antialias: 					true
-Xft.rgba:      					rgb
-Xft.hinting:   					true
-Xft.hintstyle: 					hintfull
-Xft.dpi:       					96
+Xft.antialias:                true
+Xft.rgba:                     rgb
+Xft.hinting:                  true
+Xft.hintstyle:                hintfull
+Xft.dpi:                      96
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
 !-------------------------------------------------------------------------------
 
 ! Do not scroll back on new output.
-URxvt*scrollTtyOutput:      false
-URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyOutput:        false
+URxvt*scrollWithBuffer:       true
 ! Scroll to end on keypress.
-URxvt*scrollTtyKeypress:    true
+URxvt*scrollTtyKeypress:      true
 
 ! Enables alpha channel.
-URxvt.depth:                	32
+URxvt.depth:                  32
 ! Size of window.
-URxvt.geometry:             	80x20
+URxvt.geometry:               80x20
 ! Transparent to background.
-URxvt.transparent:          	false
+URxvt.transparent:            false
 ! Fade text when focus to the window is lost.
 ! URxvt.fading:               	30
-URxvt.loginShell:           	false
+URxvt.loginShell:             false
 ! Save number lines in the scrollback buffer.
-URxvt.saveLines:            	10000
+URxvt.saveLines:              10000
+URxvt.borderless:             true
 ! Internal border of number pixels.
-URxvt.internalBorder:       	2
+URxvt.internalBorder:         0
 ! External border of number pixels.
-URxvt.externalBorder:       	5
+URxvt.externalBorder:         0
 ! Specifies number of lines (pixel height) to insert between each row of the display.
-URxvt.lineSpace:            	3
+URxvt.lineSpace:              3
 
 ! Fix font space
-URxvt*letterSpace: 				-1
+URxvt*letterSpace:            -1
 
 ! Scrollbar
-URxvt.scrollStyle:          	rxvt
-URxvt.scrollBar:            	false
+URxvt.scrollStyle:            rxvt
+URxvt.scrollBar:              false
 
 ! Perl extensions
-URxvt.perl-ext-common:      	default,matcher,keyboard-select,clipboard,font-size
+URxvt.perl-ext-common:        default,matcher,keyboard-select,clipboard,font-size
 
-URxvt.keysym.C-Up:     perl:font-size:increase
-URxvt.keysym.C-Down:   perl:font-size:decrease
-URxvt.keysym.C-S-Up:   perl:font-size:incglobal
-URxvt.keysym.C-S-Down: perl:font-size:decglobal
-URxvt.keysym.C-equal:  perl:font-size:reset
-URxvt.keysym.C-slash:  perl:font-size:show
+URxvt.keysym.C-Up:            perl:font-size:increase
+URxvt.keysym.C-Down:          perl:font-size:decrease
+URxvt.keysym.C-equal:         perl:font-size:reset
+URxvt.keysym.C-slash:         perl:font-size:show
+URxvt.keysym.C-aring:         \033[24~
 
 ! Keyboard select
-URxvt.keysym.C-Escape: 			perl:keyboard-select:activate
-URxvt.keysym.C-s: 				perl:keyboard-select:search
+URxvt.keysym.C-S:             perl:keyboard-select:search
 
 ! Keyboard copy
-URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
-URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
-URxvt.iso14755: 				false
-URxvt.clipboard.autocopy:		true
-
-! Vim related
-URxvt.keysym.C-Page_Up        : \033[5;5~
-URxvt.keysym.C-Page_Down      : \033[6;5~
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755:               false
+URxvt.clipboard.autocopy:     true
 
 ! Clickable URLs
-URxvt.url-launcher:          	xdg-open
-URxvt.matcher.button:       	1
+URxvt.url-launcher:           xdg-open
+URxvt.matcher.button:         1
 
 ! Cursor
-URxvt.cursorUnderline:      	true
+URxvt.cursorUnderline:        true
 ! Turn off cursor blinking.
-URxvt.cursorBlink:				false
+URxvt.cursorBlink:            false
 ! Pointer
-URxvt.pointerBlank:         	true
-! URxvt*cursor:					i-beam
+URxvt.pointerBlank:           true
+! URxvt*cursor:               i-beam
 
 !-------------------------------------------------------------------------------
 ! Color scheme
@@ -92,33 +87,34 @@ URxvt.pointerBlank:         	true
 ! X11 colors pieced together by Dmitry Medvinsky.
 ! Based on Vim colorscheme "badwolf" pieced together by Steve Losh.
 
-URxvt.background:				#1c1b1a
-URxvt.foreground:				#f8f6f2
-URxvt.cursorColor:				#aeee00
-URxvt.scrollColor:				#45413b
-URxvt.fadeColor:				#000000
+URxvt.borderColor:            #1c1b1a
+URxvt.background:             #1c1b1a
+URxvt.foreground:             #f8f6f2
+URxvt.cursorColor:            #aeee00
+URxvt.scrollColor:            #45413b
+URxvt.fadeColor:              #000000
 
 ! Black
-URxvt.color0:					#141413
-URxvt.color8:					#646463
+URxvt.color0:                 #141413
+URxvt.color8:                 #646463
 ! Red
-URxvt.color1:					#ff2c4b
-URxvt.color9:					#ff2c4b
+URxvt.color1:                 #ff2c4b
+URxvt.color9:                 #ff2c4b
 ! Green
-URxvt.color2:					#aeee00
-URxvt.color10:					#aeee00
+URxvt.color2:                 #aeee00
+URxvt.color10:                #aeee00
 ! Yellow
-URxvt.color3:					#fade3e
-URxvt.color11:					#ffa724
+URxvt.color3:                 #fade3e
+URxvt.color11:                #ffa724
 ! Blue
-URxvt.color4:					#3a9dff
-URxvt.color12:					#3a9dff
+URxvt.color4:                 #3a9dff
+URxvt.color12:                #3a9dff
 ! Magenta
-URxvt.color5:					#ff9eb8
-URxvt.color13:					#ff9eb8
+URxvt.color5:                 #ff9eb8
+URxvt.color13:                #ff9eb8
 ! Cyan
-URxvt.color6:					#8cffba
-URxvt.color14:					#8cffba
+URxvt.color6:                 #8cffba
+URxvt.color14:                #8cffba
 ! White
-URxvt.color7:					#d9cec3
-URxvt.color15:					#ffffff
+URxvt.color7:                 #d9cec3
+URxvt.color15:                #ffffff

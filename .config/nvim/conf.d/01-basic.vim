@@ -11,13 +11,14 @@ set synmaxcol=500
 " Show command and selected characters in status line.
 set showcmd
 
+" Don't jump to the start of the line when switching buffers.
+set nostartofline
+
 " Don't show mode in command-line, because we already show it in lightline.
 set noshowmode
 
 " Automatically reload file if changed by environment.
 set autoread
-" Auto change directory to current files.
-set autochdir
 
 " utf-8 is the best <3
 set termencoding=utf-8 encoding=utf-8 fileformat=unix
@@ -118,6 +119,15 @@ augroup LastPosition
     autocmd!
     autocmd BufReadPost * call LastPosition()
 augroup END
-
 " Search for tag-file, used for method jumping
 set tags=./tags;
+
+" Change folder automatically
+autocmd BufEnter * silent! lcd %:p:h
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:\|\ ,eol:¬\,trail:·
+set list
+
+" Automatically remove netrw buffers.
+autocmd FileType netrw setl bufhidden=delete
