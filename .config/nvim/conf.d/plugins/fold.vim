@@ -15,7 +15,3 @@ function! MyFoldText()
 endfunction
 
 set foldtext=MyFoldText()
-
-" Force folding.
-set foldmethod=syntax
-set foldlevelstart=1

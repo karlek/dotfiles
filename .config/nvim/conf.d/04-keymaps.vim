@@ -70,7 +70,7 @@ vnoremap <leader>/ :Commentary<cr>
 nnoremap <silent> <leader>c :nohl<CR><C-l>
 
 " Remove trailing spaces.
-noremap <F3> :setlocal spell! spelllang=en_us<CR>
+noremap <F3> :setlocal spell! spelllang=en,sv<CR>
 noremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
 noremap <F5> :UndotreeToggle<cr>
 noremap <F8> :TagbarToggle<CR>
