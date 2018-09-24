@@ -73,10 +73,12 @@ nnoremap <silent> <leader>c :nohl<CR><C-l>
 noremap <F3> :setlocal spell! spelllang=en,sv<CR>
 noremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
 noremap <F5> :UndotreeToggle<cr>
-noremap <F8> :TagbarToggle<CR>
 
 " Close help with `q`.
-autocmd FileType help noremap <buffer> q :q<cr>
+augroup CloseHelp
+    autocmd!
+    autocmd FileType help noremap <buffer> q :q<cr>
+augroup END
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -96,22 +98,32 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Smooth scrolling.
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
-
 " Switch buffers.
 nnoremap <C-b> :CtrlPBuffer<cr>
 inoremap <f12> <esc>
 
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
+" Expand snippets and jump between insertion points.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" Search in files.
-nnoremap <C-g> :call Search("")<left><left>
+nnoremap <silent> zj :call NextClosedFold('j')<cr>
+nnoremap <silent> zk :call NextClosedFold('k')<cr>
+function! NextClosedFold(dir)
+    let cmd = 'norm!z' . a:dir
+    let view = winsaveview()
+    let [l0, l, open] = [0, view.lnum, 1]
+    while l != l0 && open
+        exe cmd
+        let [l0, l] = [l, line('.')]
+        let open = foldclosed(l) < 0
+    endwhile
+    if open
+        call winrestview(view)
+    endif
+endfunction
 
-" Bind | to grep word under cursor
-nnoremap \| :call Search("<C-R><C-W>")<cr>
+nnoremap <C-g> :Ggrep 
+nnoremap gF :Ggrep <cword><cr>

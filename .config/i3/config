@@ -58,7 +58,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 15"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 15"
 bindsym $mod+w exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/Desktop/img/walls"
 bindsym $mod+Control+Delete exec --no-startup-id "xrandr --auto"
-bindsym $mod+g exec --no-startup-id "urxvtc -name vim -e fish -c 'nvim'"
 
 hide_edge_borders both
 new_window normal 0  
@@ -172,25 +171,28 @@ mode "resize" {
 
 bindsym $mod+Tab workspace back_and_forth
 
-exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
-for_window [instance="cmus"] move window to scratchpad
-bindsym $mod+i [instance="cmus"] scratchpad show
-
 for_window [instance="pomodoro.*"] floating enable
 for_window [instance="Unity"] floating enable
 for_window [instance="warcraft iii.exe"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 
-exec --no-startup-id "urxvtc -name terminal"
-for_window [instance="terminal"] move window to scratchpad
-bindsym $mod+t [instance="terminal"] scratchpad show 
-
+assign [class="Firefox"] → 1
 assign [class="Nightly"] → 1
 assign [instance="Unity"] → 2
 assign [instance="Steam"] → 3
 assign [class="qBittorrent"] → 8
+assign [class="Deluge"]  → 8
 
-exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/Desktop/img/walls"
+for_window [instance="terminal"] move window to scratchpad
+bindsym $mod+t [instance="terminal"] scratchpad show 
+
+exec --no-startup-id urxvtc -name terminal
+
+for_window [instance="cmus"] move window to scratchpad
+bindsym $mod+i [instance="cmus"] scratchpad show
+
+exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
+exec --no-startup-id "feh --no-fehbg --randomize --bg-max ~/Desktop/img/walls"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
 exec --no-startup-id "caffeine"
 exec_always --no-startup-id /usr/bin/compton --config /home/_/.config/compton.conf

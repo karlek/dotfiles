@@ -1,8 +1,9 @@
 function f 
   if count $argv > /dev/null
-    feh -B black -. $argv
+    # Magick-timeout allows us to open svg files.
+    feh --magick-timeout 1 -B black -. $argv
   else
-    feh -B black -. .
+    feh --magick-timeout 1 -B black -. .
   end
 end
 

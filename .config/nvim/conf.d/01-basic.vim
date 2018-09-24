@@ -30,7 +30,7 @@ set fileencodings=ucs-bom,utf8,prc
 set lazyredraw
 
 " Explicitly state file-endings.
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
 " Hides buffers instead of forcing them to close.
 set hidden
@@ -49,13 +49,13 @@ set showmatch
 set belloff=all
 
 " Keep undo history across sessions by storing it in a file
-let swapDir = $XDG_CACHE_HOME.'/nvim/swap'
-if !isdirectory(swapDir)
-    call mkdir(swapDir)
+let g:swapDir = $XDG_CACHE_HOME.'/nvim/swap'
+if !isdirectory(g:swapDir)
+    call mkdir(g:swapDir)
 endif
-let &directory=swapDir
-let &backupdir=swapDir
-let &undodir=swapDir
+let &directory=g:swapDir
+let &backupdir=g:swapDir
+let &undodir=g:swapDir
 set undofile
 
 " More XDG.
@@ -75,9 +75,9 @@ set wildmode=list:longest,full
 " Start searching automatically when typing
 set incsearch
 
-" Ignore case when searching, and switch to case sensitive when having both
-" cases.
+" Ignore case when searching.
 set ignorecase
+" Switch to case sensitive when having both cases in query.
 set smartcase
 
 " Allow switching of buffers without saving them first.
@@ -93,7 +93,7 @@ set wrap linebreak
 set display=lastline
 
 " Minimum number of lines surrounding cursor.
-set scrolloff=7
+set scrolloff=5
 
 " Indention is 4 spaces
 set shiftwidth=4
@@ -115,39 +115,11 @@ cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 cabbr <expr> %% expand('%:p:h')
 
 " Return to last edit position when opening files.
-autocmd BufReadPost * call LastPosition()
-
-fun! LastPosition()
-    " Ignore git commit messages.
-    let name = fnamemodify( expand('%'), ':t:r' )
-    if name =~ 'COMMIT_EDITMSG'
-        return
-    endif
-    if line("'\"") > 0 && line("'\"") <= line("$") |
-        execute "normal! g`\"" |
-    endif
-endfun
-
-" Override gx.
-nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
-
-function! s:plug_gx()
-	" Add netrw_gx support for Plug repos.
-	if getline('.') =~ '^Plug\s'
-		let cfile = expand('<cfile>')
-		if cfile !~ 'github\.com' && !filereadable(cfile)
-			call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
-                \ 'https://github.com/'.cfile)), netrw#CheckIfRemote())
-			return
-		endif
-	endif
-
-	call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
-				\ '<cfile>')), netrw#CheckIfRemote())
-endfunction
-
-nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
-
+augroup LastPosition
+    autocmd!
+    autocmd BufReadPost * call LastPosition()
+augroup END
+" Search for tag-file, used for method jumping
 set tags=./tags;
 
 " Change folder automatically
