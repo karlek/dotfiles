@@ -1,15 +1,19 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Code completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim',      { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
 " Language specific plugins for code completion
-" Plug 'zchee/deoplete-go',    { 'do': 'make'}
+Plug 'zchee/deoplete-go',         { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 Plug 'sebastianmarkow/deoplete-rust'
+
+" Language specific plugins
+Plug 'numirias/semshi',           { 'do': ':UpdateRemotePlugins'}             " Better semantic highlighting for Python
 Plug 'lervag/vimtex',             { 'for': 'latex' }                          " LaTeX handling
+Plug 'fatih/vim-go'
 
 " Functionality
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
