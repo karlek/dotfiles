@@ -93,7 +93,7 @@ set wrap linebreak
 set display=lastline
 
 " Minimum number of lines surrounding cursor.
-set scrolloff=7
+set scrolloff=5
 
 " Indention is 4 spaces
 set shiftwidth=4
