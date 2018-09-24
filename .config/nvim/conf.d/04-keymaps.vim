@@ -73,7 +73,6 @@ nnoremap <silent> <leader>c :nohl<CR><C-l>
 noremap <F3> :setlocal spell! spelllang=en_us<CR>
 noremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
 noremap <F5> :UndotreeToggle<cr>
-noremap <F8> :TagbarToggle<CR>
 
 " Close help with `q`.
 augroup CloseHelp
@@ -99,22 +98,14 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Smooth scrolling.
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
-
 " Switch buffers.
 nnoremap <C-b> :CtrlPBuffer<cr>
 inoremap <f12> <esc>
 
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
+" Expand snippets and jump between insertion points.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" Search in files.
-nnoremap <C-g> :call Search("")<left><left>
-
-" Bind | to grep word under cursor
-nnoremap \| :call Search("<C-R><C-W>")<cr>
