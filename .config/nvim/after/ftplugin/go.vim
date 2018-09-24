@@ -2,7 +2,6 @@
 let g:go_fmt_command = "goimports"
 " Fixes auto-collpasing folds
 let g:go_fmt_experimental=1
-let g:deoplete#sources#go#gocode_binary = '$GOPATH/bin/gocode'
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
