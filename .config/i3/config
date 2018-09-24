@@ -58,7 +58,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 15"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 15"
 bindsym $mod+w exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/Desktop/img/walls"
 bindsym $mod+Control+Delete exec --no-startup-id "xrandr --auto"
-bindsym $mod+g exec --no-startup-id "urxvtc -name vim -e fish -c 'nvim'"
 
 hide_edge_borders both
 new_window normal 0  
