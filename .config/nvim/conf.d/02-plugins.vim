@@ -15,6 +15,9 @@ Plug 'numirias/semshi',           { 'do': ':UpdateRemotePlugins'}             " 
 Plug 'lervag/vimtex',             { 'for': 'latex' }                          " LaTeX handling
 Plug 'fatih/vim-go'
 
+" Build plugins
+Plug 'neomake/neomake'
+
 " Functionality
 Plug 'junegunn/vim-easy-align'                                                " Easy alignment
 Plug 'tpope/vim-commentary'                                                   " Toggle comments plugin
