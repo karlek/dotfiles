@@ -107,6 +107,7 @@ set history=1000
 
 " Remove the splash message.
 set shortmess=I
+set shortmess+=c
 
 cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
 " Expand $$ to nvim config folder.

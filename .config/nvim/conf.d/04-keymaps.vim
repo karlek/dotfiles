@@ -127,3 +127,5 @@ endfunction
 
 nnoremap <C-g> :Ggrep 
 nnoremap gF :Ggrep <cword><cr>
+
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
