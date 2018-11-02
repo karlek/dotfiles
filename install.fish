@@ -70,6 +70,16 @@ pulseaudio-bluetooth \ # Bluetooth sinks in pulse.
 bluez-utils          \ # Bluetoothctl
 xinput                 # Fix tracpad scrolling
 
+	# Japanese keyboard
+
+yay -S
+fcitx				 \
+fcitx-configtool	 \
+fcitx-im			 \
+fcitx-mozc			 \
+adobe-source-han-sans-jp-fonts
+
+
 	# Optional
 
 yay -S
