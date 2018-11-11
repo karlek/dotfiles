@@ -56,7 +56,7 @@ bindsym XF86Explorer exec --no-startup-id "toggle-brightness"
 bindsym Control+Mod1+l exec --no-startup-id "sflock"
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 15"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 15"
-bindsym $mod+w exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/Desktop/img/walls"
+bindsym $mod+w exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/img/walls"
 bindsym $mod+Control+Delete exec --no-startup-id "xrandr --auto"
 
 hide_edge_borders both
@@ -192,7 +192,7 @@ for_window [instance="cmus"] move window to scratchpad
 bindsym $mod+i [instance="cmus"] scratchpad show
 
 exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
-exec --no-startup-id "feh --no-fehbg --randomize --bg-max ~/Desktop/img/walls"
+exec --no-startup-id "feh --no-fehbg --randomize --bg-max ~/img/walls"
 exec --no-startup-id "unclutter -idle 3 -root -display :0.0 -jitter 25"
 exec --no-startup-id "caffeine"
 exec_always --no-startup-id /usr/bin/compton --config /home/_/.config/compton.conf
