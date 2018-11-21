@@ -6,7 +6,7 @@ syntax on
 
 " Syntax highlighting is slow with long lines.
 " Sets a maximum length for highlighting lines.
-set synmaxcol=500
+set synmaxcol=5000
 
 " Show command and selected characters in status line.
 set showcmd
