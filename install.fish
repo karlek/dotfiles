@@ -94,6 +94,7 @@ xidel                \ # XQuery based extraction
 pup-git              \ # HTML extraction
 scrot                \ # Printscreen tool
 arch-wiki-docs	     \ # Arch wiki
+pacdiff               \ # Interactive pacnew diff
 pulseaudio-alsa        #
 
 # My own programs
