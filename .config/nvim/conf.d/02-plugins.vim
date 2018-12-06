@@ -39,6 +39,7 @@ Plug 'blueyed/vim-diminactive'                                                " 
 Plug 'itchyny/lightline.vim'                                                  " Lightline status line
 Plug 'junegunn/goyo.vim'                                                      " Zen-mode
 Plug 'google/vim-searchindex'                                                 " Number of search results
+Plug 'airblade/vim-gitgutter'                                                 " Display git symbols for changes in the gutter.
 
 " Sidebars
 Plug 'mbbill/undotree'                                                        " Undo tree
