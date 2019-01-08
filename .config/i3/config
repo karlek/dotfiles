@@ -186,8 +186,6 @@ assign [class="Deluge"]  → 8
 for_window [instance="terminal"] move window to scratchpad
 bindsym $mod+t [instance="terminal"] scratchpad show 
 
-exec --no-startup-id urxvtc -name terminal
-
 for_window [instance="cmus"] move window to scratchpad
 bindsym $mod+i [instance="cmus"] scratchpad show
 
@@ -198,6 +196,7 @@ exec --no-startup-id "redshift -l 59.2681907:18.013906 -t 5500:2500"
 # Notification server
 exec --no-startup-id "dunst"
 
+exec --no-startup-id "urxvtc -name terminal"
 exec --no-startup-id "urxvtc -name cmus -e fish -c 'tmux attach -d -t cmus'"
 exec --no-startup-id "feh --no-fehbg --randomize --bg-max ~/img/walls"
 exec --no-startup-id "unclutter -noevents -idle 3 -root -display :0.0 -jitter 25"
