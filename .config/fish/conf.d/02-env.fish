@@ -14,4 +14,3 @@ set -x LC_CTYPE "ja_JP.UTF-8"
 
 # Remove greeting.
 set fish_greeting ""
-
