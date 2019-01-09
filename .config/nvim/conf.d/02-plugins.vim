@@ -9,6 +9,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'zchee/deoplete-go',         { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 Plug 'sebastianmarkow/deoplete-rust'
+Plug 'tikhomirov/vim-glsl'
 
 " Language specific plugins
 Plug 'numirias/semshi',           { 'do': ':UpdateRemotePlugins'}             " Better semantic highlighting for Python
