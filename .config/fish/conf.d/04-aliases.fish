@@ -117,8 +117,8 @@ add_alias pacman pacexp   "pacman -Qqett"
 add_alias pacman pacclean "sudo pacman -Rs (pacman -Qqtd)"
 
 # Shortcut for ssh.
-alias laputa 'mosh laputa -- fish -c "tmux new-session -A -t vanilla -s vanilla"'
-alias irc 'mosh laputa -- fish -c "tmux new-session -A -t weechat -s weechat"'
+alias kobol 'ssh kobol -- tmux new-session -A -s vanilla -t vanilla'
+alias irc 'ssh kobol -- tmux new-session -A -s irc -t irc'
 
 alias vecka 'date "+%V"'
 
