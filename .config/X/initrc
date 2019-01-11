@@ -7,17 +7,12 @@ xinput set-prop $ibm_trackpad_id "Evdev Wheel Emulation Button" 2
 xinput set-prop $ibm_trackpad_id "Evdev Wheel Emulation Timeout" 200
 xinput set-prop $ibm_trackpad_id "Evdev Wheel Emulation Axes" 7 6 5 4
 
-redshift -l 59.2681907:18.013906 -t 5500:2500 &
-
 # Load Xresources for all X programs.
 xrdb ~/.config/X/resources
 
 # Load keyboard changes from .Xmodmap.
 xmodmap ~/.config/X/modmap
 setxkbmap -option caps:escape &
-
-# Urxvt daemon.
-urxvtd -q -f -o
 
 # Add support for keyboard mouse clicks.
 xkbset m
