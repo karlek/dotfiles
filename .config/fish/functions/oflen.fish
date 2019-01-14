@@ -1,4 +1,3 @@
 function oflen
-  grep "^.\{$argv\}\$"
+	grep "^.\{$argv\}\$"
 end
-
