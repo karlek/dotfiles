@@ -50,6 +50,7 @@ Plug 'kshenoy/vim-signature'                                                  " 
 
 " Test zone
 Plug 'tpope/vim-fugitive'
+Plug 'chrisbra/Recover.vim'
 
 call plug#end()                                                               " required
 
