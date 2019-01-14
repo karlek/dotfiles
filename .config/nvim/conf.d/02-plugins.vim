@@ -38,6 +38,7 @@ Plug 'ctrlpvim/ctrlp.vim'                                                     " 
 Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
 Plug 'blueyed/vim-diminactive'                                                " Dim inactive pane/window
 Plug 'itchyny/lightline.vim'                                                  " Lightline status line
+Plug 'junegunn/limelight.vim'                                                 " Zen-mode
 Plug 'junegunn/goyo.vim'                                                      " Zen-mode
 Plug 'google/vim-searchindex'                                                 " Number of search results
 Plug 'airblade/vim-gitgutter'                                                 " Display git symbols for changes in the gutter.
