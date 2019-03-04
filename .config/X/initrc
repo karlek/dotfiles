@@ -14,6 +14,9 @@ xrdb ~/.config/X/resources
 xmodmap ~/.config/X/modmap
 setxkbmap -option caps:escape &
 
+# Start urxvt daemon.
+urxvtd -q -f -o
+
 # Add support for keyboard mouse clicks.
 xkbset m
 
