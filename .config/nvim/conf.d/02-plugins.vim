@@ -8,7 +8,6 @@ Plug 'Shougo/neosnippet-snippets'
 " Language specific plugins for code completion
 Plug 'zchee/deoplete-go',         { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
-Plug 'sebastianmarkow/deoplete-rust'
 
 " Language specific plugins
 Plug 'numirias/semshi',           { 'do': ':UpdateRemotePlugins'}             " Better semantic highlighting for Python
