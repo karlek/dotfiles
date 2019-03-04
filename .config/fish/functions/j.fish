@@ -1,0 +1,1 @@
+/home/_/.config/fisherman/autojump/functions/j.fish
