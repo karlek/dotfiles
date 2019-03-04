@@ -10,5 +10,3 @@ end
 add_to_path "$HOME/.local/bin"
 add_to_path "$GOROOT/bin"
 add_to_path "$GOPATH/bin"
-add_to_path "$XDG_DATA_HOME/cargo/bin"
-add_to_path "$GEM_PATH"

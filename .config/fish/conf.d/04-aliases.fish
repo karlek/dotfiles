@@ -128,6 +128,7 @@ add_alias pamixer vol 'printf "%d%% and %s\n" (pamixer 0 --get-volume) (pamixer 
 # Screen cast.
 alias cast 'ffmpeg -f x11grab -video_size 2560x1440 -i :0 -f alsa -i default -c:v ffvhuff -c:a flac test.mkv'
 
+alias towords "awk '{for(i=1;i<=NF;i++) {print \$i}}'"
 alias tolower "tr '[:upper:]' '[:lower:]'"
 alias toupper "tr '[:lower:]' '[:upper:]'"
 alias tozero "tr '\n' '\0'"

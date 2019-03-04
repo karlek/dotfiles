@@ -15,7 +15,7 @@ function __toaster_current_folder
 end
 
 function is_git_folder
-    git rev-parse --abbrev-ref HEAD ^ /dev/null > /dev/null
+	git rev-parse --abbrev-ref HEAD ^ /dev/null > /dev/null
 	if test $status -ne 0
 		echo 1
 		return
