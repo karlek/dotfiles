@@ -34,6 +34,7 @@ Plug 'milkypostman/vim-togglelist'                                            " 
 Plug 'wellle/targets.vim'                                                     " Add more textobjects targets. d2aa (|a, b, c) -> (c)
 Plug 'ctrlpvim/ctrlp.vim'                                                     " Switch buffer plugin
 Plug 'ludovicchabant/vim-gutentags'                                           " Automatic tag handling
+Plug 'editorconfig/editorconfig-vim'
 
 " Apperance
 Plug 'karlek/vim-colorschemes'                                                " Colorscheme pack
