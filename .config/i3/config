@@ -189,8 +189,6 @@ bindsym $mod+t [instance="terminal"] scratchpad show
 for_window [instance="cmus"] move window to scratchpad
 bindsym $mod+i [instance="cmus"] scratchpad show
 
-# Urxvt daemon.
-exec --no-startup-id "urxvtd -q -f -o"
 exec --no-startup-id "redshift"
 
 # Notification server
