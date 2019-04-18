@@ -22,11 +22,11 @@ function add_abbr $argv
 end
 
 # Pacaur shortcuts
-add_abbr 'yay' pa  'yay'
-add_abbr 'yay' pas 'yay -Suy'
-add_abbr 'yay' par 'yay -Rns'
-add_abbr 'yay' pss 'yay -Ss'
-add_abbr 'yay' pql 'yay -Ql'
+add_abbr 'yay' ya  'yay'
+add_abbr 'yay' yas 'yay -Suy'
+add_abbr 'yay' yar 'yay -Rns'
+add_abbr 'yay' yss 'yay -Ss'
+add_abbr 'yay' yql 'yay -Ql'
 
 # Git shortcuts
 add_abbr 'git' gs  'git status'
