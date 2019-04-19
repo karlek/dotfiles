@@ -98,7 +98,7 @@ set smartindent
 set cindent
 
 " Keep more info in memory, commands etc.
-set history=1000
+set history=10000
 
 " Remove the splash message.
 set shortmess=I
