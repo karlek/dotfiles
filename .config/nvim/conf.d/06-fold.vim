@@ -1,4 +1,4 @@
-function! MyFoldText()
+function! FoldText()
     let line = getline(v:foldstart)
 
     let nucolwidth = &fdc + &number * &numberwidth
@@ -14,4 +14,8 @@ function! MyFoldText()
     return line . repeat(" ",fillcharcount) . foldedlinecount . ' '
 endfunction
 
-set foldtext=MyFoldText()
+set foldtext=FoldText()
+
+" Force folding.
+" set foldmethod=indent
+" set foldlevelstart=0
