@@ -84,11 +84,11 @@ set cursorline nocursorcolumn
 " Word wraping.
 set wrap linebreak
 
-" Show as much as possible of the last line.
+" Show as much as possible of the last line (in a file).
 set display=lastline
 
 " Minimum number of lines surrounding cursor.
-set scrolloff=5
+set scrolloff=3
 
 " Indention is 4 spaces
 set shiftwidth=4
