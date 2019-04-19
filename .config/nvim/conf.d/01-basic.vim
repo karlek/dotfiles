@@ -78,9 +78,6 @@ set ignorecase
 " Switch to case sensitive when having both cases in query.
 set smartcase
 
-" Allow switching of buffers without saving them first.
-set hidden
-
 " Highlight line but not column.
 set cursorline nocursorcolumn
 
