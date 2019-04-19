@@ -1,6 +1,9 @@
 " Other great colorschemes:
 " evening, pride, badwolf, PaperColor, hybrid
 
+" Enable syntax highlighting.
+syntax on
+
 let g:dark_lightline = 'darcula'
 let g:bright_lightline = 'PaperColor'
 let g:bright_colorscheme = 'PaperColor'

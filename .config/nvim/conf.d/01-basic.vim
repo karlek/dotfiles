@@ -1,20 +1,15 @@
 " Filetype based syntax highlighting.
 filetype plugin indent on
 
-" Enable syntax highlighting.
-syntax on
-
 " Syntax highlighting is slow with long lines.
 " Sets a maximum length for highlighting lines.
 set synmaxcol=5000
 
-" Show command and selected characters in status line.
-set showcmd
-
 " Don't jump to the start of the line when switching buffers.
 set nostartofline
 
-" Don't show mode in command-line, because we already show it in lightline.
+" Don't show mode in command-line, because we already show it in the
+" statusbar.
 set noshowmode
 
 " Automatically reload file if changed by environment.
