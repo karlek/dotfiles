@@ -104,6 +104,7 @@ set history=10000
 set shortmess=I
 set shortmess+=c
 
+" Expand @@ to project root
 cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
 " Expand $$ to nvim config folder.
 cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
@@ -115,8 +116,6 @@ augroup LastPosition
     autocmd!
     autocmd BufReadPost * call LastPosition()
 augroup END
-" Search for tag-file, used for method jumping
-set tags=./tags;
 
 " Change folder automatically
 autocmd BufEnter * silent! lcd %:p:h
