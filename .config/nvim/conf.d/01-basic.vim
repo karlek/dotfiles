@@ -28,6 +28,7 @@ set lazyredraw
 set fileformats=unix,dos,mac
 
 " Hides buffers instead of forcing them to close.
+" Allow switching of buffers without saving them first.
 set hidden
 
 " Language settings
@@ -55,17 +56,19 @@ set undofile
 
 " More XDG.
 set viminfo+=n$XDG_CACHE_HOME/nvim/viminfo
+" Directory where netrw bookmarks and history are saved.
 let g:netrw_home=$XDG_CACHE_HOME.'/nvim'
 
 " Enables mouse scrolling
 set mouse=a
 
-" Make updates happen faster (swap stuff).
+" Write to swap after nothing happens for this duration.
 set updatetime=250
 
 " Visual autocomplete for command menu
 set wildmenu
 set wildmode=list:longest,full
+set wildignore=*.pyc
 
 " Start searching automatically when typing
 set incsearch
