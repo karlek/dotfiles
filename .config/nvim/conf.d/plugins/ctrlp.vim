@@ -3,7 +3,7 @@ let g:ctrlp_by_filename = 1
 
 " Ignore vendor folders.
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v(vendor)$',
+\ 'dir':  '\v(vendor|node_modules|\.env)$',
 \ }
 
 " Only show files added to project.

@@ -142,3 +142,5 @@ add_alias yay pacaur 'yay'
 add_alias youtube-dl youtube-playlist 'youtube-dl --playlist-reverse -cwi --download-archive downloaded.txt --no-post-overwrites -o "%(playlist_index)s - %(title)s.%(ext)s"'
 alias k kubectl
 abbr kc 'k create -f'
+
+alias b 'git branch | grep "\*" | cut -c 3-'

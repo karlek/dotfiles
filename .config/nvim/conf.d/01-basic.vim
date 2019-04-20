@@ -1,20 +1,15 @@
 " Filetype based syntax highlighting.
 filetype plugin indent on
 
-" Enable syntax highlighting.
-syntax on
-
 " Syntax highlighting is slow with long lines.
 " Sets a maximum length for highlighting lines.
 set synmaxcol=5000
 
-" Show command and selected characters in status line.
-set showcmd
-
 " Don't jump to the start of the line when switching buffers.
 set nostartofline
 
-" Don't show mode in command-line, because we already show it in lightline.
+" Don't show mode in command-line, because we already show it in the
+" statusbar.
 set noshowmode
 
 " Automatically reload file if changed by environment.
@@ -33,6 +28,7 @@ set lazyredraw
 set fileformats=unix,dos,mac
 
 " Hides buffers instead of forcing them to close.
+" Allow switching of buffers without saving them first.
 set hidden
 
 " Language settings
@@ -60,17 +56,19 @@ set undofile
 
 " More XDG.
 set viminfo+=n$XDG_CACHE_HOME/nvim/viminfo
+" Directory where netrw bookmarks and history are saved.
 let g:netrw_home=$XDG_CACHE_HOME.'/nvim'
 
 " Enables mouse scrolling
 set mouse=a
 
-" Make updates happen faster (swap stuff).
+" Write to swap after nothing happens for this duration.
 set updatetime=250
 
 " Visual autocomplete for command menu
 set wildmenu
 set wildmode=list:longest,full
+set wildignore=*.pyc
 
 " Start searching automatically when typing
 set incsearch
@@ -80,20 +78,17 @@ set ignorecase
 " Switch to case sensitive when having both cases in query.
 set smartcase
 
-" Allow switching of buffers without saving them first.
-set hidden
-
 " Highlight line but not column.
 set cursorline nocursorcolumn
 
 " Word wraping.
 set wrap linebreak
 
-" Show as much as possible of the last line.
+" Show as much as possible of the last line (in a file).
 set display=lastline
 
 " Minimum number of lines surrounding cursor.
-set scrolloff=5
+set scrolloff=3
 
 " Indention is 4 spaces
 set shiftwidth=4
@@ -103,32 +98,47 @@ set smartindent
 set cindent
 
 " Keep more info in memory, commands etc.
-set history=1000
+set history=10000
 
 " Remove the splash message.
 set shortmess=I
 set shortmess+=c
 
+" Expand @@ to project root
 cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
 " Expand $$ to nvim config folder.
 cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
+" Record last position in file.
+fun! LastPosition()
+	" Ignore git commit messages.
+	let name = fnamemodify( expand('%'), ':t:r' )
+	if name =~ 'COMMIT_EDITMSG'
+		return
+	endif
+	if line("'\"") > 0 && line("'\"") <= line("$") |
+		execute "normal! g`\"" |
+	endif
+endfun
 " Return to last edit position when opening files.
 augroup LastPosition
     autocmd!
     autocmd BufReadPost * call LastPosition()
 augroup END
-" Search for tag-file, used for method jumping
-set tags=./tags;
-
-" Change folder automatically
-autocmd BufEnter * silent! lcd %:p:h
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:\|\ ,eol:¬\,trail:·
 set list
 
 " Automatically remove netrw buffers.
-autocmd FileType netrw setl bufhidden=delete
+augroup RemoveNetrwBuffers
+	autocmd!
+	autocmd FileType netrw setl bufhidden=delete
+augroup END
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif

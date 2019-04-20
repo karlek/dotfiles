@@ -8,9 +8,6 @@ nnoremap k gk
 " Make Y behave consistently with other capitals
 nnoremap Y y$
 
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
 " Disable command history search.
 noremap q: <Nop>
 " Disable help key.
@@ -19,15 +16,6 @@ inoremap <F1> <Nop>
 
 nnoremap <leader>O O<Esc>
 nnoremap <leader>o o<Esc>
-nnoremap <leader>1 :buffer 1<Esc>
-nnoremap <leader>2 :buffer 2<Esc>
-nnoremap <leader>3 :buffer 3<Esc>
-nnoremap <leader>4 :buffer 4<Esc>
-nnoremap <leader>5 :buffer 5<Esc>
-nnoremap <leader>6 :buffer 6<Esc>
-nnoremap <leader>7 :buffer 7<Esc>
-nnoremap <leader>8 :buffer 8<Esc>
-nnoremap <leader>9 :buffer 9<Esc>
 nnoremap <leader>n :enew<cr>
 nnoremap <leader>d :bp <BAR> bd #<CR>
 
@@ -59,8 +47,8 @@ nmap <leader>k <Plug>(easymotion-k)
 nmap <leader>f <Plug>(easymotion-overwin-f)
 
 " Yank and paste to system clipboard.
-vnoremap <leader>y  "+y
-nnoremap <leader>y  "+y
+vnoremap <leader>y "+y
+nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 
 nnoremap <leader>/ :Commentary<cr>
@@ -72,7 +60,10 @@ nnoremap <silent> <leader>c :nohl<CR><C-l>
 " Remove trailing spaces.
 noremap <F3> :setlocal spell! spelllang=en,sv<CR>
 noremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
-noremap <F5> :UndotreeToggle<cr>
+noremap <F10> :UndotreeToggle<cr>
+noremap <F11> :TagbarToggle<cr>
+inoremap <F12> <esc>
+nnoremap <F12> :call ToggleHiddenAll()<CR>
 
 " Close help with `q`.
 augroup CloseHelp
@@ -89,9 +80,6 @@ nnoremap N Nzzzv
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-" Add forward-delete in insert mode.
-inoremap <C-d> <C-o>de
-
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -100,7 +88,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Switch buffers.
 nnoremap <C-b> :CtrlPBuffer<cr>
-inoremap <f12> <esc>
+nnoremap <C-t> :CtrlPBufTagAll<cr>
 
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
@@ -127,5 +115,3 @@ endfunction
 
 nnoremap <C-g> :Ggrep 
 nnoremap gF :Ggrep <cword><cr>
-
-nnoremap <S-h> :call ToggleHiddenAll()<CR>
