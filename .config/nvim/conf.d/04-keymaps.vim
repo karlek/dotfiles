@@ -88,7 +88,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Switch buffers.
 nnoremap <C-b> :CtrlPBuffer<cr>
-inoremap <f12> <esc>
+nnoremap <C-t> :CtrlPBufTagAll<cr>
 
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
@@ -115,5 +115,3 @@ endfunction
 
 nnoremap <C-g> :Ggrep 
 nnoremap gF :Ggrep <cword><cr>
-
-nnoremap <S-h> :call ToggleHiddenAll()<CR>
