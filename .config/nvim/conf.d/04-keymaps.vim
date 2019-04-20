@@ -8,9 +8,6 @@ nnoremap k gk
 " Make Y behave consistently with other capitals
 nnoremap Y y$
 
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
 " Disable command history search.
 noremap q: <Nop>
 " Disable help key.
