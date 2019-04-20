@@ -19,18 +19,7 @@ else
 	let g:lightline.colorscheme = g:light_lightline
 end
 
-" let g:sun = ChompedSystem('sunwait poll sun up daylight 59N 18E')
-" if g:sun ==? 'DAY'
-"       set background=light
-"       execute 'colorscheme ' . g:light_colorscheme
-"       let g:lightline.colorscheme = g:light_lightline
-" else
-"       set background=dark
-"       execute 'colorscheme ' . g:dark_colorscheme
-"       let g:lightline.colorscheme = g:dark_lightline
-" endif
-
-function! s:Togglelight()
+function! s:ToggleBright()
 	if &background ==? 'dark'
 		set background=light
 		let g:lightline.colorscheme = g:light_lightline
@@ -43,4 +32,4 @@ function! s:Togglelight()
 	call lightline#init()
 	call lightline#enable()
 endfunction
-command! Togglelight :call s:ToggleBright()
+command! ToggleBright :call s:ToggleBright()
