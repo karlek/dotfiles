@@ -136,7 +136,10 @@ set listchars=tab:\|\ ,eol:¬\,trail:·
 set list
 
 " Automatically remove netrw buffers.
-autocmd FileType netrw setl bufhidden=delete
+augroup RemoveNetrwBuffers
+	autocmd!
+	autocmd FileType netrw setl bufhidden=delete
+augroup END
 
 " For conceal markers.
 if has('conceal')
