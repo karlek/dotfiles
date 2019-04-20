@@ -80,9 +80,6 @@ nnoremap N Nzzzv
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-" Add forward-delete in insert mode.
-inoremap <C-d> <C-o>de
-
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
