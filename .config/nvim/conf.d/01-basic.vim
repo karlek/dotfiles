@@ -128,9 +128,6 @@ augroup LastPosition
     autocmd BufReadPost * call LastPosition()
 augroup END
 
-" Change folder automatically
-autocmd BufEnter * silent! lcd %:p:h
-
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:\|\ ,eol:¬\,trail:·
 set list
