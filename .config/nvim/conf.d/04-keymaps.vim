@@ -16,15 +16,6 @@ inoremap <F1> <Nop>
 
 nnoremap <leader>O O<Esc>
 nnoremap <leader>o o<Esc>
-nnoremap <leader>1 :buffer 1<Esc>
-nnoremap <leader>2 :buffer 2<Esc>
-nnoremap <leader>3 :buffer 3<Esc>
-nnoremap <leader>4 :buffer 4<Esc>
-nnoremap <leader>5 :buffer 5<Esc>
-nnoremap <leader>6 :buffer 6<Esc>
-nnoremap <leader>7 :buffer 7<Esc>
-nnoremap <leader>8 :buffer 8<Esc>
-nnoremap <leader>9 :buffer 9<Esc>
 nnoremap <leader>n :enew<cr>
 nnoremap <leader>d :bp <BAR> bd #<CR>
 
