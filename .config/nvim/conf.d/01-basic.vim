@@ -111,6 +111,17 @@ cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
+" Record last position in file.
+fun! LastPosition()
+	" Ignore git commit messages.
+	let name = fnamemodify( expand('%'), ':t:r' )
+	if name =~ 'COMMIT_EDITMSG'
+		return
+	endif
+	if line("'\"") > 0 && line("'\"") <= line("$") |
+		execute "normal! g`\"" |
+	endif
+endfun
 " Return to last edit position when opening files.
 augroup LastPosition
     autocmd!
