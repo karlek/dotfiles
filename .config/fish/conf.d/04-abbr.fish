@@ -31,6 +31,7 @@ add_abbr 'yay' yql 'yay -Ql'
 # Git shortcuts
 add_abbr 'git' gs  'git status'
 add_abbr 'git' ga  'git add'
+add_abbr 'git' gaf 'git add -f'
 add_abbr 'git' gap 'git add -p'
 add_abbr 'git' gc  'git commit --verbose --gpg-sign'
 add_abbr 'git' gcb 'git checkout -b'
