@@ -1,4 +1,4 @@
-let mapleader=" "
+let mapleader="\<Space>"
 let maplocalleader="\\"
 
 " Smarter movement on wrapped lines.
