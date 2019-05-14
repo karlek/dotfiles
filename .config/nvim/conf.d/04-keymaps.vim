@@ -93,9 +93,8 @@ nnoremap <C-t> :CtrlPBufTagAll<cr>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Expand snippets and jump between insertion points.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 nnoremap <silent> zj :call NextClosedFold('j')<cr>
 nnoremap <silent> zk :call NextClosedFold('k')<cr>
