@@ -10,7 +10,7 @@ let g:light_colorscheme = 'PaperColor'
 let g:dark_colorscheme = 'badwolf'
 let g:lightline = {}
 
-set background=light
+set background=dark
 if &background ==? 'dark'
 	execute 'colorscheme ' . g:dark_colorscheme
 	let g:lightline.colorscheme = g:dark_lightline
