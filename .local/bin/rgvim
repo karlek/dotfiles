@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+CURRENT_PATH=$1
+SEARCH_STRING=$2
+
+cd $CURRENT_PATH
+ROOT=$(git rev-parse --show-toplevel)
+cd $ROOT
+
+FILES=$(git ls-files -oc --exclude-standard | xargs -I '{}' printf "$ROOT/%s\n" {})
+
+rg --vimgrep $1 $FILES
