@@ -112,5 +112,5 @@ function! NextClosedFold(dir)
     endif
 endfunction
 
-nnoremap <C-g> :Ggrep 
-nnoremap gF :Ggrep <cword><cr>
+nnoremap <C-g> :Grep 
+nnoremap gF :execute("cgetexpr system(&grepprg . ' ' . expand('<cword>'))")<cr>
