@@ -8,7 +8,7 @@ function! ToggleHiddenAll()
 		set noshowmode
 		set noruler
 		set laststatus=0
-		set noshowcmd
+		" set noshowcmd
 	else
 		let s:hidden_all = 0
 		set showmode
@@ -17,5 +17,6 @@ function! ToggleHiddenAll()
 		set showcmd
 	endif
 endfunction
-" Hide statusbar
+
+" Start vim with hidden statusbar
 call ToggleHiddenAll()
