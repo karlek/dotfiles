@@ -10,8 +10,8 @@ Plug 'deoplete-plugins/deoplete-go',         { 'do': 'make'}
 Plug 'deoplete-plugins/deoplete-jedi'
 
 " Language specific plugins
-Plug 'numirias/semshi',           { 'do': ':UpdateRemotePlugins'}             " Better semantic highlighting for Python
-Plug 'lervag/vimtex',             { 'for': 'latex' }                          " LaTeX handling
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins'}                       " Better semantic highlighting for Python
+Plug 'lervag/vimtex',   { 'for': 'latex' }                                    " LaTeX handling
 Plug 'fatih/vim-go'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
