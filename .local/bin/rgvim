@@ -11,4 +11,4 @@ cd $ROOT
 
 FILES=$(git ls-files -oc --exclude-standard | xargs -I '{}' printf "$ROOT/%s\n" {})
 
-rg --vimgrep $1 $FILES
+rg --vimgrep $SEARCH_STRING $FILES
