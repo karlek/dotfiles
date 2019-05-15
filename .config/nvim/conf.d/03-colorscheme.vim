@@ -3,6 +3,9 @@
 
 " Enable syntax highlighting.
 syntax on
+if $TERM !~ '256'
+	set termguicolors
+endif
 
 let g:dark_lightline = 'darcula'
 let g:light_lightline = 'PaperColor'
