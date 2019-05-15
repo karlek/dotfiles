@@ -102,6 +102,7 @@ set history=10000
 
 " Remove the splash message.
 set shortmess=I
+" Don't give |ins-completion-menu| messages.
 set shortmess+=c
 
 " Expand @@ to project root
