@@ -84,9 +84,6 @@ set cursorline nocursorcolumn
 " Word wraping.
 set wrap linebreak
 
-" Show as much as possible of the last line (in a file).
-set display=lastline
-
 " Minimum number of lines surrounding cursor.
 set scrolloff=3
 
