@@ -12,9 +12,6 @@ set nostartofline
 " statusbar.
 set noshowmode
 
-" Automatically reload file if changed by environment.
-set autoread
-
 " utf-8 is the best <3
 set termencoding=utf-8 encoding=utf-8 fileformat=unix
 " Detect the encoding of every file you read (in order to determine the value
@@ -40,9 +37,6 @@ set number
 
 " Show matching parenthesis.
 set showmatch
-
-" "Just turn the dang bell off".
-set belloff=all
 
 " Keep undo history across sessions by storing it in a file
 let g:swapDir = $XDG_CACHE_HOME.'/nvim/swap'
