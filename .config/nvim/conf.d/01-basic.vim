@@ -47,7 +47,7 @@ set belloff=all
 " Keep undo history across sessions by storing it in a file
 let g:swapDir = $XDG_CACHE_HOME.'/nvim/swap'
 if !isdirectory(g:swapDir)
-    call mkdir(g:swapDir)
+	call mkdir(g:swapDir)
 endif
 let &directory=g:swapDir
 let &backupdir=g:swapDir
@@ -112,21 +112,13 @@ cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
-" Record last position in file.
-fun! LastPosition()
-	" Ignore git commit messages.
-	let name = fnamemodify( expand('%'), ':t:r' )
-	if name =~ 'COMMIT_EDITMSG'
-		return
-	endif
-	if line("'\"") > 0 && line("'\"") <= line("$") |
-		execute "normal! g`\"" |
-	endif
-endfun
 " Return to last edit position when opening files.
 augroup LastPosition
-    autocmd!
-    autocmd BufReadPost * call LastPosition()
+	autocmd!
+	autocmd BufReadPost *
+	\ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+	\ |   exe "normal! g`\""
+	\ | endif
 augroup END
 
 " Use the same symbols as TextMate for tabstops and EOLs
@@ -141,5 +133,5 @@ augroup END
 
 " For conceal markers.
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+	set conceallevel=2 concealcursor=niv
 endif
