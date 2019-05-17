@@ -60,12 +60,8 @@ set mouse=a
 set updatetime=250
 
 " Visual autocomplete for command menu
-set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.pyc
-
-" Start searching automatically when typing
-set incsearch
 
 " Ignore case when searching.
 set ignorecase
@@ -88,11 +84,8 @@ set softtabstop=4
 set smartindent
 set cindent
 
-" Keep more info in memory, commands etc.
-set history=10000
-
 " Remove the splash message.
-set shortmess=I
+set shortmess+=I
 " Don't give |ins-completion-menu| messages.
 set shortmess+=c
 
