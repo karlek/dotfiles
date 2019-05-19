@@ -11,7 +11,7 @@ nnoremap Y y$
 " Disable command history search.
 nnoremap q: <Nop>
 " Disable help key.
-noremap <F1> :echo<CR>
+nnoremap <F1> :echo<CR>
 inoremap <F1> <Nop>
 
 nnoremap <leader>O O<Esc>
