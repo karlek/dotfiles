@@ -8,7 +8,7 @@ xinput set-prop $ibm_trackpad_id "Evdev Wheel Emulation Timeout" 200
 xinput set-prop $ibm_trackpad_id "Evdev Wheel Emulation Axes" 7 6 5 4
 
 trackpoint_id=$(xinput | grep 'TrackPoint' | cut -d"=" -f2 | cut -f1)
-xinput set-prop $trackpoint_id 'libinput Accel Speed' 0.99
+xinput set-prop $trackpoint_id 'libinput Accel Speed' 1.0
 
 # Load Xresources for all X programs.
 xrdb ~/.config/X/resources
