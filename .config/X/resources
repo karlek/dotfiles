@@ -71,6 +71,7 @@ URxvt.clipboard.autocopy:     true
 ! Clickable URLs
 URxvt.url-launcher:           xdg-open
 URxvt.matcher.button:         1
+URxvt.keysym.M-Delete:        perl:matcher:list
 
 ! Cursor
 URxvt.cursorUnderline:        true
