@@ -16,7 +16,7 @@ inoremap <F1> <Nop>
 
 nnoremap <leader>O O<Esc>
 nnoremap <leader>o o<Esc>
-nnoremap <leader>n :enew<cr>
+nnoremap <leader>n :enew<CR>
 nnoremap <leader>d :bp <BAR> bd #<CR>
 
 " Special characters in regex are special. More perl like regular expressions.
@@ -39,7 +39,9 @@ nnoremap <C-l> <C-w>l
 
 "Line motions
 nmap <leader>j <Plug>(easymotion-j)
+vmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
+vmap <leader>k <Plug>(easymotion-k)
 
 " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
