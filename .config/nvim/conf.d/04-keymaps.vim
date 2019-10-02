@@ -52,6 +52,7 @@ nmap <leader>f <Plug>(easymotion-overwin-f)
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 
 nnoremap <leader>/ :Commentary<cr>
 vnoremap <leader>/ :Commentary<cr>
