@@ -82,6 +82,8 @@ nnoremap N Nzzzv
 " Little emacs never killed nobody.
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+" Like '<C-r><C-w>' but for the line under the cursor.
+cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
