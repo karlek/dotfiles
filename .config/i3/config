@@ -174,9 +174,12 @@ bindsym $mod+Tab workspace back_and_forth
 for_window [instance="pomodoro.*"] floating enable
 for_window [instance="Unity"] floating enable
 for_window [instance="warcraft iii.exe"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+# Only main window floating.
+for_window [instance="java-lang-Thread"] floating enable
+for_window [class="jetbrains-idea-ce" title=".*IntelliJ IDEA.*"] floating disable
 
-assign [class="Firefox"] → 1
+assign [class="[fF]irefox"] → 1
+assign [class="jetbrains-idea-ce"] → 2
 assign [class="Nightly"] → 1
 assign [instance="Unity"] → 2
 assign [instance="Steam"] → 3
