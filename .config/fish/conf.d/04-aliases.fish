@@ -144,3 +144,9 @@ alias k kubectl
 abbr kc 'k create -f'
 
 alias b 'git branch | grep "\*" | cut -c 3-'
+alias bm 'echo (git rev-parse --abbrev-ref "master@{upstream}")..(b)'
+alias bmr 'echo (b)..(git rev-parse --abbrev-ref "master@{upstream}")'
+alias x 'xrandr --auto'
+
+# Bazelisk
+alias bazel bazelisk
