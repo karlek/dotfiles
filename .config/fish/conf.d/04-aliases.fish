@@ -82,7 +82,7 @@ add_alias stack ghci 'stack ghci'
 add_alias xidel 'xidel --color=always'
 
 # Serve folder on port 8000.
-alias serve 'myip; /bin/sh -c "(cd $argv[1] && python -m http.server)"'
+alias serve 'myip; /bin/sh -c "(cd $argv[1] && ~/.local/bin/serve)"'
 
 # Strip file extensions.
 alias stripext "sed 's/\.[^.]*\$//'"
