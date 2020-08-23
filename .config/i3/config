@@ -185,6 +185,8 @@ assign [instance="Unity"] → 2
 assign [instance="Steam"] → 3
 assign [class="qBittorrent"] → 8
 assign [class="Deluge"]  → 8
+assign [instance="spotify"] → 9
+assign [instance="slack"] → 10
 
 for_window [instance="terminal"] move window to scratchpad
 bindsym $mod+t [instance="terminal"] scratchpad show 
