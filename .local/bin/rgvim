@@ -9,6 +9,6 @@ cd $CURRENT_PATH
 ROOT=$(git rev-parse --show-toplevel)
 cd $ROOT
 
-FILES=$(git ls-files -oc --exclude-standard | xargs -I '{}' printf "$ROOT/%s\n" {})
+FILES=$(git ls-files -oc --exclude-standard | grep -v -P "(\.env|\.venv|node_modules)" | xargs -I '{}' printf "$ROOT/%s\n" {})
 
 rg --vimgrep $SEARCH_STRING $FILES
