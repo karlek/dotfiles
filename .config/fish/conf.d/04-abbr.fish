@@ -58,6 +58,8 @@ add_abbr 'ecn' echo 'echo -n'
 add_abbr 'echo' ecn 'echo -n'
 add_abbr 'base64' 64d 'base64 -d'
 add_abbr 'base64' 64e 'base64'
+add_abbr 'vim' 0xd 'xxd -r -p'
+add_abbr 'vim' 0xe 'xxd -p | tr -d "\n"'
 abbr urld 'urldecode'
 
 add_abbr spectro spectro 'spectro --local --parallel'
