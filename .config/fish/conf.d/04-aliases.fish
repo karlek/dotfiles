@@ -147,3 +147,6 @@ alias x 'xrandr --auto'
 
 # Bazelisk
 alias bazel bazelisk
+
+alias 64ud 'python -c "import sys; import base64; binary = base64.urlsafe_b64decode(sys.stdin.read() + \'===\'); sys.stdout.buffer.write(binary)"'
+alias 64ue 'python -c "import sys; import base64; binary = base64.urlsafe_b64encode(sys.stdin.read().encode(\'utf-8\')); sys.stdout.buffer.write(binary)"'
