@@ -50,9 +50,6 @@ alias less 'less -R'
 # Colorized and better syntax for diff.
 alias diff 'diff --color=auto -u'
 
-# Cleaner output.
-alias time 'time -f "\t%e real\t%U user\t%S sys\t%P CPU\t%x status"'
-
 # Colored pup
 add_alias pup 'pup --color'
 
