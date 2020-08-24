@@ -1,0 +1,14 @@
+{
+  "diagnostic.virtualText": true,
+  "diagnostic.messageDelay": 500,
+
+  "suggest.noselect": true,
+
+  "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "typescript", "html", "yaml"],
+  "coc.preferences.rootPatterns": [".git", ".env", ".venv", ".dvenv"],
+
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/usr/bin/black",
+
+  "java.home": "/usr/lib/jvm/java-8-openjdk"
+}

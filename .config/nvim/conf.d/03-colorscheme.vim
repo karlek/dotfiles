@@ -35,4 +35,6 @@ function! s:ToggleBright()
 	call lightline#init()
 	call lightline#enable()
 endfunction
+
+highlight Comment cterm=italic
 command! ToggleBright :call s:ToggleBright()

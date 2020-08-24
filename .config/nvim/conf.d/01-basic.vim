@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 " Filetype based syntax highlighting.
 filetype plugin indent on
 
@@ -12,8 +15,8 @@ set nostartofline
 " statusbar.
 set noshowmode
 
-" utf-8 is the best <3
-set termencoding=utf-8 encoding=utf-8 fileformat=unix
+" Unix newlines. Always.
+set fileformat=unix
 " Detect the encoding of every file you read (in order to determine the value
 " of fileencoding)
 set fileencodings=ucs-bom,utf8,prc
@@ -35,11 +38,10 @@ set langmenu=en helplang=en
 " Line numbering
 set number
 
-" Show matching parenthesis.
+" When a bracket is inserted, briefly jump to the matching one.
 set showmatch
-
 " Keep undo history across sessions by storing it in a file
-let g:swapDir = $XDG_CACHE_HOME.'/nvim/swap'
+let g:swapDir = $XDG_CACHE_HOME.'/nvim/swap//'
 if !isdirectory(g:swapDir)
 	call mkdir(g:swapDir)
 endif
@@ -88,11 +90,13 @@ set cindent
 set shortmess+=I
 " Don't give |ins-completion-menu| messages.
 set shortmess+=c
+" Show search count message when searching.
+set shortmess-=S
 
 " Expand @@ to project root
-cabbr <expr> @@ ChompedSystem("git rev-parse --show-toplevel")
+cabbr <expr> @@ ChompedSystem('git rev-parse --show-toplevel')
 " Expand $$ to nvim config folder.
-cabbr <expr> $$ "$XDG_CONFIG_HOME/nvim/conf.d"
+cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/conf.d'
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
@@ -114,3 +118,21 @@ augroup RemoveNetrwBuffers
 	autocmd!
 	autocmd FileType netrw setl bufhidden=delete
 augroup END
+
+" Don't auto insert comments.
+set formatoptions-=cro
+ 
+" Figure out the system Python for Neovim.
+if exists('$VIRTUAL_ENV')
+    let g:python3_host_prog=substitute(system('which -a python3 | head -n2 | tail -n1'), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system('which python3'), "\n", '', 'g')
+endif
+
+set nrformats-=octal
+
+" always show signcolumns
+set signcolumn=yes
+
+" https://github.com/vim/vim/issues/2049
+set maxmempattern=5000
