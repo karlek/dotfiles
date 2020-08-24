@@ -62,3 +62,5 @@ abbr urld 'urldecode'
 
 add_abbr spectro spectro 'spectro --local --parallel'
 add_abbr nvim v 'vim'
+abbr r 'reset'
+abbr s 'source'
