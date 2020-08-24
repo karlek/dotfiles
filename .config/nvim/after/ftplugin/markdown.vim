@@ -7,4 +7,4 @@ set nocindent
 
 autocmd BufEnter * :syntax sync fromstart
 
-let g:markdown_fenced_languages = ['javascript', 'json']
+let g:markdown_fenced_languages = ['javascript', 'json', 'proto', 'python', 'asn']
