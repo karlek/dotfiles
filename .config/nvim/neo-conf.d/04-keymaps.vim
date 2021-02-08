@@ -12,12 +12,14 @@ nnoremap <leader>r :source $MYVIMRC<CR>
 
 " Fast saving
 nnoremap <leader>w :w!<cr>
+" New buffer quick
+nnoremap <leader>n :enew<CR>
 
 " Change between two open files quickly
 nnoremap <leader><leader> <C-^>
 
 " Clear search highlighting.
-nnoremap <silent> <leader>c :nohl<CR><C-l>
+nnoremap <silent> <leader>c :nohl<CR><cmd>lua vim.lsp.buf.clear_references()<CR>
 
 " Fast window movement
 nnoremap <C-j> <C-w>j
@@ -37,16 +39,45 @@ vmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 vmap <leader>k <Plug>(easymotion-k)
 
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" `s{char}{label}`
+nmap <leader>f <Plug>(easymotion-overwin-f)
+
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Switch buffers.
-nnoremap <C-b> :CtrlPBuffer<cr>
+nnoremap <C-b> :Buffer<cr>
+nnoremap <leader>b :ls<CR>:b<Space>
 
-nnoremap <leader>O O<Esc>
+nnoremap <leader>O m`O<Esc>``
 nnoremap <leader>o o<Esc>
+"nnoremap <leader>O m`O<Esc>``
+"nnoremap <leader>o m`o<Esc>``
+
+nnoremap <C-g> :Ag<cr>
+nnoremap <C-p> :GFiles<cr>
+" set grepprg=ag\ --vimgrep\ $*
+" set grepformat=%f:%l:%c:%m
+
+" Smarter movement on wrapped lines.
+nnoremap j gj
+nnoremap k gk
+
+nnoremap <F3> :setlocal spell! spelllang=en,sv<CR>
+" Remove trailing spaces.
+nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
+nnoremap <F12> :call ToggleHiddenAll()<CR>
+
+" Swedish keyboard
+"
+" Swedish keyboard Ctrl-[
+inoremap <F12> <esc>
+
+"nnoremap <silent><leader>vv :Goyo<cr>:Limelight!!<cr>:set list!<cr>:set linebreak!<cr>:set wrap!<cr>
 
 " -- unsure --
 "nnoremap <C-t> :CtrlPBufTagAll<cr>
@@ -76,31 +107,18 @@ nnoremap <leader>o o<Esc>
 "nnoremap <C-g> :Grep 
 "nnoremap gF :execute("cgetexpr system(&grepprg . ' ' . expand('<cword>'))")<cr>
 "
-"" Smarter movement on wrapped lines.
-"nnoremap j gj
-"nnoremap k gk
-"
 "" Make Y behave consistently with other capitals
 "nnoremap Y y$
-nnoremap <leader>n :enew<CR>
 "nnoremap <leader>d :bp <BAR> bd #<CR>
 "
 "" Special characters in regex are special. More perl like regular expressions.
 "nnoremap / /\v
 "vnoremap / /\v
 "
-"" Jump to anywhere you want with minimal keystrokes, with just one key
-"" binding.
-"" `s{char}{label}`
-"nmap <leader>f <Plug>(easymotion-overwin-f)
 "
-"" Remove trailing spaces.
-"nnoremap <F3> :setlocal spell! spelllang=en,sv<CR>
-"nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
 "nnoremap <F10> :UndotreeToggle<cr>
 "nnoremap <F11> :TagbarToggle<cr>
 "inoremap <F12> <esc>
-"nnoremap <F12> :call ToggleHiddenAll()<CR>
 "
 "" Like '<C-r><C-w>' but for the line under the cursor.
 "cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
@@ -110,3 +128,4 @@ nnoremap <leader>n :enew<CR>
 "
 "" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 "nmap ga <Plug>(EasyAlign)
+

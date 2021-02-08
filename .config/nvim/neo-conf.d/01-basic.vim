@@ -45,7 +45,7 @@ set noshowmode
 " Expand @@ to project root
 cabbr <expr> @@ ChompedSystem('git rev-parse --show-toplevel')
 " Expand $$ to nvim config folder.
-cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/conf.d'
+cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/neo-conf.d'
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
@@ -63,7 +63,10 @@ set listchars=tab:\|\ ,eol:¬\,trail:·
 set list
 
 set formatoptions-=c formatoptions-=r formatoptions-=o
+" set formatoptions-=cro
 " autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" setlocal formatoptions-=cro
 
 set undofile
 let &backupdir=&directory
@@ -79,8 +82,32 @@ set shortmess+=I
 set shortmess+=c
 
 " Indention is 4 spaces
-" set shiftwidth=4
+set shiftwidth=4
 set tabstop=4
-" set softtabstop=4
-" set smartindent
+set softtabstop=4
+set smartindent
 set cindent
+set shiftround " Rounds the indent spacing to the next multiple of shiftwidth
+
+" Automatically remove netrw buffers.
+augroup RemoveNetrwBuffers
+	autocmd!
+	autocmd FileType netrw setl bufhidden=delete
+augroup END
+
+" Update the document interactively with `:s`
+set inccommand=split
+
+set termguicolors
+
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
+
+set omnifunc=v:lua.vim.lsp.omnifunc
+
+hi LspReferenceText gui=bold guibg=#444444
+hi LspReferenceRead gui=bold guibg=#448844
+hi LspReferenceWrite gui=bold guibg=#884444
+ " #d7005f
