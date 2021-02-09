@@ -118,3 +118,4 @@ echo "[u] Enable macspoof for your interface"
 echo "sudo systemctl enable macspoof@wlp4s0.service"
 
 xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
+git config --local status.showUntrackedFiles no
