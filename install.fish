@@ -116,3 +116,5 @@ sudo mv -i sflock /usr/bin
 
 echo "[u] Enable macspoof for your interface"
 echo "sudo systemctl enable macspoof@wlp4s0.service"
+
+xdg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
