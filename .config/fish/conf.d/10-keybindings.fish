@@ -14,11 +14,11 @@ function fish_user_key_bindings
     # Alt+1 : pipe to in
     bind \e1 'commandline -i "| in"'
 
-    # Alt+2 : pipe stderr to stdout
-    bind \e2 'commandline -i "2>&1"'
+    # Alt+2 : pipe to /dev/null
+    bind \e2 'commandline -i "2> /dev/null"'
 
-    # Alt+3 : pipe to /dev/null
-    bind \e3 'commandline -i "2> /dev/null"'
+    # Alt+3 : pipe stderr to stdout
+    bind \e3 'commandline -i "2>&1"'
 
     # Ctrl+delete: remove next word
     bind \e\[3^ 'commandline -f kill-bigword; and commandline -f delete-char'
