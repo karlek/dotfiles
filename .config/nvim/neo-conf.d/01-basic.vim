@@ -8,16 +8,6 @@ set number
 " When a bracket is inserted, briefly jump to the matching one.
 set showmatch
 
-" Syntax highlighting is slow with long lines.
-" Sets a maximum length for highlighting lines.
-set synmaxcol=5000
-
-" Don't jump to the start of the line when switching buffers.
-set nostartofline
-
-" Unix newlines. Always.
-set fileformat=unix
-
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
@@ -25,15 +15,14 @@ set lazyredraw
 set mouse=a
 
 " Ignore case when searching.
-set ignorecase
 " Switch to case sensitive when having both cases in query.
-set smartcase
+set ignorecase smartcase
 
 " Highlight line but not column.
-set cursorline nocursorcolumn
+set cursorline
 
 " Word wraping.
-set wrap linebreak
+set linebreak
 
 " Minimum number of lines surrounding cursor.
 set scrolloff=3
@@ -58,56 +47,46 @@ augroup LastPosition
 	\ | endif
 augroup END
 
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:\|\ ,eol:¬\,trail:·
-set list
+" Show tab, end-of-line and trailing whitespaces.
+set list listchars=tab:\|\ ,eol:¬\,trail:·
 
+" Don't insert comments automatically after another comment.
+" c:	Auto-wrap comments using textwidth, inserting the current comment
+" leader automatically.
+" r:	Automatically insert the current comment leader after hitting <Enter>
+" in Insert mode.
+" o:	Automatically insert the current comment leader after hitting 'o' or
+" 'O' in Normal mode.
 set formatoptions-=c formatoptions-=r formatoptions-=o
-" set formatoptions-=cro
-" autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" setlocal formatoptions-=cro
 
+" Save undo history between sessions.
 set undofile
+" List of directories for the backup file, separated with commas.
 let &backupdir=&directory
-" Write to swap after nothing happens for this duration.
+" Write to swap if nothing happens after this duration.
 set updatetime=250
 
-let g:netrw_home=$XDG_DATA_HOME.'/nvim'
-
 " Remove the splash message.
-set shortmess+=I
-
 " Don't give |ins-completion-menu| messages.
-set shortmess+=c
+set shortmess+=I shortmess+=c
 
-" Indention is 4 spaces
+" Number of spaces to use for each step of (auto)indent. Used for >> and <<.
 set shiftwidth=4
+" Number of spaces that a <Tab> in the file counts for.
 set tabstop=4
+" Remove four spaces like a tab.
 set softtabstop=4
-set smartindent
-set cindent
-set shiftround " Rounds the indent spacing to the next multiple of shiftwidth
-
-" Automatically remove netrw buffers.
-augroup RemoveNetrwBuffers
-	autocmd!
-	autocmd FileType netrw setl bufhidden=delete
-augroup END
+" When shifting lines (>> & <<), round the indentation to the nearest multiple
+" of `shiftwidth.`
+set shiftround
 
 " Update the document interactively with `:s`
 set inccommand=split
 
+" Enables 24-bit RGB color in the |TUI|.
 set termguicolors
 
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup END
-
-set omnifunc=v:lua.vim.lsp.omnifunc
-
-hi LspReferenceText gui=bold guibg=#444444
-hi LspReferenceRead gui=bold guibg=#448844
-hi LspReferenceWrite gui=bold guibg=#884444
- " #d7005f

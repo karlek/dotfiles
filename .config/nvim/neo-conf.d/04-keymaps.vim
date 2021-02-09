@@ -7,9 +7,6 @@ nnoremap q: <Nop>
 nnoremap <F1> :echo<CR>
 inoremap <F1> <Nop>
 
-" Fast sourcing
-nnoremap <leader>r :source $MYVIMRC<CR>
-
 " Fast saving
 nnoremap <leader>w :w!<cr>
 " New buffer quick
@@ -49,83 +46,35 @@ nmap <leader>f <Plug>(easymotion-overwin-f)
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Switch buffers.
-nnoremap <C-b> :Buffer<cr>
-nnoremap <leader>b :ls<CR>:b<Space>
-
+" Insert empty line before or after cursor.
 nnoremap <leader>O m`O<Esc>``
 nnoremap <leader>o o<Esc>
-"nnoremap <leader>O m`O<Esc>``
-"nnoremap <leader>o m`o<Esc>``
 
+" Switch buffers.
+nnoremap <C-b> :Buffer<cr>
+" Search in files.
 nnoremap <C-g> :Ag<cr>
+" Search for files.
 nnoremap <C-p> :GFiles<cr>
-" set grepprg=ag\ --vimgrep\ $*
-" set grepformat=%f:%l:%c:%m
 
 " Smarter movement on wrapped lines.
 nnoremap j gj
 nnoremap k gk
 
+" Toggle spell-check.
 nnoremap <F3> :setlocal spell! spelllang=en,sv<CR>
 " Remove trailing spaces.
 nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo "Whitespaced trimmed!" <CR>
-nnoremap <F12> :call ToggleHiddenAll()<CR>
+" Toggle status bar.
+nnoremap <F12> :call ToggleStatusBar()<CR>
 
-" Swedish keyboard
+" Swedish keyboard.
 "
-" Swedish keyboard Ctrl-[
+" Fix Swedish keyboard <C-[>
 inoremap <F12> <esc>
 
+" vvv Testing vvv
+nnoremap gF :Ag <C-r>=expand('<cword>')<cr><cr>
+nnoremap <leader>b :ls<CR>:b<Space>
+
 "nnoremap <silent><leader>vv :Goyo<cr>:Limelight!!<cr>:set list!<cr>:set linebreak!<cr>:set wrap!<cr>
-
-" -- unsure --
-"nnoremap <C-t> :CtrlPBufTagAll<cr>
-"
-"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-"
-"" Expand snippets and jump between insertion points.
-"imap <C-k> <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k> <Plug>(neosnippet_expand_target)
-"
-"nnoremap <silent> zj :call NextClosedFold('j')<cr>
-"nnoremap <silent> zk :call NextClosedFold('k')<cr>
-"function! NextClosedFold(dir)
-"    let cmd = 'norm!z' . a:dir
-"    let view = winsaveview()
-"    let [l0, l, open] = [0, view.lnum, 1]
-"    while l != l0 && open
-"        exe cmd
-"        let [l0, l] = [l, line('.')]
-"        let open = foldclosed(l) < 0
-"    endwhile
-"    if open
-"        call winrestview(view)
-"    endif
-"endfunction
-"
-"nnoremap <C-g> :Grep 
-"nnoremap gF :execute("cgetexpr system(&grepprg . ' ' . expand('<cword>'))")<cr>
-"
-"" Make Y behave consistently with other capitals
-"nnoremap Y y$
-"nnoremap <leader>d :bp <BAR> bd #<CR>
-"
-"" Special characters in regex are special. More perl like regular expressions.
-"nnoremap / /\v
-"vnoremap / /\v
-"
-"
-"nnoremap <F10> :UndotreeToggle<cr>
-"nnoremap <F11> :TagbarToggle<cr>
-"inoremap <F12> <esc>
-"
-"" Like '<C-r><C-w>' but for the line under the cursor.
-"cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
-"
-"" Start interactive EasyAlign in visual mode (e.g. vipga)
-"xmap ga <Plug>(EasyAlign)
-"
-"" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-"nmap ga <Plug>(EasyAlign)
-

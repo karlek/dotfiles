@@ -8,4 +8,4 @@ let g:lightline = { "colorscheme": "darcula" }
 " colorscheme PaperColor
 " let g:lightline = { "colorscheme": "PaperColor" }
 
-highlight Comment cterm=italic
+highlight Comment cterm=italic gui=italic
