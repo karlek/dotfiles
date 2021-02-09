@@ -17,10 +17,10 @@ xkbset m
 xset -b
 
 # Automatically lock after 5 minutes.
-xautolock -time 5 -locker /usr/bin/sflock &
+xautolock -time 5 -locker /usr/bin/physlock &
 
 # Automatically lock on lid close.
-xss-lock -- /usr/bin/sflock &
+xss-lock -- /usr/bin/physlock &
 
 # Start i3.
 exec i3
