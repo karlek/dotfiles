@@ -60,8 +60,8 @@ bindsym $mod+w exec --no-startup-id "feh --no-fehbg --randomize --bg-fill ~/img/
 bindsym $mod+Control+Delete exec --no-startup-id "xrandr --auto"
 
 hide_edge_borders both
-new_window normal 0  
-new_float normal 0
+default_border none
+default_floating_border none
 for_window [class="^.*"] border pixel 0
 
 # change focus
