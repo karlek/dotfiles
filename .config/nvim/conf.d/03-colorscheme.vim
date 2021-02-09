@@ -1,40 +1,11 @@
-" Other great colorschemes:
-" evening, pride, badwolf, PaperColor, hybrid
-
-" Enable syntax highlighting.
 syntax on
-if $TERM !~ '256'
-	set termguicolors
-endif
-
-let g:dark_lightline = 'darcula'
-let g:light_lightline = 'PaperColor'
-let g:light_colorscheme = 'PaperColor'
-let g:dark_colorscheme = 'badwolf'
-let g:lightline = {}
 
 set background=dark
-if &background ==? 'dark'
-	execute 'colorscheme ' . g:dark_colorscheme
-	let g:lightline.colorscheme = g:dark_lightline
-else
-	execute 'colorscheme ' . g:light_colorscheme
-	let g:lightline.colorscheme = g:light_lightline
-end
+colorscheme badwolf
+let g:lightline = { "colorscheme": "darcula" }
 
-function! s:ToggleBright()
-	if &background ==? 'dark'
-		set background=light
-		let g:lightline.colorscheme = g:light_lightline
-		execute 'colorscheme ' . g:light_colorscheme
-	else
-		set background=dark
-		let g:lightline.colorscheme = g:dark_lightline
-		execute 'colorscheme ' . g:dark_colorscheme
-	endif
-	call lightline#init()
-	call lightline#enable()
-endfunction
+" set background=light
+" colorscheme PaperColor
+" let g:lightline = { "colorscheme": "PaperColor" }
 
-highlight Comment cterm=italic
-command! ToggleBright :call s:ToggleBright()
+highlight Comment cterm=italic gui=italic
