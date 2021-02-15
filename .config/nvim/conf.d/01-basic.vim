@@ -34,7 +34,7 @@ set noshowmode
 " Expand @@ to project root
 cabbr <expr> @@ ChompedSystem('git rev-parse --show-toplevel')
 " Expand $$ to nvim config folder.
-cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/neo-conf.d'
+cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/conf.d'
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
