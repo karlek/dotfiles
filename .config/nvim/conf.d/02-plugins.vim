@@ -27,8 +27,8 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins'}                       " 
 " Plug 'junegunn/limelight.vim'                                                 " Zen-mode
 " Plug 'junegunn/goyo.vim'                                                      " Zen-mode
 "
+"
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}                   " Improved syntax highlighting engine. Messes with indentation at the moment.
 " Plug 'neovim/nvim-lspconfig'
-
 call plug#end()                                                               " required
-runtime! neo-conf.d/plugins/*.vim
+runtime! conf.d/plugins/*.vim
