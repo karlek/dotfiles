@@ -4,6 +4,7 @@ set -x GOROOT           "/usr/lib/go"
 set -x EDITOR           "nvim"
 set -x BROWSER          "firefox"
 set -x STEAM_RUNTIME    1
+set -x MANPAGER			'nvim +Man!'
 
 # Japanese keyboard.
 set -x XMODIFIERS       @im=fcitx
