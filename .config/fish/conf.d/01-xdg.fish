@@ -15,7 +15,7 @@ set -x GNUPGHOME          "$XDG_CONFIG_HOME/gnupg"
 set -x GTK2_RC_FILES      "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 set -x GIMP2_DIRECTORY    "$XDG_CONFIG_HOME/gimp"
 
-set -x RXVT_SOCKET        "$XDG_RUNTIME_DIR/urxvt/urxvt-"(hostname)
+set -x RXVT_SOCKET        "$XDG_RUNTIME_DIR/urxvt/urxvt-"(cat /etc/hostname)
 set -x XAUTHORITY         "$XDG_RUNTIME_DIR/X/authority"
 
 set -x R_ENVIRON          "$XDG_CONFIG_HOME/r/environ"

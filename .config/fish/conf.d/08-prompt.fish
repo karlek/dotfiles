@@ -36,7 +36,7 @@ function fish_prompt
 		__toaster_color_echo $__toaster_color_yellow "(^._.^)ノ"
 	end
 
-	__toaster_color_echo $__toaster_color_blue " "(hostname)
+	__toaster_color_echo $__toaster_color_blue " "(cat /etc/hostname)
 	__toaster_color_echo $__toaster_color_grey " @ "
 	__toaster_color_echo $__toaster_color_pink (__toaster_current_folder)
 	if test (is_git_folder) -eq 0
