@@ -25,10 +25,6 @@ set -x GDBHISTFILE        "$XDG_DATA_HOME/gdb/history"
 set -x RANDFILE           "$XDG_DATA_HOME/openssl/rnd"
 set -x PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
 
-set -x GEM_HOME           "$XDG_DATA_HOME/gem"
-set -x GEM_PATH           $GEM_PATH "$GEM_HOME/bin" "/usr/lib/ruby/gems/2.7.0"
-set -x GEMRC              "$XDG_CONFIG_HOME/ruby/gemrc"
-
 alias startx  "startx $XDG_CONFIG_HOME/X/initrc 2> $XDG_DATA_HOME/X/startx.log"
 alias tmux    "tmux -2 -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias mutt    "mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
