@@ -78,3 +78,8 @@ nnoremap gF :Ag <C-r>=expand('<cword>')<cr><cr>
 nnoremap <leader>b :ls<CR>:b<Space>
 
 "nnoremap <silent><leader>vv :Goyo<cr>:Limelight!!<cr>:set list!<cr>:set linebreak!<cr>:set wrap!<cr>
+
+if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+endif
