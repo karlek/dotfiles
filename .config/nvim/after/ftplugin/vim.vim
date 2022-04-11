@@ -1,1 +1,1 @@
-nmap <localleader>r :source %<cr>
+nmap <buffer> <localleader>r :source %<cr>

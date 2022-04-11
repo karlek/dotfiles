@@ -51,11 +51,14 @@ nnoremap <leader>O m`O<Esc>``
 nnoremap <leader>o o<Esc>
 
 " Switch buffers.
-nnoremap <C-b> :Buffer<cr>
+nnoremap <C-b> :Telescope buffers<cr>
 " Search in files.
-nnoremap <C-g> :Ag<cr>
+nnoremap <C-g> :Telescope live_grep<cr>
 " Search for files.
-nnoremap <C-p> :GFiles<cr>
+nnoremap <C-p> :Telescope git_files<cr>
+nnoremap <C-f> :Telescope current_buffer_fuzzy_find<cr>
+nnoremap <C-s> :Telescope lsp_workspace_symbols<cr>
+" nnoremap <C-p> :GFiles<cr>
 
 " Smarter movement on wrapped lines.
 nnoremap j gj
@@ -74,7 +77,7 @@ nnoremap <F12> :call ToggleStatusBar()<CR>
 inoremap <F12> <esc>
 
 " vvv Testing vvv
-nnoremap gF :Ag <C-r>=expand('<cword>')<cr><cr>
+" nnoremap gF :Ag <C-r>=expand('<cword>')<cr><cr>
 nnoremap <leader>b :ls<CR>:b<Space>
 
 "nnoremap <silent><leader>vv :Goyo<cr>:Limelight!!<cr>:set list!<cr>:set linebreak!<cr>:set wrap!<cr>
@@ -83,3 +86,20 @@ if has("nvim")
   au TermOpen * tnoremap <Esc> <c-\><c-n>
   au FileType fzf tunmap <Esc>
 endif
+
+
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+map <F11> :ZenMode <CR>
+
+nmap <leader>s :ClangdSwitchSourceHeader<cr>
+
+" Remove unused autopairs keybindings.
+let g:AutoPairsMoveCharacter = ""
+" silent! iunmap <M-]>
+" silent! iunmap <M-[>

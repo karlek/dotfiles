@@ -48,7 +48,7 @@ augroup LastPosition
 augroup END
 
 " Show tab, end-of-line and trailing whitespaces.
-set list listchars=tab:\|\ ,eol:¬\,trail:·
+set list listchars=tab:\|\ ,trail:·,lead:·
 
 " Don't insert comments automatically after another comment.
 " c:	Auto-wrap comments using textwidth, inserting the current comment
@@ -87,13 +87,13 @@ set inccommand=split
 set termguicolors
 
 augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+	autocmd!
+	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup END
 
 " Figure out the system Python for Neovim.
 if exists('$VIRTUAL_ENV')
-    let g:python3_host_prog=substitute(system('which -a python3 | head -n2 | tail -n1'), "\n", '', 'g')
+	let g:python3_host_prog=substitute(system('which -a python3 | head -n2 | tail -n1'), "\n", '', 'g')
 else
-    let g:python3_host_prog=substitute(system('which python3'), "\n", '', 'g')
+	let g:python3_host_prog=substitute(system('which python3'), "\n", '', 'g')
 endif
