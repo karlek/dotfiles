@@ -73,7 +73,7 @@ add_alias colorgo go colorgo
 
 add_alias nvim vim nvim
 
-add_alias stack ghci 'stack ghci'
+add_alias stack ghci 'stack exec ghci'
 
 # XQuery selector.
 add_alias xidel 'xidel --color=always'
@@ -150,3 +150,54 @@ alias bazel bazelisk
 
 alias 64ud 'python -c "import sys; import base64; binary = base64.urlsafe_b64decode(sys.stdin.read() + \'===\'); sys.stdout.buffer.write(binary)"'
 alias 64ue 'python -c "import sys; import base64; binary = base64.urlsafe_b64encode(sys.stdin.read().encode(\'utf-8\')); sys.stdout.buffer.write(binary)"'
+alias pacbig "pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less"
+
+function csymbol
+	printf $argv[1] | \
+	for f in (man -K 2 "$argv[1]" | grep "#include" | grep -Po '(?<=<)[^>]*' | sort -u)
+		gcc -include "$f" -E - | \
+		grep '#' | \
+		awk '{print $3}' | \
+		grep -v "<stdin>" | \
+		grep -v "<command-line>" | \
+		grep -v "built-in" | \
+		sort -u | \
+		tr -d '"' | \
+		xargs -I '{}' ag --heading $argv[1] '{}'
+	end
+end
+
+function amimullvad
+	set -l resp (curl --silent "https://ipv4.am.i.mullvad.net/json" | jq ".mullvad_exit_ip")
+	if test "true" = "$resp"
+		set_color --bold green; echo "Good"
+	else
+		set_color --bold --underline red; echo "Bad"
+	end
+end
+
+function safe-delete-branch
+	set --local upstream_branch (git rev-parse --abbrev-ref --symbolic-full-name @{u} | awk -F'/' '{ print $2 }')
+	# echo "Upstream: $upstream_branch"
+
+	# Try to delete branches.
+	# for target_branch in (git for-each-ref --format='%(refname:short)' refs/heads/)
+		# git branch -d $target_branch
+	# end
+
+	for target_branch in (git for-each-ref --format='%(refname:short)' refs/heads/)
+		if test "$target_branch" = "$upstream_branch"
+			continue
+		end
+		set --local commit_status (git log --oneline --cherry $upstream_branch...$target_branch | grep -v '^=')
+		if test (count $commit_status) -eq 0
+			echo "Probably safe to delete: $target_branch"
+			continue
+		end
+
+		# echo "$target_branch"
+		# echo (string join \x0a $commit_status)
+	end
+end
+
+alias bat="bat --theme OneHalfLight"

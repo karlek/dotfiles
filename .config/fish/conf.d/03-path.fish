@@ -10,3 +10,5 @@ end
 add_to_path "$HOME/.local/bin"
 add_to_path "$GOROOT/bin"
 add_to_path "$GOPATH/bin"
+add_to_path "$HOME/.ghcup/bin"
+add_to_path "$HOME/.local/share/cargo/bin"

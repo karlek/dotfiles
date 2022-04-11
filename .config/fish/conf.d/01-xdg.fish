@@ -11,7 +11,7 @@ set -x STACK_ROOT         "$XDG_DATA_HOME/stack"
 set -x BC_ENV_ARGS        "$XDG_CONFIG_HOME/bc/config"
 
 set -x LESSKEY            "$XDG_CONFIG_HOME/less/keys"
-set -x GNUPGHOME          "$XDG_CONFIG_HOME/gnupg"
+#set -x GNUPGHOME          "$XDG_CONFIG_HOME/gnupg"
 set -x GTK2_RC_FILES      "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 set -x GIMP2_DIRECTORY    "$XDG_CONFIG_HOME/gimp"
 
@@ -25,13 +25,12 @@ set -x GDBHISTFILE        "$XDG_DATA_HOME/gdb/history"
 set -x RANDFILE           "$XDG_DATA_HOME/openssl/rnd"
 set -x PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
 
-alias startx  "startx $XDG_CONFIG_HOME/X/initrc 2> $XDG_DATA_HOME/X/startx.log"
 alias tmux    "tmux -2 -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias mutt    "mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 alias sqlite3 "sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqlite.rc"
 alias s3cmd   "s3cmd --config=$XDG_CONFIG_HOME/s3/config"
 alias weechat "weechat -d $XDG_CONFIG_HOME/weechat"
-alias gdb     "gdb -nh -x $XDG_CONFIG_HOME/gdb/init"
+alias gdb     "gdb -q -nh -x $XDG_CONFIG_HOME/gdb/init"
 alias anki    "anki -b $XDG_DATA_HOME/Anki"
 alias crawl   "crawl \
 				-rcdir $XDG_CONFIG_HOME/crawl \
