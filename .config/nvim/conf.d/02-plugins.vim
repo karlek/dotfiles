@@ -2,15 +2,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Apperance
 Plug 'karlek/vim-colorschemes'                                         " Colorscheme pack
-Plug 'itchyny/lightline.vim'                                           " Lightline status line
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kshenoy/vim-signature'                                           " Vim marker sidebar
 
 " Fundamental
 Plug 'tpope/vim-vinegar'                                               " Netrw enhancer.
 Plug 'wellle/targets.vim'                                              " Allow changing inside objects from anywhere on the line.
 Plug 'tpope/vim-rsi'                                                   " Readline insertion keybindings
-Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion' }        " Easy motion (vimfx)
+Plug 'phaazon/hop.nvim'
+
 Plug 'tpope/vim-commentary'                                            " Toggle comments plugin
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
 Plug 'wsdjeg/vim-fetch'                                                " Allow opening files with line number file:47
 
 " Not fundamental
@@ -46,6 +50,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'BurntSushi/ripgrep'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'rhysd/conflict-marker.vim'
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'nacro90/numb.nvim'
 
 call plug#end()                                                               " required
 
@@ -55,5 +63,7 @@ set completeopt=menuone,noinsert,noselect
 " set omnifunc=v:lua.vim.lsp.omnifunc
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
+
+lua require('numb').setup()
 
 runtime! conf.d/plugins/*.vim
