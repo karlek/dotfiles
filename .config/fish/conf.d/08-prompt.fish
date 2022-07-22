@@ -1,10 +1,3 @@
-# set __toaster_color_yellow E6DB7E
-# set __toaster_color_pink F92672
-# set __toaster_color_grey 554F48
-# set __toaster_color_white AAAAAA
-# set __toaster_color_blue 9999FF
-# set __toaster_color_green 99FF99
-
 set __toaster_color_yellow yellow
 set __toaster_color_pink F92672
 set __toaster_color_grey 554F48
