@@ -1,0 +1,219 @@
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+# No borders on windows.
+default_border none
+gaps inner 5
+gaps outer 0
+# Full size if single window on workspace.
+smart_gaps on
+
+focus_follows_mouse no
+
+default_floating_border none
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+set $term alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu dmenu-wl_run
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg ~/img/wallhaven-q2ede5.jpg fill
+
+### Idle configuration
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+		timeout 300 'swaylock -f -c 000000' \
+		timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+		before-sleep 'swaylock -f -c 000000'
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+	xkb_layout us,se
+	xkb_options caps:escape
+}
+bindsym $mod+x exec swaymsg input "1:1:AT_Translated_Set_2_keyboard" xkb_switch_layout next
+
+
+### Key bindings
+#
+# Basics:
+#
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Start your launcher
+bindsym $mod+r exec $menu
+
+bindsym XF86AudioLowerVolume exec ponymix decrease 3
+bindsym XF86AudioRaiseVolume exec ponymix increase 3
+bindsym XF86AudioMute        exec ponymix toggle
+
+seat * hide_cursor 3000
+seat * hide_cursor when-typing enable
+
+# bindsym XF86AudioPlay        exec playerctl play
+# bindsym XF86AudioPause       exec playerctl pause
+# bindsym XF86AudioNext        exec playerctl next
+# bindsym XF86AudioPrev        exec playerctl previous
+
+bindsym XF86MonBrightnessUp     exec light -A 10
+bindsym XF86MonBrightnessDown   exec light -U 10
+
+bindsym Ctrl+Alt+l exec 'swaylock -f -c 000000'
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+#
+# Moving around:
+#
+
+# Move your focus around
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+#
+# Workspaces:
+#
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Tab workspace back_and_forth
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
+
+#
+# Layout stuff:
+#
+
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+t exec (swaymsg "[app_id=terminal-scratch] scratchpad show") || exec alacritty --class terminal-scratch
+
+for_window [app_id="terminal-scratch"] {
+	move position center, \
+	move to scratchpad, \
+	scratchpad show, \
+	resize set 60 ppt 80 ppt
+}
+exec alacritty --class terminal-scratch
+
+# for_window [app_id="dropdown"] floating enable, \
+#     border pixel 5, \
+#     resize set 70 ppt 60 ppt, \
+#     move position center, \
+#     move to scratchpad, \
+#     scratchpad show
+
+#
+# Resizing containers:
+#
+mode "resize" {
+	# left  will shrink the containers width
+	# right will grow the containers width
+	# up    will shrink the containers height
+	# down  will grow the containers height
+	bindsym $left resize shrink width 10px or 10ppt
+	bindsym $down resize grow height 10px or 10ppt
+	bindsym $up resize shrink height 10px or 10ppt
+	bindsym $right resize grow width 10px or 10ppt
+
+	# Return to default mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+m mode "resize"
+
+for_window [app_id="firefox"] inhibit_idle fullscreen
+
+exec python3 /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.9
+
+include /etc/sway/config.d/*
