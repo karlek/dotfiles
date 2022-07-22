@@ -1,5 +1,6 @@
-#!/usr/bin/bash
-export battery=$(acpi | cut -c 12-)
-export time=$(date '+%a %b %d, %Y - %T')
+#!/bin/fish
+
+set -l battery (acpi | cut -c 12-)
+set -l time (date '+%a %b %d, %Y - %T')
 echo $battery
 printf "%40s\n" "$time"
