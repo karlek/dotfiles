@@ -97,3 +97,6 @@ if exists('$VIRTUAL_ENV')
 else
 	let g:python3_host_prog=substitute(system('which python3'), "\n", '', 'g')
 endif
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect

@@ -33,3 +33,7 @@ require'nvim-treesitter.configs'.setup {
 	}
 }
 EOF
+
+" set omnifunc=v:lua.vim.lsp.omnifunc
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()

@@ -1,4 +1,5 @@
 lua << END
+
 local custom_horizon = require'lualine.themes.horizon'
 
 -- Change the background of lualine_c section for inactive splits
@@ -13,7 +14,8 @@ custom_horizon.inactive.c.fg = '#d9cec3'
 require('lualine').setup {
 	options = {
 		icons_enabled = false,
-		theme = custom_horizon,
+		theme = ayu_light,
+		-- theme = custom_horizon,
 		component_separators = '',
 		section_separators = '',
 	},

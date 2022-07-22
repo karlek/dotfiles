@@ -101,3 +101,5 @@ nmap <leader>s :ClangdSwitchSourceHeader<cr>
 let g:AutoPairsMoveCharacter = ""
 " silent! iunmap <M-]>
 " silent! iunmap <M-[>
+
+command Bd bp | sp | bn | bd
