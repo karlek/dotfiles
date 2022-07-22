@@ -1,72 +1,45 @@
-function add_abbr $argv
-	set -l abbr ""
-	set -l command ""
-	set -l binary ""
-	if test (count $argv) = 2
-		set binary $argv[1]
-		set abbr $argv[1]
-		set command $argv[2]
-	else if test (count $argv) = 3
-		set binary $argv[1]
-		set abbr $argv[2]
-		set command $argv[3]
-	else
-		echo "Bad call to add_abbr: [ $argv ]" 1>&2
-		return
-	end
-
-	which $binary > /dev/null 2> /dev/null
-	if test $status -eq 0
-		abbr $abbr $command
-	end
-end
-
 # Pacaur shortcuts
-add_abbr 'yay' ya  'yay'
-add_abbr 'yay' yas 'yay -Suy'
-add_abbr 'yay' yar 'yay -Rns'
-add_abbr 'yay' yss 'yay -Ss'
-add_abbr 'yay' yql 'yay -Ql'
+abbr yas 'yay -Suy'
+abbr yar 'yay -Rns'
+abbr yss 'yay -Ss'
+abbr yql 'yay -Ql'
 
 # Git shortcuts
-add_abbr 'git' gs   'git status'
-add_abbr 'git' gst  'git stash'
-add_abbr 'git' gstp 'git stash pop'
-add_abbr 'git' ga   'git add'
-add_abbr 'git' gaf  'git add -f'
-add_abbr 'git' gap  'git add -p'
-add_abbr 'git' gc   'git commit --verbose'
-add_abbr 'git' gco  'git checkout'
-add_abbr 'git' gcop 'git checkout -p'
-add_abbr 'git' gcb  'git checkout -b'
-add_abbr 'git' gp   'git push'
-add_abbr 'git' gpo  'git push origin (b)'
-add_abbr 'git' gpb  'git push origin (b)' # Bad..
-add_abbr 'git' gpu  'git pull --rebase --autostash --gpg-sign origin master'
-add_abbr 'git' gb   'git branch'
-add_abbr 'git' gbv  'git branch -v'
-add_abbr 'git' gd   'git diff'
-add_abbr 'git' gr   'git reset'
-add_abbr 'git' grb  'git rebase'
-add_abbr 'git' grbc 'git rebase --continue'
-add_abbr 'git' grbo 'git rebase "@{u}"'
-add_abbr 'git' gl   'git lg'
-add_abbr 'git' glp  'git lg -p'
-add_abbr 'git' gf   'git fetch'
-add_abbr 'git' gfo  'git fetch origin'
-add_abbr 'git' gdc  'git diff --cached'
-add_abbr 'git' gsw  'git switch'
-add_abbr 'git' gswc 'git switch -c'
-add_abbr 'ecn' echo 'echo -n'
+abbr gs   'git status'
+abbr gst  'git stash'
+abbr gstp 'git stash pop'
+abbr ga   'git add'
+abbr gaf  'git add -f'
+abbr gap  'git add -p'
+abbr gc   'git commit --verbose'
+abbr gco  'git checkout'
+abbr gcop 'git checkout -p'
+abbr gcb  'git checkout -b'
+abbr gp   'git push'
+abbr gpo  'git push origin (b)'
+abbr gpb  'git push origin (b)' # Bad..
+abbr gpu  'git pull --rebase --autostash --gpg-sign origin master'
+abbr gb   'git branch'
+abbr gbv  'git branch -v'
+abbr gd   'git diff'
+abbr gr   'git reset'
+abbr grb  'git rebase'
+abbr grbc 'git rebase --continue'
+abbr grbo 'git rebase "@{u}"'
+abbr gl   'git lg'
+abbr glp  'git lg -p'
+abbr gf   'git fetch'
+abbr gfo  'git fetch origin'
+abbr gdc  'git diff --cached'
+abbr gsw  'git switch'
+abbr gswc 'git switch -c'
 
-add_abbr 'echo' ecn 'echo -n'
-add_abbr 'base64' 64d 'base64 -d'
-add_abbr 'base64' 64e 'base64'
-add_abbr 'vim' 0xd 'xxd -r -p'
-add_abbr 'vim' 0xe 'xxd -p | tr -d "\n"'
-abbr urld 'urldecode'
+abbr 64d 'base64 -d'
+abbr 64e 'base64'
+abbr 0xd 'xxd -r -p'
+abbr 0xe 'xxd -p | tr -d "\n"'
 
-add_abbr spectro spectro 'spectro --local --parallel'
-add_abbr nvim v 'vim'
-abbr r 'reset'
-abbr s 'source'
+abbr v   'vim'
+abbr r   'reset'
+abbr s   'source'
+abbr ecn 'echo -n'
