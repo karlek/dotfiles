@@ -26,6 +26,8 @@ add_alias trash-put rm "trash-put -- "
 
 add_alias nvim vim nvim
 
+add_alias grc a 'grc a'
+
 # Folder aliases.
 alias ...    'cd ../..'
 alias ....   'cd ../../..'
