@@ -30,7 +30,7 @@ alias mutt    "mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 alias sqlite3 "sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqlite.rc"
 alias s3cmd   "s3cmd --config=$XDG_CONFIG_HOME/s3/config"
 alias weechat "weechat -d $XDG_CONFIG_HOME/weechat"
-alias gdb     "gdb -q -nh -x $XDG_CONFIG_HOME/gdb/init"
+alias gdb     "gdb -q" # -nh -x $XDG_CONFIG_HOME/gdb/init
 alias anki    "anki -b $XDG_DATA_HOME/Anki"
 alias crawl   "crawl \
 				-rcdir $XDG_CONFIG_HOME/crawl \

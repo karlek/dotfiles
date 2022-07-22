@@ -88,9 +88,9 @@ alias stripext "sed 's/\.[^.]*\$//'"
 alias gotest 'go test -v . | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/'''
 
 # Stdin to clipboard.
-alias in 'xclip -in -selection clip'
+alias in 'wl-copy'
 # Clipboard to stdout.
-alias xout 'xclip -out'
+alias xout 'wl-paste'
 
 # Pong, reverse dns: `rdns <ip>` and my local ip.
 alias pong 'ping 1.1.1.1'
@@ -201,3 +201,12 @@ function safe-delete-branch
 end
 
 alias bat="bat --theme OneHalfLight"
+alias screenshot='grim -g "$(slurp)" - | swappy -f -'
+alias listaur='pacman -Qm'
+
+alias pi="ipython"
+alias ip="ip -c"
+
+function qrwifi --argument-names pass
+	qr "WIFI:S:Casa del Rey;T:WPA2;P:$pass;;"
+end

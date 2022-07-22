@@ -48,9 +48,13 @@ function __toaster_git_branch
 end
 
 function fish_prompt
+	set -l last_pipestatus $pipestatus
+	set -l last_status $status
 	# Lazy cat if last command had non-zero return value.
 	# Otherwise curious fat cat.
-	if test $status -ne 0
+	set -l is_bad (echo -n "$last_pipestatus" | tr -d 0 | string trim | tr -d \n)
+	echo -n "$is_bad" > /tmp/lol
+	if test -n "$is_bad"
 		echo -n "(^-.-^)ノ"
 	else
 		echo -n "(^._.^)ノ"
@@ -62,6 +66,14 @@ function fish_prompt
 	if test (is_git_folder) -eq 0
 		__toaster_color_echo $__toaster_color_grey " : "
 		__toaster_color_echo $__toaster_color_blue (__toaster_git_branch)
+	end
+	if test -n "$is_bad"
+		set -l asdf (__fish_print_pipestatus '' '' '|' "$(set_color normal)" "$(set_color -o 000000)" $last_pipestatus)
+		if test -z "$asdf"
+			set asdf (echo -n $last_pipestatus | tr ' ' '|')
+			set asdf (printf "$(set_color -o 000000)%s$(set_color normal)" (string join "$(set_color normal)|$(set_color -o 000000)" $last_pipestatus))
+		end
+		printf " [%s]" "$asdf"
 	end
 	__toaster_color_echo $__toaster_color_grey " \$ "
 
