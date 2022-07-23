@@ -54,11 +54,7 @@ set list listchars=tab:\|\ ,trail:·,lead:·
 " Don't insert comments automatically after another comment.
 " c:	Auto-wrap comments using textwidth, inserting the current comment
 " leader automatically.
-" r:	Automatically insert the current comment leader after hitting <Enter>
-" in Insert mode.
-" o:	Automatically insert the current comment leader after hitting 'o' or
-" 'O' in Normal mode.
-set formatoptions-=c formatoptions-=r formatoptions-=o
+set formatoptions-=c
 
 " Save undo history between sessions.
 set undofile
