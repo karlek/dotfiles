@@ -39,6 +39,7 @@ cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/conf.d'
 cabbr <expr> %% expand('%:p:h')
 
 " Return to last edit position when opening files.
+" :help last-position-jump
 augroup LastPosition
 	autocmd!
 	autocmd BufReadPost *
