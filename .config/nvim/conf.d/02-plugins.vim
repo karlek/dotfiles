@@ -52,7 +52,11 @@ Plug 'ludovicchabant/vim-gutentags'                                    " Automat
 Plug 'rhysd/conflict-marker.vim'                                       " Highlight git conflict markers
 Plug 'p00f/nvim-ts-rainbow'                                            " Rainbow parentheses.
 Plug 'nacro90/numb.nvim'                                               " Preview line jumps, i.e. :123
+
+" Unsure
+" https://github.com/mg979/vim-visual-multi
 Plug 'mg979/vim-visual-multi'
+Plug 'sindrets/diffview.nvim'
 
 call plug#end()                                                        " Required.
 
