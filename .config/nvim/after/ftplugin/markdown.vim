@@ -10,6 +10,7 @@ setlocal nocursorline
 
 let g:markdown_fenced_languages = ['javascript', 'json', 'proto', 'python', 'asn']
 
+" Add more undo points.
 inoremap <silent> <buffer> ! !<C-g>u
 inoremap <silent> <buffer> , ,<C-g>u
 inoremap <silent> <buffer> . .<C-g>u
