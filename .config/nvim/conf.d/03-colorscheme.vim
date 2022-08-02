@@ -1,39 +1,36 @@
 syntax on
 
-" set background=dark
-" colorscheme badwolf
-" highlight Todo guibg=#e03050
-
-let ayucolor="light"  " for light version of theme
-set background=light
-colorscheme ayu
-" let g:lightline = { "colorscheme": "one" }
-
-" let ayucolor="mirage"  " for light version of theme
-" set background=dark
-" colorscheme ayu
-" let g:lightline = { "colorscheme": "one" }
-
-" set background=light
-" colorscheme inspired-github
-" let g:lightline = { "colorscheme": "one" }
-
-" TODO
-highlight Comment cterm=NONE gui=NONE
-highlight SignatureMarkText guifg=#0f3f3f gui=bold
-" Light theme
-" highlight Todo guibg=#efdfaf
-" Dark theme
-
+" Fix syntax coloring for sign and fold column.
 highlight clear SignColumn
 highlight clear FoldColumn
 set signcolumn=yes
 
-" Light theme
-" highlight IndentBlanklineChar guifg=#dddddd gui=nocombine
-
-" Dark theme
-highlight IndentBlanklineChar guifg=#444444 gui=nocombine
-
 " Waiting for alacritty merge.
-"" highlight IndentBlanklineContextStart guisp=#00FF00 gui=underline
+" highlight IndentBlanklineContextStart guisp=#00FF00 gui=underline
+
+lua<<EOF
+local async = require("plenary.async")
+async.run(function ()
+	local pipe = io.popen('grep -P "^colors: \\*light" ~/.config/alacritty/alacritty.yml')
+	local output = pipe:read('*all')
+	print(output)
+	if output == "" then
+		--	colorscheme badwolf
+		print('dark')
+		vim.o.background = "dark"
+		vim.cmd('highlight IndentBlanklineChar guifg=#444444 gui=nocombine')
+		vim.cmd('colorscheme ayu')
+	else
+		print('light')
+		vim.o.background = "light"
+		vim.cmd('let ayucolor="light"')
+		vim.cmd('highlight IndentBlanklineChar guifg=#dddddd gui=nocombine')
+		vim.cmd('colorscheme ayu')
+		vim.cmd('highlight Todo guibg=#e03050')
+		-- vim.cmd('highlight Todo guibg=#efdfaf')
+		vim.cmd('highlight SignatureMarkText guifg=#0f3f3f gui=bold')
+	end
+end)
+EOF
+
+" TODO

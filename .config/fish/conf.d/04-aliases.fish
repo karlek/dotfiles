@@ -90,3 +90,21 @@ function amimullvad
 		set_color --bold --underline red; echo "Bad"
 	end
 end
+
+function light-theme
+	sd "^colors: \*dark" "colors: *light" ~/.config/alacritty/alacritty.yml
+	sd '^\tlight = .*$' "\tlight = true" ~/.config/git/config
+	sd '^\tsyntax-theme = .*$' "\tsyntax-theme = GitHub" ~/.config/git/config
+	sd '^--theme ".*?"' -- '--theme "GitHub"' ~/.config/bat/config
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+	source ~/.config/fish/conf.d/*
+end
+
+function dark-theme
+	sd "^colors: \*light" "colors: *dark" ~/.config/alacritty/alacritty.yml
+	sd '^\tlight = .*$' "\tlight = false" ~/.config/git/config
+	sd '^\tsyntax-theme = .*$' "\tsyntax-theme = Monokai Extended" ~/.config/git/config
+	sd '^--theme ".*?"' -- '--theme "Monokai Extended"' ~/.config/bat/config
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	source ~/.config/fish/conf.d/*
+end

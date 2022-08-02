@@ -443,7 +443,19 @@ c.TerminalIPythonApp.display_banner = False
 ## Set the color scheme (NoColor, Neutral, Linux, or LightBG).
 #  Choices: any of ['Neutral', 'NoColor', 'LightBG', 'Linux'] (case-insensitive)
 #  Default: 'Neutral'
-c.InteractiveShell.colors = 'LightBG'
+import os
+from functools import cache
+@cache
+def is_light():
+    with open(os.path.expanduser('~/.config/alacritty/alacritty.yml')) as fp:
+        config = fp.read()
+
+    return "*light" in config
+
+if is_light():
+    c.InteractiveShell.colors = 'LightBG'
+else:
+    c.InteractiveShell.colors = 'Linux'
 
 #  Default: False
 # c.InteractiveShell.debug = False
@@ -657,7 +669,11 @@ c.TerminalInteractiveShell.confirm_exit = False
 ## The name or class of a Pygments style to use for syntax
 #          highlighting. To see available styles, run `pygmentize -L styles`.
 #  Default: traitlets.Undefined
-c.TerminalInteractiveShell.highlighting_style = "murphy"
+# TODO:
+if is_light():
+    c.TerminalInteractiveShell.highlighting_style = "murphy"
+else:
+    c.TerminalInteractiveShell.highlighting_style = "monokai"
 
 ## Override highlighting format for specific tokens
 #  Default: {}

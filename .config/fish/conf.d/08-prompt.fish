@@ -1,9 +1,21 @@
-set __toaster_color_yellow yellow
-set __toaster_color_pink F92672
-set __toaster_color_grey 554F48
-set __toaster_color_white AAAAAA
-set __toaster_color_blue 7777AA
-set __toaster_color_green green
+set -l has_light_theme (grep -P "^colors: \\*light" ~/.config/alacritty/alacritty.yml)
+if test -n "$has_light_theme"
+	set __toaster_color_yellow yellow
+	set __toaster_color_pink F92672
+	set __toaster_color_grey 554F48
+	set __toaster_color_white AAAAAA
+	set __toaster_color_blue 7777AA
+	set __toaster_color_green green
+	set __toaster_color_pipe 000000
+else
+	set __toaster_color_yellow E6DB7E
+	set __toaster_color_pink F92672
+	set __toaster_color_grey 554F48
+	set __toaster_color_white AAAAAA
+	set __toaster_color_blue 9999FF
+	set __toaster_color_green 99FF99
+	set __toaster_color_pipe FFFFFF
+end
 
 function __toaster_color_echo
 	set_color $argv[1]
@@ -61,12 +73,12 @@ function fish_prompt
 		__toaster_color_echo $__toaster_color_blue (__toaster_git_branch)
 	end
 	if test -n "$is_bad"
-		set -l asdf (__fish_print_pipestatus '' '' '|' "$(set_color normal)" "$(set_color -o 000000)" $last_pipestatus)
-		if test -z "$asdf"
-			set asdf (echo -n $last_pipestatus | tr ' ' '|')
-			set asdf (printf "$(set_color -o 000000)%s$(set_color normal)" (string join "$(set_color normal)|$(set_color -o 000000)" $last_pipestatus))
+		set -l pipe_status (__fish_print_pipestatus '' '' '|' "$(set_color normal)" "$(set_color -o $__toaster_color_pipe)" $last_pipestatus)
+		if test -z "$pipe_status"
+			set pipe_status (echo -n $last_pipestatus | tr ' ' '|')
+			set pipe_status (printf "$(set_color -o $__toaster_color_pipe)%s$(set_color normal)" (string join "$(set_color normal)|$(set_color -o $__toaster_color_pipe)" $last_pipestatus))
 		end
-		printf " [%s]" "$asdf"
+		printf " [%s]" "$pipe_status"
 	end
 	__toaster_color_echo $__toaster_color_grey " \$ "
 
