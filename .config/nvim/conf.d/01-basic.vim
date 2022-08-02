@@ -45,7 +45,7 @@ augroup LastPosition
 augroup END
 
 " Show tab, end-of-line and trailing whitespaces.
-set list listchars=tab:\|\ ,trail:·,lead:·
+set list listchars=tab:\|\ ,trail:·,lead:·,nbsp:◇
 
 " Don't insert comments automatically after another comment.
 " c:	Auto-wrap comments using textwidth, inserting the current comment
