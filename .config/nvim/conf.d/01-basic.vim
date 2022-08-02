@@ -28,7 +28,7 @@ set scrolloff=3
 set noshowmode
 
 " Expand @@ to project root
-cabbr <expr> @@ ChompedSystem('git rev-parse --show-toplevel')
+cabbr <expr> @@ substitute(system('git rev-parse --show-toplevel'), "\n", '', 'g')
 " Expand $$ to nvim config folder.
 cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/conf.d'
 " Expand %% to current files working directory.
