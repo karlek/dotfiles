@@ -53,11 +53,6 @@ Plug 'rhysd/conflict-marker.vim'                                       " Highlig
 Plug 'p00f/nvim-ts-rainbow'                                            " Rainbow parentheses.
 Plug 'nacro90/numb.nvim'                                               " Preview line jumps, i.e. :123
 
-" Unsure
-" https://github.com/mg979/vim-visual-multi
-Plug 'mg979/vim-visual-multi'
-Plug 'sindrets/diffview.nvim'
-
 call plug#end()                                                        " Required.
 
 runtime! conf.d/plugins/*.vim
