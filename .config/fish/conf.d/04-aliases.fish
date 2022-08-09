@@ -105,3 +105,10 @@ function dark-theme
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 	source ~/.config/fish/conf.d/*
 end
+
+
+function profile-vim
+	set -l temp (mktemp)
+	nvim -c ':q' --startuptime $temp && awk '{print $2 " " $NF}' < $temp | grep -P '^\d+\.\d+' | sort -n | grep -Pv '^000\.'
+	/usr/bin/rm -f $temp
+end
