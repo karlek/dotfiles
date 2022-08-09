@@ -13,15 +13,12 @@ local async = require("plenary.async")
 async.run(function ()
 	local pipe = io.popen('grep -P "^colors: \\*light" ~/.config/alacritty/alacritty.yml')
 	local output = pipe:read('*all')
-	print(output)
 	if output == "" then
 		--	colorscheme badwolf
-		print('dark')
 		vim.o.background = "dark"
 		vim.cmd('highlight IndentBlanklineChar guifg=#444444 gui=nocombine')
 		vim.cmd('colorscheme ayu')
 	else
-		print('light')
 		vim.o.background = "light"
 		vim.cmd('let ayucolor="light"')
 		vim.cmd('highlight IndentBlanklineChar guifg=#dddddd gui=nocombine')
