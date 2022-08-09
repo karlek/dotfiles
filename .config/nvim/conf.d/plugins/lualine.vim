@@ -13,18 +13,14 @@ custom_horizon.inactive.c.fg = '#d9cec3'
 
 theme = ayu_light
 if vim.api.nvim_get_option('background') == 'dark' then
-	print('Dark background detected')
 	if vim.g.colors_name == 'ayu' then
-		print('Ayu detected')
 		theme = ayu_dark
 	elseif vim.g.colors_name == 'badwolf' then
-		print('Bad wolf detected')
 		theme = custom_horizon
 	else
 		theme = ayu_dark
 	end
 else
-	print('Light background detected')
 	theme = ayu_light
 end
 

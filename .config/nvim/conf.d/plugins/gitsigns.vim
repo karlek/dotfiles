@@ -1,3 +1,3 @@
 lua << EOF
-require('gitsigns').setup()
+	require('gitsigns').setup()
 EOF
