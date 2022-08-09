@@ -211,6 +211,9 @@ mode "resize" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+m mode "resize"
+bindsym XF86NotificationCenter exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86PickupPhone exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym XF86HangupPhone exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 for_window [app_id="firefox"] inhibit_idle fullscreen
 
