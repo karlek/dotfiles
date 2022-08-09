@@ -1,9 +1,6 @@
 " Line numbering
 set number
 
-" When a bracket is inserted, briefly jump to the matching one.
-" set showmatch
-
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
