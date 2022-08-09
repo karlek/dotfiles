@@ -57,9 +57,6 @@ alias less 'less -R'
 # Colorized and better syntax for diff.
 alias diff 'diff --color=auto -u'
 
-# Colorized df.
-alias df 'df -h'
-
 alias pi="ipython"
 alias ip="ip -c"
 alias gdb "gdb -q"
