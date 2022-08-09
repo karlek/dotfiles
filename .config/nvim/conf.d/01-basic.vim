@@ -31,15 +31,6 @@ cabbr <expr> $$ '$XDG_CONFIG_HOME/nvim/conf.d'
 " Expand %% to current files working directory.
 cabbr <expr> %% expand('%:p:h')
 
-" Return to last edit position when opening files.
-" :help last-position-jump
-augroup LastPosition
-	autocmd!
-	autocmd BufReadPost *
-	\ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-	\ |   exe "normal! g`\""
-	\ | endif
-augroup END
 
 " Show tab, end-of-line and trailing whitespaces.
 set list listchars=tab:\|\ ,trail:·,lead:·,nbsp:◇
@@ -76,10 +67,6 @@ set inccommand=split
 " Enables 24-bit RGB color in the |TUI|.
 set termguicolors
 
-augroup highlight_yank
-	autocmd!
-	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup END
 
 " Figure out the system Python for Neovim.
 if exists('$VIRTUAL_ENV')
