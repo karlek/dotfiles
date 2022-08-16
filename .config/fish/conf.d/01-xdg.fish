@@ -9,11 +9,3 @@ set -x LESSKEY            "$XDG_CONFIG_HOME/less/keys"
 
 # Add decimals to math.
 set -x BC_ENV_ARGS        "$XDG_CONFIG_HOME/bc/config"
-
-
-alias crawl "crawl \
-			-rcdir $XDG_CONFIG_HOME/crawl \
-			-rc $XDG_CONFIG_HOME/crawl/crawlrc \
-			-macro $XDG_CONFIG_HOME/crawl/macro \
-			-morgue $XDG_DATA_HOME/crawl/morgue \
-			-dir $XDG_DATA_HOME/crawl"
