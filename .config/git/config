@@ -1,8 +1,22 @@
 [user]
 	name = Henry Eklind
 	email = henry@karlek.io
-	signkey = CDA76654
-	signingkey = CDA76654
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsHccwyRn/aWM8MzsH39oYb01iL1rhTgmP86wNdMmfn _@wisteria
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	allowedSignersFile = /home/_/.config/git/allowed_signers
+
+[tag]
+	gpgsign = true
 
 [color]
 	ui = auto
