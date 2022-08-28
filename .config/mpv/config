@@ -16,6 +16,7 @@ alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
 
 term-osd-bar                            # Display a progress bar on the terminal
 
+stretch-image-subs-to-screen
 [extension.gif]
 cache=no
 no-pause
