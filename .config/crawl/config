@@ -55,6 +55,9 @@ explore_stop  -= items
 view_max_width  = 81
 view_max_height = 71
 
+msg_max_height = 20
+autofight_throw = true
+
 show_travel_trail = true
 
 {
