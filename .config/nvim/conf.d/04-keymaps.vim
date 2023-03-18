@@ -6,6 +6,8 @@ nnoremap q: <Nop>
 " Disable help key.
 nnoremap <F1> <cmd>echo<CR>
 inoremap <F1> <Nop>
+nnoremap <F2> <cmd>echo @%<CR>
+inoremap <F2> <cmd>echo @%<CR>
 
 " Fast saving
 nnoremap <leader>w <cmd>w!<cr>
@@ -31,15 +33,23 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
 " Line motions
-nmap <leader>j <cmd>HopLineAC<CR>
-vmap <leader>j <cmd>HopLineAC<CR>
-nmap <leader>k <cmd>HopLineBC<CR>
-vmap <leader>k <cmd>HopLineBC<CR>
+nnoremap <leader>j <cmd>HopLineAC<CR>
+vnoremap <leader>j <cmd>HopLineAC<CR>
+nnoremap <leader>k <cmd>HopLineBC<CR>
+vnoremap <leader>k <cmd>HopLineBC<CR>
+
+
+nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <leader>f  <cmd>lua vim.lsp.buf.code_action()<cr>
+nnoremap <leader>r  <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap <leader>t  <cmd>TroubleToggle<cr>
+nnoremap ]n  <cmd>lua vim.diagnostic.goto_next()<cr>
+nnoremap [n  <cmd>lua vim.diagnostic.goto_prev()<cr>
 
 " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
 " `s{char}{label}`
-nmap <leader>f <cmd>HopChar1<CR>
+nnoremap s <cmd>HopChar1<CR>
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -53,12 +63,12 @@ nnoremap <leader>o o<Esc>
 " Switch buffers.
 nnoremap <C-b> <cmd>Telescope buffers<cr>
 " Search in files.
+" TODO: does not work with .git/info/exclude *
 nnoremap <C-g> <cmd>Telescope live_grep<cr>
 " Search for files.
 nnoremap <C-p> <cmd>Telescope git_files<cr>
 nnoremap <C-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <C-s> <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
-" nnoremap <C-p> <cmd>GFiles<cr>
 
 " Smarter movement on wrapped lines.
 nnoremap j gj
@@ -76,16 +86,9 @@ nnoremap <F12> <cmd>call ToggleStatusBar()<CR>
 " Fix Swedish keyboard <C-[>
 inoremap <F12> <esc>
 
-" vvv Testing vvv
-" nnoremap gF :Ag <C-r>=expand('<cword>')<cr><cr>
-nnoremap <leader>b <cmd>ls<CR>:b<Space>
-
 "nnoremap <silent><leader>vv :Goyo<cr>:Limelight!!<cr>:set list!<cr>:set linebreak!<cr>:set wrap!<cr>
 
-if has("nvim")
-  au TermOpen * tnoremap <Esc> <c-\><c-n>
-  au FileType fzf tunmap <Esc>
-endif
+au TermOpen * tnoremap <Esc> <c-\><c-n>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -93,7 +96,8 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-map <F11> <cmd>ZenMode <CR>
+map <F11> <cmd>ZenMode<cr><cmd>Twilight<cr>
+" map <F11> <cmd>ZenMode<CR>
 
 nmap <leader>s :ClangdSwitchSourceHeader<cr>
 
@@ -102,4 +106,9 @@ let g:AutoPairsMoveCharacter = ""
 " silent! iunmap <M-]>
 " silent! iunmap <M-[>
 
+nmap gr ""<Plug>(ReplaceWithRegisterOperator)
+
 command Bd bp | sp | bn | bd
+
+nnoremap <silent><leader>i <Cmd>GoIfErr<CR>
+nnoremap <silent><leader>s <Cmd>GoFillStruct<CR>
