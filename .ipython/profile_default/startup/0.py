@@ -99,13 +99,13 @@ def _init_rich():
     # inspect(print)
     # https://rich.readthedocs.io/en/latest/reference/init.html#rich.inspect
     from rich import pretty
-    # from rich import print as rprint
+    from rich import print as rprint
     from rich import inspect as rinspect
 
     # Allows pretty printing for bare variables in REPL.
     pretty.install()
 
-    # globals()["print"]   = rprint
+    globals()["pretty"]   = rprint
     globals()["inspect"] = rinspect
 
 def _init_progress():
@@ -139,6 +139,37 @@ def _init_random_string():
         alphabet = "".join([c for c in set(string.printable) - set(string.whitespace) - set(blacklist)])
         elems = random.choices(alphabet, k=n)
         return "".join(elems)
+
+def _init_math():
+    with _GlobalImport():
+        from math import sqrt, log
+
+def _init_inlinec():
+    import sys
+
+    with _GlobalImport():
+        """
+        lib = c(r'''
+            int add(int a, int b) {
+                return a + b;
+            }
+        ''')
+        lib.add(40, 2)
+        >>> 42
+        """
+        from inline import c
+
+    @_public
+    def clazy(prog):
+        source = """
+        #include <stdio.h>
+        void test() {
+        """
+        source += prog
+        # Force flush stdout for prints with missing line breaks.
+        source += r'printf("\n");'
+        source += "}"
+        c(source).test()
 
 def _init_logging():
     import sys
@@ -199,6 +230,10 @@ def _init_retry():
     with _GlobalImport():
         from retry import retry
 
+def _init_cache():
+    with _GlobalImport():
+        from cachier import cachier as cache
+
 def _init_hex():
     from binascii import hexlify, unhexlify
     @_public
@@ -212,6 +247,18 @@ def _init_hex():
     @_public
     def unhex(m):
         return unhexlify(m)
+
+def _init_pretty_xml():
+    from xml.dom import minidom
+
+    @_public
+    def pretty_xml(xml):
+        return minidom.parseString(xml).toprettyxml()
+
+    @_public
+    def pretty_xml_file(path):
+        dom = minidom.parse(path)
+        return dom.toprettyxml()
 
 def _init_binary():
     @_public
@@ -255,7 +302,9 @@ def _init_base64():
 
     @_public
     def base64_decode(m):
-        return b64decode(m)
+        if isinstance(m, str):
+            return b64decode(m + "===")
+        return b64decode(m + b"===")
 
     @_public
     def base64u_encode(m):
@@ -264,7 +313,67 @@ def _init_base64():
         return urlsafe_b64encode(m).decode("utf-8")
     @_public
     def base64u_decode(m):
-        return urlsafe_b64decode(m)
+        return urlsafe_b64decode(m + "===")
+
+def _init_ipv6():
+    @_public
+    def v6_mac(ipv6: str) -> str:
+        # remove subnet info if given
+        subnetIndex = ipv6.find("/")
+        if subnetIndex != -1:
+            ipv6 = ipv6[:subnetIndex]
+
+        ipv6Parts = ipv6.split(":")
+        if not ipv6Parts[3].endswith("ff"):
+            return "tempaddr - no MAC leaked"
+        if not ipv6Parts[4].startswith("fe"):
+            return "tempaddr - no MAC leaked"
+
+        macParts = []
+        for ipv6Part in ipv6Parts[-4:]:
+            while len(ipv6Part) < 4:
+                ipv6Part = "0" + ipv6Part
+            macParts.append(ipv6Part[:2])
+            macParts.append(ipv6Part[-2:])
+
+        # modify parts to match MAC value
+        macParts[0] = "%02x" % (int(macParts[0], 16) ^ 2)
+        del macParts[4]
+        del macParts[3]
+
+        return ":".join(macParts)
+
+    @_public
+    def mac_v6(mac: str) -> str:
+        # only accept MACs separated by a colon
+        parts = mac.split(":")
+
+        # modify parts to match IPv6 value
+        parts.insert(3, "ff")
+        parts.insert(4, "fe")
+        parts[0] = "%x" % (int(parts[0], 16) ^ 2)
+
+        # format output
+        ipv6Parts = []
+        for i in range(0, len(parts), 2):
+            ipv6Parts.append("".join(parts[i:i+2]))
+        ipv6 = "fe80::%s/64" % (":".join(ipv6Parts))
+        return ipv6
+
+def _init_stats():
+    from collections import Counter
+    from collections import defaultdict
+
+    @_public
+    def histogram(data):
+        return Counter(data)
+
+    @_public
+    def group_by(xs, key=lambda x: x):
+        groups = defaultdict(list)
+        for x in xs:
+            groups[key(x)].append(x)
+        return groups
 
 def _init_crypto():
     from Crypto.Cipher import AES
@@ -283,7 +392,6 @@ def _init_crypto():
         plaintext = unpad(aes.decrypt(ciphertext), aes.block_size)
         return plaintext
 
-
 def _init_xor():
     with _GlobalImport():
         from pwn import xor
@@ -298,6 +406,66 @@ def _init_chunks():
         """Yield successive n-sized chunks from lst."""
         for i in range(0, len(lst), n):
             yield lst[i:i + n]
+
+def _init_invert_hex():
+    @_public
+    def invert_hex(h):
+        """Yield successive n-sized chunks from lst."""
+        if h.startswith("#"):
+            h = h[1:]
+
+        if len(h) == 3:
+            h0 = 0xf - int(h[0], 16)
+            h1 = 0xf - int(h[1], 16)
+            h2 = 0xf - int(h[2], 16)
+            return f"#{h0:x}{h0:x}{h1:x}{h1:x}{h2:x}{h2:x}"
+        if len(h) == 4:
+            raise NotImplementedError("invert_hex: does not support 4-digit hex")
+        if len(h) == 6:
+            h0 = 0xff - int(h[0:2], 16)
+            h1 = 0xff - int(h[2:4], 16)
+            h2 = 0xff - int(h[4:6], 16)
+            return f"#{h0:02x}{h1:02x}{h2:02x}"
+        if len(h) == 8:
+            raise NotImplementedError("invert_hex: does not support 8-digit hex")
+
+        raise NotImplementedError("invert_hex: unable to parse hex")
+
+def _init_clipboard():
+    import pyperclip
+
+    @_public
+    def copy(v):
+        pyperclip.copy(v)
+
+    @_public
+    def paste():
+        return pyperclip.paste()
+
+def _register_clipboard_magic():
+    import io
+
+    import pyperclip
+
+    from contextlib import redirect_stdout
+    from IPython.core.magic import register_line_magic
+
+    @register_line_magic
+    def copy(line):
+        f = io.StringIO()
+        with redirect_stdout(f):
+            ret = eval(line)
+
+        content = f.getvalue()
+        if content:
+            pyperclip.copy(str(content))
+            return
+
+        if ret:
+            pyperclip.copy(ret)
+            return
+
+        raise Exception("copy: no content to copy")
 
 def _init_time_helpers():
     @_public
@@ -356,8 +524,13 @@ def _init():
     _init_progress()
     _init_print_json()
     _init_random_string()
+    _init_math()
+    _init_inlinec()
 
+    _init_stats()
+    _init_ipv6()
     _init_hex()
+    _init_pretty_xml()
     _init_binary()
     _init_hexdump()
     _init_urlcode()
@@ -366,16 +539,20 @@ def _init():
     _init_xor()
     _init_hashes()
     _init_chunks()
+    _init_invert_hex()
+    _init_clipboard()
 
     _init_profiled()
     _init_timed()
     _init_iex()
     _init_retry()
+    _init_cache()
 
     _init_time_helpers()
 
     _init_requests_ignore()
 
     _register_pager_magic()
+    _register_clipboard_magic()
 
 _init()
