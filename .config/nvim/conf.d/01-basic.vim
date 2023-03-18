@@ -20,6 +20,9 @@ set linebreak
 " Minimum number of lines surrounding cursor.
 set scrolloff=3
 
+" Tabs should be tabs.
+set noexpandtab
+
 " Don't show mode in command-line, because we already show it in the
 " statusbar.
 set noshowmode
@@ -45,7 +48,7 @@ set undofile
 " List of directories for the backup file, separated with commas.
 let &backupdir=&directory
 " Write to swap if nothing happens after this duration.
-set updatetime=250
+set updatetime=100
 
 " Remove the splash message.
 " Don't give |ins-completion-menu| messages.
@@ -69,3 +72,24 @@ set termguicolors
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
+
+let g:loaded_matchparen=1
+augroup LargeFile
+	let g:large_file = 50*1024
+
+	" Set options:
+	"   eventignore+=FileType (no syntax highlighting etc
+	"   assumes FileType always on)
+	"   noswapfile (save copy of file)
+	"   bufhidden=unload (save memory when other file is viewed)
+	"   buftype=nowritefile (is read-only)
+	"   undolevels=-1 (no undo possible)
+	au BufReadPre *
+				\ let f=expand("<afile>") |
+				\ if getfsize(f) > g:large_file |
+				\ set eventignore+=FileType |
+				\ setlocal syntax=off filetype=off noundofile noloadplugins nolinebreak noswapfile bufhidden=unload buftype=nowrite undolevels=-1 |
+				\ else |
+				\ set eventignore-=FileType |
+				\ endif
+augroup END
