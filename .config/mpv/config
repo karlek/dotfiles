@@ -17,6 +17,11 @@ alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
 term-osd-bar                            # Display a progress bar on the terminal
 
 stretch-image-subs-to-screen
+gpu-context=wayland
+volume-max=150
+
+osd-font="Fira Code Regular"
+
 [extension.gif]
 cache=no
 no-pause
