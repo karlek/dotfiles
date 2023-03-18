@@ -58,7 +58,6 @@ function fish_prompt
 	# Lazy cat if last command had non-zero return value.
 	# Otherwise curious fat cat.
 	set -l is_bad (echo -n "$last_pipestatus" | tr -d 0 | string trim | tr -d \n)
-	echo -n "$is_bad" > /tmp/lol
 	if test -n "$is_bad"
 		echo -n "(^-.-^)ノ"
 	else

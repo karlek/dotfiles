@@ -38,6 +38,8 @@ abbr 64d 'base64 -d'
 abbr 64e 'base64'
 abbr 0xd 'xxd -r -p'
 abbr 0xe 'xxd -p | tr -d "\n"'
+abbr pir 'pip install -r requirements.txt'
+abbr pvenv 'python3 -m venv .venv'
 
 abbr v   'vim'
 abbr r   'reset'

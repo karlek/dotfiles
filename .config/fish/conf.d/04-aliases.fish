@@ -22,7 +22,7 @@ function add_alias $argv
 end
 
 # Trash-put to ~/.local/share/Trash/files.
-add_alias trash-put rm "trash-put -- "
+add_alias trash-put rm "trash-put"
 
 add_alias nvim vim nvim
 

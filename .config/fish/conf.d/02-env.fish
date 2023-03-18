@@ -16,3 +16,10 @@ set -x LC_CTYPE "en_US.UTF-8"
 
 # Remove greeting.
 set fish_greeting ""
+
+# Japanese input
+set QT_IM_MODULE fcitx
+set XMODIFIERS @im=fcitx
+set GTK_IM_MODULE fcitx
+
+set -x JQ_COLORS "1;35:0"
