@@ -46,59 +46,68 @@ for _, plugin in pairs(disabled_builtins) do
 	vim.g["loaded_" .. plugin] = 1
 end
 
-local Plug = vim.fn['plug#']
-vim.call("plug#begin", "~/.local/share/nvim/plugged")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Colorscheme pack.
-Plug 'karlek/vim-colorschemes'
--- Great colorscheme.
-Plug 'ayu-theme/ayu-vim'
--- Netrw enhancer.
-Plug 'tpope/vim-vinegar'
--- Allow changing inside objects from anywhere on the line.
-Plug 'wellle/targets.vim'
--- Readline insertion keybindings.
-Plug 'tpope/vim-rsi'
+require("lazy").setup({
+	-- Colorscheme pack.
+	"karlek/vim-colorschemes",
+	-- Great colorscheme.
+	"ayu-theme/ayu-vim",
 
--- Surround. Next-generation.
-Plug 'kylechui/nvim-surround'
--- Can't live without, but not perfect.
-Plug 'jiangmiao/auto-pairs'
+	-- Netrw enhancer.
+	"tpope/vim-vinegar",
 
--- Allow opening files with line number file:47
-Plug 'wsdjeg/vim-fetch'
--- Fix the awkward remove-blackhole-paste issue.
-Plug 'vim-scripts/ReplaceWithRegister'
+	-- Allow changing inside objects from anywhere on the line.
+	"wellle/targets.vim",
+	-- Readline insertion keybindings.
+	"tpope/vim-rsi",
+	-- Surround. Next-generation.
+	"kylechui/nvim-surround",
+	-- Can't live without, but not perfect.
+	"jiangmiao/auto-pairs",
+	-- Fix the awkward remove-blackhole-paste issue.
+	"vim-scripts/ReplaceWithRegister",
 
--- needs: go install golang.org/x/tools/cmd/goimports@latest
-Plug 'mattn/vim-goimports'
+	-- Allow opening files with line number file:47
+	"wsdjeg/vim-fetch",
 
-Plug('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
-Plug 'neovim/nvim-lspconfig'
+	-- needs: go install golang.org/x/tools/cmd/goimports@latest
+	"mattn/vim-goimports",
 
--- Jump to anywhere.
-Plug 'smoka7/hop.nvim'
+	{"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate"},
+	"neovim/nvim-lspconfig",
 
--- Dependency for everything.
-Plug 'nvim-lua/plenary.nvim'
--- Ctrl-p jump to file.
-Plug 'nvim-telescope/telescope.nvim'
+	-- Jump to anywhere.
+	"smoka7/hop.nvim",
 
--- Distraction-free-mode / lights-out-mode.
--- TODO: evaluate these plugins.
-Plug 'folke/zen-mode.nvim'
-Plug 'folke/twilight.nvim'
+	-- Dependency for everything.
+	"nvim-lua/plenary.nvim",
+	-- Ctrl-p jump to file.
+	"nvim-telescope/telescope.nvim",
 
--- NOTE: random file type support.
-Plug 'rhysd/vim-llvm'
-Plug 'tikhomirov/vim-glsl'
--- Plug 'kaarmu/typst.vim'
--- Plug 'ARM9/arm-syntax-vim'
+	-- Distraction-free-mode / lights-out-mode.
+	-- TODO: evaluate these plugins.
+	"folke/zen-mode.nvim",
+	"folke/twilight.nvim",
 
--- Excellent highlight of todos, notes, etc.
-Plug 'folke/todo-comments.nvim'
+	-- NOTE: random file type support.
+	"rhysd/vim-llvm",
+	"tikhomirov/vim-glsl",
 
-vim.call("plug#end")
+	-- Excellent highlight of todos, notes, etc.
+	"folke/todo-comments.nvim",
+})
 
 -- [ Plugin setup ] --
 
