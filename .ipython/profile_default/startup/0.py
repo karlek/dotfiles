@@ -429,6 +429,14 @@ def _init_invert_hex():
 
         raise NotImplementedError("invert_hex: unable to parse hex")
 
+def _init_twos_comp():
+    @_public
+    def twos_comp(val, bits):
+        """compute the 2's complement of int value val"""
+        if (val & (1 << (bits - 1))) != 0: # if sign bit is set e.g., 8bit: 128-255
+            val = val - (1 << bits)        # compute negative value
+        return val
+
 def _init_clipboard():
     import pyperclip
 
@@ -539,6 +547,7 @@ def _init():
     _init_chunks()
     _init_invert_hex()
     _init_clipboard()
+    _init_twos_comp()
 
     _init_profiled()
     _init_timed()
