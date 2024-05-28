@@ -2,10 +2,38 @@
 -- the currently played file. It does so by scanning the directory a file is
 -- located in when starting playback. It sorts the directory entries
 -- alphabetically, and adds entries before and after the current file to
--- the internal playlist. (It stops if the it would add an already existing
+-- the internal playlist. (It stops if it would add an already existing
 -- playlist entry at the same position - this makes it "stable".)
 -- Add at most 5000 * 2 files when starting a file (before + after).
+
+--[[
+To configure this script use file autoload.conf in directory script-opts (the "script-opts"
+directory must be in the mpv configuration directory, typically ~/.config/mpv/).
+
+Example configuration would be:
+
+disabled=no
+images=no
+videos=yes
+audio=yes
+ignore_hidden=yes
+
+--]]
+
 MAXENTRIES = 5000
+
+local msg = require 'mp.msg'
+local options = require 'mp.options'
+local utils = require 'mp.utils'
+
+o = {
+    disabled = false,
+    images = true,
+    videos = true,
+    audio = true,
+    ignore_hidden = true
+}
+options.read_options(o)
 
 function Set (t)
     local set = {}
@@ -13,19 +41,39 @@ function Set (t)
     return set
 end
 
-EXTENSIONS = Set {
-    'mkv', 'avi', 'mp4', 'ogv', 'webm', 'rmvb', 'flv', 'wmv', 'mpeg', 'mpg', 'm4v', '3gp',
-    'mp3', 'wav', 'ogv', 'flac', 'm4a', 'wma',
+function SetUnion (a,b)
+    local res = {}
+    for k in pairs(a) do res[k] = true end
+    for k in pairs(b) do res[k] = true end
+    return res
+end
+
+EXTENSIONS_VIDEO = Set {
+    '3g2', '3gp', 'avi', 'flv', 'm2ts', 'm4v', 'mj2', 'mkv', 'mov',
+    'mp4', 'mpeg', 'mpg', 'ogv', 'rmvb', 'webm', 'wmv', 'y4m'
 }
 
-mputils = require 'mp.utils'
+EXTENSIONS_AUDIO = Set {
+    'aiff', 'ape', 'au', 'flac', 'm4a', 'mka', 'mp3', 'oga', 'ogg',
+    'ogm', 'opus', 'wav', 'wma'
+}
+
+EXTENSIONS_IMAGES = Set {
+    'avif', 'bmp', 'gif', 'j2k', 'jp2', 'jpeg', 'jpg', 'jxl', 'png',
+    'svg', 'tga', 'tif', 'tiff', 'webp'
+}
+
+EXTENSIONS = Set {}
+if o.videos then EXTENSIONS = SetUnion(EXTENSIONS, EXTENSIONS_VIDEO) end
+if o.audio then EXTENSIONS = SetUnion(EXTENSIONS, EXTENSIONS_AUDIO) end
+if o.images then EXTENSIONS = SetUnion(EXTENSIONS, EXTENSIONS_IMAGES) end
 
 function add_files_at(index, files)
     index = index - 1
     local oldcount = mp.get_property_number("playlist-count", 1)
     for i = 1, #files do
         mp.commandv("loadfile", files[i], "append")
-        mp.commandv("playlist_move", oldcount + i - 1, index + i - 1)
+        mp.commandv("playlist-move", oldcount + i - 1, index + i - 1)
     end
 end
 
@@ -46,41 +94,99 @@ table.filter = function(t, iter)
     end
 end
 
+-- splitbynum and alnumcomp from alphanum.lua (C) Andre Bogus
+-- Released under the MIT License
+-- http://www.davekoelle.com/files/alphanum.lua
+
+-- split a string into a table of number and string values
+function splitbynum(s)
+    local result = {}
+    for x, y in (s or ""):gmatch("(%d*)(%D*)") do
+        if x ~= "" then table.insert(result, tonumber(x)) end
+        if y ~= "" then table.insert(result, y) end
+    end
+    return result
+end
+
+function clean_key(k)
+    k = (' '..k..' '):gsub("%s+", " "):sub(2, -2):lower()
+    return splitbynum(k)
+end
+
+-- compare two strings
+function alnumcomp(x, y)
+    local xt, yt = clean_key(x), clean_key(y)
+    for i = 1, math.min(#xt, #yt) do
+        local xe, ye = xt[i], yt[i]
+        if type(xe) == "string" then ye = tostring(ye)
+        elseif type(ye) == "string" then xe = tostring(xe) end
+        if xe ~= ye then return xe < ye end
+    end
+    return #xt < #yt
+end
+
+local autoloaded = nil
+
+function get_playlist_filenames()
+  local filenames = {}
+  for n = 0, pl_count - 1, 1 do
+    local filename = mp.get_property('playlist/'..n..'/filename')
+    local _, file = utils.split_path(filename)
+    filenames[file] = true
+  end
+  return filenames
+end
+
 function find_and_add_entries()
     local path = mp.get_property("path", "")
-    local dir, filename = mputils.split_path(path)
-    if #dir == 0 then
+    local dir, filename = utils.split_path(path)
+    msg.trace(("dir: %s, filename: %s"):format(dir, filename))
+    if o.disabled then
+        msg.verbose("stopping: autoload disabled")
         return
-    end
-    local pl_count = mp.get_property_number("playlist-count", 1)
-    if (pl_count > 1 and autoload == nil) or
-       (pl_count == 1 and EXTENSIONS[string.lower(get_extension(filename))] == nil) then
+    elseif #dir == 0 then
+        msg.verbose("stopping: not a local path")
         return
-    else
-        autoload = true
     end
 
-    local files = mputils.readdir(dir, "files")
+    pl_count = mp.get_property_number("playlist-count", 1)
+    -- check if this is a manually made playlist
+    if (pl_count > 1 and autoloaded == nil) or
+       (pl_count == 1 and EXTENSIONS[string.lower(get_extension(filename))] == nil) then
+        msg.verbose("stopping: manually made playlist")
+        return
+    else
+        autoloaded = true
+    end
+
+    local pl = mp.get_property_native("playlist", {})
+    local pl_current = mp.get_property_number("playlist-pos-1", 1)
+    msg.trace(("playlist-pos-1: %s, playlist: %s"):format(pl_current,
+        utils.to_string(pl)))
+
+    local files = utils.readdir(dir, "files")
     if files == nil then
+        msg.verbose("no other files in directory")
         return
     end
     table.filter(files, function (v, k)
+        -- The current file could be a hidden file, ignoring it doesn't load other
+        -- files from the current directory.
+        if (o.ignore_hidden and not (v == filename) and string.match(v, "^%.")) then
+            return false
+        end
         local ext = get_extension(v)
         if ext == nil then
             return false
         end
         return EXTENSIONS[string.lower(ext)]
     end)
-    table.sort(files, function (a, b)
-        return string.lower(a) < string.lower(b)
-    end)
+    table.sort(files, alnumcomp)
 
     if dir == "." then
         dir = ""
     end
 
-    local pl = mp.get_property_native("playlist", {})
-    local pl_current = mp.get_property_number("playlist-pos", 0) + 1
     -- Find the current pl entry (dir+"/"+filename) in the sorted dir list
     local current
     for i = 1, #files do
@@ -92,31 +198,28 @@ function find_and_add_entries()
     if current == nil then
         return
     end
+    msg.trace("current file position in files: "..current)
 
     local append = {[-1] = {}, [1] = {}}
+    local filenames = get_playlist_filenames()
     for direction = -1, 1, 2 do -- 2 iterations, with direction = -1 and +1
         for i = 1, MAXENTRIES do
             local file = files[current + i * direction]
-            local pl_e = pl[pl_current + i * direction]
             if file == nil or file[1] == "." then
                 break
             end
 
             local filepath = dir .. file
-            if pl_e then
-                -- If there's a playlist entry, and it's the same file, stop.
-                if pl_e.filename == filepath then
-                    break
-                end
-            end
+            -- skip files already in playlist
+            if filenames[file] then break end
 
             if direction == -1 then
                 if pl_current == 1 then -- never add additional entries in the middle
-                    mp.msg.info("Prepending " .. file)
+                    msg.info("Prepending " .. file)
                     table.insert(append[-1], 1, filepath)
                 end
             else
-                mp.msg.info("Adding " .. file)
+                msg.info("Adding " .. file)
                 table.insert(append[1], filepath)
             end
         end

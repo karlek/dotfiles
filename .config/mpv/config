@@ -1,28 +1,12 @@
-# Disable the On Screen Controller (OSC).
-osc=no
+save-position-on-quit=yes               # saves the seekbar position on exit
+cache=yes                               # uses a large seekable RAM cache even for local input.
 
-save-position-on-quit
+input-cursor=no
+fullscreen=yes
+hwdec=auto
+slang=en
+# alang
 
-# Color output in terminal.
-msg-module
-
-# Remove music cover art.
-audio-display=no
-
-# Automatically select these subtitles (decreasing priority)
-slang=Full English,eng,en,English
-# Automatically select these audio tracks (decreasing priority)
-alang=jp,jpn,Japanese,en,eng,English,fr,fre,french
-
-term-osd-bar                            # Display a progress bar on the terminal
-
-stretch-image-subs-to-screen
-gpu-context=wayland
-volume-max=150
-
-osd-font="Fira Code Regular"
-
-[extension.gif]
-cache=no
-no-pause
-loop-file=yes
+msg-color=yes                           # color log messages on terminal
+msg-module=yes                          # prepend module name to log messages
+term-osd-bar=yes                        # displays a progress bar on the terminal
