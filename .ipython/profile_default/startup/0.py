@@ -174,9 +174,11 @@ def _init_inlinec():
 def _init_logging():
     import sys
     from rich import print as rprint
+    from rich.markup import escape
 
     def log_stub(style, char, msg, *args, **kwargs):
-        rprint(f"[{style}]\[{char}] {msg}[/{style}]", file=sys.stderr)
+        s = escape(f"[{char}]")
+        rprint(f"[{style}]{s}[/{style}] {msg}", file=sys.stderr)
         for arg in args:
             rprint(f"\t{arg}")
         for k, v in kwargs.items():
@@ -191,16 +193,12 @@ def _init_logging():
         log_stub("green", "+", msg, *args, **kwargs)
 
     @_public
-    def warning(msg, *args, **kwargs):
+    def warn(msg, *args, **kwargs):
         log_stub("yellow", "*", msg, *args, **kwargs)
 
     @_public
     def error(msg, *args, **kwargs):
         log_stub("red", "!", msg, *args, **kwargs)
-
-    @_public
-    def critical(msg, *args, **kwargs):
-        log_stub("red bold", "#", msg, *args, **kwargs)
 
 def _register_pager_magic():
     from contextlib import redirect_stdout
