@@ -28,9 +28,6 @@ set -x JQ_COLORS "1;35:0"
 # Blue grep highlight.
 set -x GREP_COLORS "mt=1;34"
 
-set -x LC_TIME "en_GB.UTF-8"
-set -x LC_ALL  "en_US.UTF-8"
-
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.local/share/go/bin"
 fish_add_path "$HOME/.local/share/cargo/bin"
