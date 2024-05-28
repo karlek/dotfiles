@@ -324,6 +324,13 @@ end
 
 # --- [ Misc ] ---
 
+function a
+	set -l battery (acpi | cut -c 12-)
+	set -l time (date '+%a %b %d, %Y - %T')
+	echo $battery
+	printf "%40s\n" "$time"
+end
+
 function sum
 	python -c 'import sys; print(sum([int(l.strip()) for l in sys.stdin.readlines() if l.strip()]))'
 end
