@@ -1,7 +1,7 @@
 [user]
 	name = Henry Eklind
 	email = henry@karlek.io
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsHccwyRn/aWM8MzsH39oYb01iL1rhTgmP86wNdMmfn _@wisteria
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIaQgPKKKsk461vc11BluvPoOFj/BwpN/xAAjMzTo/hv
 
 [init]
 	defaultBranch = main
