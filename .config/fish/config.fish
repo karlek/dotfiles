@@ -24,7 +24,7 @@ set -x GOPATH             "$XDG_DATA_HOME/go"
 set -x GOROOT             "/usr/lib/go"
 set -x EDITOR             "nvim"
 set -x BROWSER            "firefox"
-set -x MANPAGER           'nvim +Man! +"set nomodifiable"'
+set -x MANPAGER           'nvim --clean +Man!'
 
 # Fix ghidra, burp, all java basically
 set -x _JAVA_AWT_WM_NONREPARENTING 1
