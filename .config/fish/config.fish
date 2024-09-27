@@ -364,3 +364,13 @@ function sj-join
 		-H 'Referer: https://ombord.sj.se/' \
 		'https://10.101.0.1/hotspot/hotspot.cgi?method=login'
 end
+
+function ds
+	# Stdin
+	if test $(count $argv) -eq 0
+		xxd -p | tr -d '\n' | rz-asm -D -
+		return
+	end
+	# File
+	rz-asm -D $(cat $argv | xxd -p | tr -d '\n')
+end
