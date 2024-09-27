@@ -45,9 +45,13 @@ set $menu dmenu-wl_run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * background ~/img/wallhaven-8ovykj.jpg fill
 
 set $laptop eDP-1
+set $screen DP-3
+output $screen background ~/img/04124_shadesofnature_3440x1440.jpg fill
+output HDMI-A-1 background ~/img/wallhaven-3kx166.jpg fill
+output $laptop background ~/img/wallhaven-8ovykj.jpg fill
+
 bindswitch --reload --locked lid:on  output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
@@ -76,20 +80,20 @@ exec swayidle -w \
 # Read `man 5 sway-input` for more information about this section.
 	# xkb_options caps:escape
 
-input "1:1:AT_Translated_Set_2_keyboard" {
-	xkb_layout us-super-caps,se
-}
-input "1241:41619:OBINS_OBINS_AnnePro2" {
-	xkb_layout us-super-caps,se
-}
+# Turn off touchpad.
+# input "1739:52824:SYNA8008:00_06CB:CE58_Touchpad" {
+# 	events disabled
+# }
 
 # https://github.com/swaywm/sway/blob/1ade0ce753dc5f588584f444ce80d27c3b1e4300/sway/input/keyboard.c#L1005
 input type:keyboard {
 	repeat_delay 300
 	repeat_rate 25
+
+	xkb_layout us,se
+	xkb_options caps:none
 }
 bindsym $mod+x exec swaymsg input "1:1:AT_Translated_Set_2_keyboard" xkb_switch_layout next
-
 
 ### Key bindings
 #
@@ -104,16 +108,19 @@ bindsym $mod+q kill
 # Start your launcher
 bindsym $mod+r exec $menu
 
-bindsym XF86AudioLowerVolume exec sh -c 'ponymix -d bluez_output.00_1B_66_A6_7B_A1.1 decrease 3 ; ponymix decrease 3'
-bindsym XF86AudioRaiseVolume exec sh -c 'ponymix -d bluez_output.00_1B_66_A6_7B_A1.1 increase 3 ; ponymix increase 3'
-bindsym XF86AudioMute        exec sh -c 'ponymix -d bluez_output.00_1B_66_A6_7B_A1.1 toggle ;ponymix toggle'
+bindsym XF86AudioLowerVolume exec sh -c 'ponymix decrease 2'
+bindsym XF86AudioRaiseVolume exec sh -c 'ponymix increase 2'
+bindsym XF86AudioMute        exec sh -c 'ponymix toggle'
 
 seat * hide_cursor 3000
 seat * hide_cursor when-typing enable
 
-bindsym XF86Go                exec playerctl previous
-bindsym Cancel                exec playerctl play-pause
-bindsym XF86Favorites         exec playerctl next
+# bindsym XF86Go                exec playerctl previous
+# bindsym Cancel                exec playerctl play-pause
+# bindsym XF86Favorites         exec playerctl next
+bindsym XF86Go        exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86Messenger exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym Cancel        exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
@@ -200,7 +207,7 @@ bindsym $mod+Shift+space floating toggle
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+t exec (swaymsg "[app_id=terminal-scratch] scratchpad show") || exec alacritty --class terminal-scratch
+bindsym $mod+t exec (swaymsg "[app_id=terminal-scratch] scratchpad show") || exec kitty --class terminal-scratch
 
 for_window [app_id="terminal-scratch"] {
 	move position center, \
@@ -208,9 +215,13 @@ for_window [app_id="terminal-scratch"] {
 	scratchpad show, \
 	resize set 60 ppt 80 ppt
 }
-exec alacritty --class terminal-scratch
+exec kitty --class terminal-scratch
 
 for_window [class="com-evacipated-cardcrawl-modthespire-Loader"] {
+	floating enable
+}
+
+for_window [class="Godot"] {
 	floating enable
 }
 
@@ -243,16 +254,22 @@ mode "resize" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+m mode "resize"
-bindsym XF86NotificationCenter exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86PickupPhone exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym XF86HangupPhone exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 for_window [app_id="firefox"] inhibit_idle fullscreen
 
-exec python3 /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.9
+exec python3 /usr/share/sway-contrib/inactive-windows-transparency.py --opacity 0.9
+# Screenshot helper
+# exec python3 /usr/share/sway-contrib/grimshot
+
+# Remember keyboard layout, per window
+# exec python3 /usr/share/sway-contrib/layout-per-window.py
+
+# Enable moving between columns without destroying layouts
+# exec python3 /usr/share/sway-contrib/switch-top-level.py
 
 # Lazy solution instead of using pipewire conf
 exec pactl load-module module-switch-on-connect
+exec wlsunset -l 59.33 -L 18.05 -g 0.9 -T 6500 -t 4500 -d 0
 
 seat * shortcuts_inhibitor disable
 
