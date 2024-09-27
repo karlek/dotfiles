@@ -16,6 +16,18 @@ focus_follows_mouse no
 
 default_floating_border none
 
+bar {
+	position top
+	colors {
+			statusline #fafafa
+			background #000000AA
+			inactive_workspace #323232EE #323232EE #9c9c9cEE
+	}
+
+	tray_output none
+	status_command 'while true; do printf "%s | %s" "$(acpi)" "$(LC_TIME=C.UTF-8 date +%c)" ; sleep 1; done'
+}
+
 # Home row direction keys, like vim
 set $left h
 set $down j
