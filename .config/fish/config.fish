@@ -4,8 +4,8 @@ if status is-interactive
 end
 if status is-login
 	if test ! -e "$SSH_AUTH_SOCK"
-		ssh-agent -a "$SSH_AUTH_SOCK"
-		ssh-add
+		ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
+		ssh-add > /dev/null
 	end
 end
 
