@@ -65,9 +65,6 @@ require("lazy").setup({
 	-- Great colorscheme.
 	"ayu-theme/ayu-vim",
 
-	-- Netrw enhancer.
-	"tpope/vim-vinegar",
-
 	-- Allow changing inside objects from anywhere on the line.
 	"wellle/targets.vim",
 	-- Readline insertion keybindings.
@@ -101,12 +98,15 @@ require("lazy").setup({
 	"folke/zen-mode.nvim",
 	"folke/twilight.nvim",
 
+	-- Netrw enhancer.
+	"tpope/vim-vinegar",
+
 	-- NOTE: random file type support.
 	"rhysd/vim-llvm",
 	"tikhomirov/vim-glsl",
 
 	-- Excellent highlight of todos, notes, etc.
-	"folke/todo-comments.nvim",
+	{ 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 })
 
 -- [ Plugin setup ] --
@@ -118,13 +118,11 @@ require'nvim-treesitter.configs'.setup {
 	ensure_installed = { "c", "go", "rust", "lua", "vim", "vimdoc", "markdown", "markdown_inline" },
 	highlight = {
 		enable = true,
+		-- ref: https://www.reddit.com/r/neovim/comments/1anj03h/treesitter_failing_to_highlight_markdown/
+		-- ref: https://stackoverflow.com/questions/78220353/neovim-no-syntax-highlighting-with-treesitter-for-markdown
+		additional_vim_regex_highlighting = { "markdown" },
 		-- Disable slow treesitter highlight for large files.
 		disable = function(lang, buf)
-			-- ref: https://www.reddit.com/r/neovim/comments/1anj03h/treesitter_failing_to_highlight_markdown/
-			-- ref: https://stackoverflow.com/questions/78220353/neovim-no-syntax-highlighting-with-treesitter-for-markdown
-			if lang == "markdown" then
-				return true
-			end
 			local max_filesize = 100 * 1024 -- 100 KB
 			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 			if ok and stats and stats.size > max_filesize then
@@ -150,12 +148,12 @@ parser_config.arm = {
   filetype = "arm", -- if filetype does not match the parser name
 }
 
-local lspconfig = require'lspconfig'
-local lsps = {"zls", "pyright", "gopls", "rust_analyzer", "clangd"}
-
-for i, lsp in ipairs(lsps) do
-	lspconfig[lsp].setup{}
-end
+-- local lspconfig = require'lspconfig'
+-- local lsps = {"zls", "pyright", "gopls", "rust_analyzer", "clangd"}
+--
+-- for i, lsp in ipairs(lsps) do
+-- 	lspconfig[lsp].setup{}
+-- end
 
 -- init hop, jump anywhere
 require'hop'.setup()
@@ -174,12 +172,12 @@ require("telescope").setup {
 	}
 }
 
-vim.api.nvim_create_autocmd({'BufWritePre'}, {
-	group = vim.api.nvim_create_augroup('format_on_save', {}),
-	desc = 'format on save',
-	pattern = '<buffer>',
-	command = 'silent! lua vim.lsp.buf.format()',
-})
+-- vim.api.nvim_create_autocmd({'BufWritePre'}, {
+-- 	group = vim.api.nvim_create_augroup('format_on_save', {}),
+-- 	desc = 'format on save',
+-- 	pattern = '<buffer>',
+-- 	command = 'silent! lua vim.lsp.buf.format()',
+-- })
 
 
 -- [ / Plugin setup ]
@@ -235,7 +233,7 @@ vim.opt.showmode = false
 -- o:   Automatically insert the current comment leader after hitting 'o' or
 --      'O' in Normal mode.  In case comment is unwanted in a specific place
 --      use CTRL-U to quickly delete it. |i_CTRL-U|
-vim.o.formatoptions = "jqlnt"
+vim.opt.formatoptions = "jqlnt"
 
 -- Show tab, end-of-line and trailing whitespaces.
 vim.opt.list = true
@@ -272,6 +270,8 @@ vim.opt.jumpoptions = "view"
 
 --  Set completeopt to have a better completion experience
 vim.opt.completeopt = {"menuone", "noinsert", "noselect"}
+
+vim.opt.spellsuggest = 'best,9'
 
 -- [ Display ] ---
 
@@ -361,13 +361,13 @@ vim.keymap.set("n", "<leader>k", '<cmd>HopLineBC<CR>', {desc = "Fast upwards jum
 vim.keymap.set("v", "<leader>k", '<cmd>HopLineBC<CR>', {desc = "Fast upwards jump to label"})
 vim.keymap.set("n", "<leader>f", '<cmd>HopChar1MW<CR>',  {desc = "Fast anywhere jump to label"})
 
-vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 
 -- Switch buffers.
 vim.keymap.set("n", "<C-b>", '<cmd>Telescope buffers<CR>', {desc = "Picker for buffers"})
 -- Switch to related header file.
-vim.keymap.set("n", "<C-5>", '<cmd>ClangdSwitchSourceHeader<CR>', {desc = "Switch between header and source file"})
+-- vim.keymap.set("n", "<C-5>", '<cmd>ClangdSwitchSourceHeader<CR>', {desc = "Switch between header and source file"})
 -- Search for files.
 vim.keymap.set("n", "<C-p>", '<cmd>Telescope git_files<CR>', {desc = "Search for files"})
 
@@ -393,5 +393,3 @@ vim.cmd "cabbr <expr> $$ '~/.config/nvim/init.lua'"
 vim.cmd "nnoremap <F3> <cmd>setlocal spell! spelllang=en,sv<CR>"
 -- Remove trailing spaces.
 vim.cmd "nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\\s\\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo 'Whitespaced trimmed!' <CR>"
-
-vim.opt.spellsuggest = 'best,9'
