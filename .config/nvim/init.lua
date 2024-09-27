@@ -186,8 +186,8 @@ require("telescope").setup {
 vim.opt.number = true
 
 -- Don't redraw while executing macros (good performance config)
-
 vim.opt.lazyredraw = true
+
 -- Enables mouse scrolling
 vim.opt.mouse = "a"
 

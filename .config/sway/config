@@ -19,9 +19,9 @@ default_floating_border none
 bar {
 	position top
 	colors {
-			statusline #fafafa
-			background #000000AA
-			inactive_workspace #323232EE #323232EE #9c9c9cEE
+		statusline #fafafa
+		background #000000AA
+		inactive_workspace #323232EE #323232EE #9c9c9cEE
 	}
 
 	tray_output none
@@ -64,21 +64,6 @@ exec swayidle -w \
 		timeout 300 'swaylock -f -c 000000' \
 		timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 		before-sleep 'swaylock -f -c 000000'
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-	# xkb_options caps:escape
 
 # Turn off touchpad.
 # input "1739:52824:SYNA8008:00_06CB:CE58_Touchpad" {
@@ -221,20 +206,9 @@ for_window [class="com-evacipated-cardcrawl-modthespire-Loader"] {
 	floating enable
 }
 
-for_window [class="Godot"] {
-	floating enable
-}
-
 for_window [class="VirtualBoxVM"] {
 	floating enable
 }
-
-# for_window [app_id="dropdown"] floating enable, \
-#     border pixel 5, \
-#     resize set 70 ppt 60 ppt, \
-#     move position center, \
-#     move to scratchpad, \
-#     scratchpad show
 
 #
 # Resizing containers:
