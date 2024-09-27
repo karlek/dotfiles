@@ -1,5 +1,12 @@
+set -x SSH_AUTH_SOCK /run/user/$(id -u)/ssh-agent.$hostname.sock
 if status is-interactive
 	# Commands to run in interactive sessions can go here
+end
+if status is-login
+	if test ! -e "$SSH_AUTH_SOCK"
+		ssh-agent -a "$SSH_AUTH_SOCK"
+		ssh-add
+	end
 end
 
 # --- [ Env ] ---
