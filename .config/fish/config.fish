@@ -125,8 +125,8 @@ alias cal "cal -w"
 # Colored grep.
 alias grep 'grep --color=auto'
 
-# Fix coloring for less.
-alias less 'less -R'
+# Fix coloring for less. And ignore-case by default.
+alias less 'less -R -i'
 
 # Colorized and better syntax for diff.
 alias diff 'diff --color=auto -u'
