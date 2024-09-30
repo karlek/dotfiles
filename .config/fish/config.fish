@@ -18,6 +18,7 @@ set -x XDG_CONFIG_HOME    "$HOME/.config"
 set -x XDG_CACHE_HOME     "$HOME/.cache"
 set -x XDG_DATA_HOME      "$HOME/.local/share"
 
+set -x LESS               "-i -R"
 set -x LESSHISTFILE       "$XDG_DATA_HOME/less/history"
 
 set -x GOPATH             "$XDG_DATA_HOME/go"
