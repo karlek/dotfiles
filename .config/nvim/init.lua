@@ -59,18 +59,52 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.SignatureMap = {
+	Leader             =  "m",
+	PlaceNextMark      =  "",
+	ToggleMarkAtLine   =  "",
+	PurgeMarksAtLine   =  "",
+	DeleteMark         =  "",
+	PurgeMarks         =  "",
+	PurgeMarkers       =  "",
+	GotoNextLineAlpha  =  "",
+	GotoPrevLineAlpha  =  "",
+	GotoNextSpotAlpha  =  "",
+	GotoPrevSpotAlpha  =  "",
+	GotoNextLineByPos  =  "",
+	GotoPrevLineByPos  =  "",
+	GotoNextSpotByPos  =  "",
+	GotoPrevSpotByPos  =  "",
+	GotoNextMarker     =  "",
+	GotoPrevMarker     =  "",
+	GotoNextMarkerAny  =  "",
+	GotoPrevMarkerAny  =  "",
+	ListBufferMarks    =  "",
+	ListBufferMarkers  =  "",
+}
+
 require("lazy").setup({
 	-- Colorscheme pack.
 	"karlek/vim-colorschemes",
 	-- Great colorscheme.
 	"ayu-theme/ayu-vim",
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+	},
 
 	-- Allow changing inside objects from anywhere on the line.
 	"wellle/targets.vim",
 	-- Readline insertion keybindings.
 	"tpope/vim-rsi",
 	-- Surround. Next-generation.
-	"kylechui/nvim-surround",
+	{
+		"kylechui/nvim-surround",
+		config = function()
+			require("nvim-surround").setup{}
+		end
+	},
 	-- Can't live without, but not perfect.
 	"jiangmiao/auto-pairs",
 	-- Fix the awkward remove-blackhole-paste issue.
@@ -82,16 +116,79 @@ require("lazy").setup({
 	-- needs: go install golang.org/x/tools/cmd/goimports@latest
 	"mattn/vim-goimports",
 
-	{"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate"},
-	"neovim/nvim-lspconfig",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require'nvim-treesitter.configs'.setup {
+				-- A list of parser names
+				ensure_installed = { "c", "go", "rust", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "python" },
+				highlight = {
+					enable = true,
+					-- ref: https://www.reddit.com/r/neovim/comments/1anj03h/treesitter_failing_to_highlight_markdown/
+					-- ref: https://stackoverflow.com/questions/78220353/neovim-no-syntax-highlighting-with-treesitter-for-markdown
+					additional_vim_regex_highlighting = { "markdown" },
+					-- Disable slow treesitter highlight for large files.
+					disable = function(lang, buf)
+						local max_filesize = 100 * 1024 -- 100 KB
+						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+						if ok and stats and stats.size > max_filesize then
+							return true
+						end
+					end,
+				},
+				indent = {
+					enable = true,
+				},
+			}
+		end
+	},
+
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require'lspconfig'.zls.setup{}
+		end
+	},
 
 	-- Jump to anywhere.
-	"smoka7/hop.nvim",
+	{
+		"smoka7/hop.nvim",
+		config = function()
+			require'hop'.setup()
+			-- Line motions
+			-- TODO: consider more hop actions
+			-- https://github.com/smoka7/hop.nvim#keybindings
+			vim.keymap.set("n", "<leader>j", '<cmd>HopLineAC<CR>', {desc = "Fast downwards jump to label"})
+			vim.keymap.set("v", "<leader>j", '<cmd>HopLineAC<CR>', {desc = "Fast downwards jump to label"})
+			vim.keymap.set("n", "<leader>k", '<cmd>HopLineBC<CR>', {desc = "Fast upwards jump to label"})
+			vim.keymap.set("v", "<leader>k", '<cmd>HopLineBC<CR>', {desc = "Fast upwards jump to label"})
+			vim.keymap.set("n", "<leader>f", '<cmd>HopChar1MW<CR>',  {desc = "Fast anywhere jump to label"})
+		end
+	},
 
 	-- Dependency for everything.
 	"nvim-lua/plenary.nvim",
+
 	-- Ctrl-p jump to file.
-	"nvim-telescope/telescope.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			-- init telescope, universal picker
+			local actions = require("telescope.actions")
+			require("telescope").setup {
+				defaults = {
+					mappings = {
+						i = {
+							["<esc>"] = actions.close,
+							["<C-j>"] = actions.move_selection_next,
+							["<C-k>"] = actions.move_selection_previous,
+						},
+					},
+				}
+			}
+		end
+	},
 
 	-- Distraction-free-mode / lights-out-mode.
 	-- TODO: evaluate these plugins.
@@ -106,81 +203,18 @@ require("lazy").setup({
 	"tikhomirov/vim-glsl",
 
 	-- Excellent highlight of todos, notes, etc.
-	{ 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+	{
+		'folke/todo-comments.nvim',
+		event = 'VimEnter',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		opts = { signs = false },
+		config = function()
+			require("todo-comments").setup{}
+		end
+	},
+
+	"kshenoy/vim-signature",
 })
-
--- [ Plugin setup ] --
-
-require("nvim-surround").setup{}
-require("todo-comments").setup{}
-require'nvim-treesitter.configs'.setup {
-	-- A list of parser names
-	ensure_installed = { "c", "go", "rust", "lua", "vim", "vimdoc", "markdown", "markdown_inline" },
-	highlight = {
-		enable = true,
-		-- ref: https://www.reddit.com/r/neovim/comments/1anj03h/treesitter_failing_to_highlight_markdown/
-		-- ref: https://stackoverflow.com/questions/78220353/neovim-no-syntax-highlighting-with-treesitter-for-markdown
-		additional_vim_regex_highlighting = { "markdown" },
-		-- Disable slow treesitter highlight for large files.
-		disable = function(lang, buf)
-			local max_filesize = 100 * 1024 -- 100 KB
-			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-			if ok and stats and stats.size > max_filesize then
-				return true
-			end
-		end,
-	},
-	indent = {
-		enable = true,
-	},
-}
-
--- Add tree sitter for asm.
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.arm = {
-  install_info = {
-    url = "https://github.com/SethBarberee/tree-sitter-asm",
-    files = {"src/parser.c"},
-    -- optional entries:
-    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-  },
-  filetype = "arm", -- if filetype does not match the parser name
-}
-
--- local lspconfig = require'lspconfig'
--- local lsps = {"zls", "pyright", "gopls", "rust_analyzer", "clangd"}
---
--- for i, lsp in ipairs(lsps) do
--- 	lspconfig[lsp].setup{}
--- end
-
--- init hop, jump anywhere
-require'hop'.setup()
-
--- init telescope, universal picker
-local actions = require("telescope.actions")
-require("telescope").setup {
-	defaults = {
-		mappings = {
-			i = {
-				["<esc>"] = actions.close,
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
-			},
-		},
-	}
-}
-
--- vim.api.nvim_create_autocmd({'BufWritePre'}, {
--- 	group = vim.api.nvim_create_augroup('format_on_save', {}),
--- 	desc = 'format on save',
--- 	pattern = '<buffer>',
--- 	command = 'silent! lua vim.lsp.buf.format()',
--- })
-
-
--- [ / Plugin setup ]
 
 -- Line numbering
 vim.opt.number = true
@@ -281,7 +315,9 @@ vim.api.nvim_set_hl(0, "FoldColumn", {})
 vim.opt.signcolumn = "yes"
 
 vim.opt.background = "dark"
-vim.cmd.colorscheme('ayu')
+vim.cmd.colorscheme('cyberdream')
+-- Fix ayu color scheme split separator.
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = '#333333', force = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
 	group = vim.api.nvim_create_augroup('highlight_yank', {}),
@@ -289,7 +325,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 	callback = function(event)
 		if vim.v.event.regname == "+" then
-			vim.highlight.on_yank { higroup = 'IncSearch', timeout = 1000 }
+			-- TODO: find better highlight group for system clipboard yank.
+			vim.highlight.on_yank { higroup = 'RedrawDebugClear', timeout = 1000 }
 		else
 			vim.highlight.on_yank { higroup = 'Pmenu', timeout = 1000 }
 		end
@@ -301,6 +338,17 @@ vim.api.nvim_create_autocmd({'BufWinEnter'}, {
 	desc = 'return cursor to where it was last time closing the file',
 	pattern = '*',
 	command = 'silent! normal! g`"zv',
+})
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+	group = vim.api.nvim_create_augroup('cmd_leave', {}),
+	desc = 'reset command line after 5s',
+	callback = function()
+		vim.fn.timer_start(5000, function()
+			-- Does not add an entry to `:messages`.
+			vim.cmd [[ echon ' ' ]]
+		end)
+	end
 })
 
 -- [ / Display ] ---
@@ -352,22 +400,8 @@ vim.keymap.set("n", "<leader>y", '"+y', {desc = "Copy to clipboard"})
 vim.keymap.set("n", "<leader>p", '"+p', {desc = "Paste from clipboard"})
 vim.keymap.set("n", "<leader>P", '"+P', {desc = "Paste clipboard before"})
 
--- Line motions
--- TODO: consider more hop actions
--- https://github.com/smoka7/hop.nvim#keybindings
-vim.keymap.set("n", "<leader>j", '<cmd>HopLineAC<CR>', {desc = "Fast downwards jump to label"})
-vim.keymap.set("v", "<leader>j", '<cmd>HopLineAC<CR>', {desc = "Fast downwards jump to label"})
-vim.keymap.set("n", "<leader>k", '<cmd>HopLineBC<CR>', {desc = "Fast upwards jump to label"})
-vim.keymap.set("v", "<leader>k", '<cmd>HopLineBC<CR>', {desc = "Fast upwards jump to label"})
-vim.keymap.set("n", "<leader>f", '<cmd>HopChar1MW<CR>',  {desc = "Fast anywhere jump to label"})
-
--- vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-
 -- Switch buffers.
 vim.keymap.set("n", "<C-b>", '<cmd>Telescope buffers<CR>', {desc = "Picker for buffers"})
--- Switch to related header file.
--- vim.keymap.set("n", "<C-5>", '<cmd>ClangdSwitchSourceHeader<CR>', {desc = "Switch between header and source file"})
 -- Search for files.
 vim.keymap.set("n", "<C-p>", '<cmd>Telescope git_files<CR>', {desc = "Search for files"})
 
@@ -390,6 +424,111 @@ vim.keymap.set("n", "k", "gk", {desc = "Move cursor up one line virtually"})
 
 vim.cmd "cabbr <expr> $$ '~/.config/nvim/init.lua'"
 -- Toggle spell-check.
-vim.cmd "nnoremap <F3> <cmd>setlocal spell! spelllang=en,sv<CR>"
+vim.cmd "nnoremap <F3> <cmd>setlocal spell! spelllang=en<CR>"
 -- Remove trailing spaces.
 vim.cmd "nnoremap <silent> <F4> :let _s=@/ <Bar> :%s/\\s\\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <Bar> :echo 'Whitespaced trimmed!' <CR>"
+
+
+
+vim.api.nvim_create_user_command('Redir', function(ctx)
+	local lines = vim.split(vim.api.nvim_exec(ctx.args, true), '\n', { plain = true })
+	vim.cmd('new')
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+	vim.opt_local.modified = false
+end, { nargs = '+', complete = 'command' })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+	local bufnr = args.buf
+	local client = vim.lsp.get_client_by_id(args.data.client_id)
+	local methods = vim.lsp.protocol.Methods
+		---Utility for keymap creation.
+		---@param lhs string
+		---@param rhs string|function
+		---@param opts string|table
+		---@param mode? string|string[]
+		local function keymap(lhs, rhs, opts, mode)
+			opts = type(opts) == 'string' and { desc = opts }
+				or vim.tbl_extend('error', opts --[[@as table]], { buffer = bufnr })
+			mode = mode or 'n'
+			vim.keymap.set(mode, lhs, rhs, opts)
+		end
+
+		---For replacing certain <C-x>... keymaps.
+		---@param keys string
+		local function feedkeys(keys)
+			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', true)
+		end
+
+		---Is the completion menu open?
+		local function pumvisible()
+			return tonumber(vim.fn.pumvisible()) ~= 0
+		end
+
+		-- Enable completion and configure keybindings.
+		if client.supports_method(methods.textDocument_completion) then
+			vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+			
+			-- Use enter to accept completions.
+			keymap('<cr>', function()
+				return pumvisible() and '<C-y>' or '<cr>'
+			end, { expr = true }, 'i')
+			
+			-- Use slash to dismiss the completion menu.
+			-- keymap('/', function()
+			-- 	return pumvisible() and '<C-e>' or '/'
+			-- end, { expr = true }, 'i')
+		
+			-- Use <C-n> to navigate to the next completion or:
+			-- - Trigger LSP completion.
+			-- - If there's no one, fallback to vanilla omnifunc.
+			keymap('<C-n>', function()
+				if pumvisible() then
+					feedkeys '<C-n>'
+				else
+					if next(vim.lsp.get_clients { bufnr = 0 }) then
+						vim.lsp.completion.trigger()
+					else
+						if vim.bo.omnifunc == '' then
+							feedkeys '<C-x><C-n>'
+						else
+							feedkeys '<C-x><C-o>'
+						end
+					end
+				end
+			end, 'Trigger/select next completion', 'i')
+		
+			-- Buffer completions.
+			keymap('<C-u>', '<C-x><C-n>', { desc = 'Buffer completions' }, 'i')
+		
+			-- -- Use <Tab> to accept a Copilot suggestion, navigate between snippet tabstops,
+			-- -- or select the next completion.
+			-- -- Do something similar with <S-Tab>.
+			-- keymap('<Tab>', function()
+			-- 	local copilot = require 'copilot.suggestion'
+			--
+			-- 	if copilot.is_visible() then
+			-- 		copilot.accept()
+			-- 	elseif pumvisible() then
+			-- 		feedkeys '<C-n>'
+			-- 	elseif vim.snippet.active { direction = 1 } then
+			-- 		vim.snippet.jump(1)
+			-- 	else
+			-- 		feedkeys '<Tab>'
+			-- 	end
+			-- end, {}, { 'i', 's' })
+			-- keymap('<S-Tab>', function()
+			-- 	if pumvisible() then
+			-- 		feedkeys '<C-p>'
+			-- 	elseif vim.snippet.active { direction = -1 } then
+			-- 		vim.snippet.jump(-1)
+			-- 	else
+			-- 		feedkeys '<S-Tab>'
+			-- 	end
+			-- end, {}, { 'i', 's' })
+			--
+			-- -- Inside a snippet, use backspace to remove the placeholder.
+			-- keymap('<BS>', '<C-o>s', {}, 's')
+		end
+	end,
+})
