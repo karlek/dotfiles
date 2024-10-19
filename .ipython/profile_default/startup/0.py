@@ -142,7 +142,7 @@ def _init_random_string():
 
 def _init_math():
     with _GlobalImport():
-        from math import sqrt, log
+        from math import sqrt, log, floor, ceil
 
 def _init_inlinec():
     import sys
@@ -232,10 +232,16 @@ def _init_cache():
     with _GlobalImport():
         from cachier import cachier as cache
 
+# TODO:  if returning to value, return as string. If not returning print
+# without string quotes, possible?
 def _init_hex():
     from binascii import hexlify, unhexlify
     @_public
     def hex(m, **kwargs):
+        if "length" in kwargs:
+            # hex -> two nibbles for each byte (*2), +prefix length (0x) of 2 => (+2)
+            padding = kwargs["length"]*2+2
+            return f"{m:#0{padding}x}"[2:]
         if isinstance(m, int):
             return __builtin__.hex(m, **kwargs)[2:]
         if isinstance(m, str):
@@ -394,6 +400,22 @@ def _init_xor():
     with _GlobalImport():
         from pwn import xor
 
+
+def _init_flip():
+    from pwn import u64
+
+    @_public
+    def flip(p):
+        return hex(u64(unhex(p)), length=8)
+
+def _init_shellcraft():
+    with _GlobalImport():
+        from pwn import shellcraft, asm
+
+def _init_pack_unpack():
+    with _GlobalImport():
+        from pwn import u32, p32, u64, p64
+
 def _init_hashes():
     with _GlobalImport():
         from hashlib import md5, sha1, sha256, pbkdf2_hmac
@@ -543,6 +565,9 @@ def _init():
     _init_base64()
     _init_crypto()
     _init_xor()
+    _init_flip()
+    _init_shellcraft()
+    _init_pack_unpack()
     _init_hashes()
     _init_chunks()
     _init_invert_hex()
